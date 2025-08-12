@@ -9,8 +9,10 @@
 //component
 @use "object/component/font";
 @use "object/component/button";
+@use "object/component/hamburger";
 
 //project
-
+@use "object/project/header" as ph;
+@use "object/project/nav";
 
 //utility

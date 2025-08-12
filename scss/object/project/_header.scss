@@ -1,0 +1,51 @@
+/******************************
+ヘッダー
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-header {
+  background-color: aqua;
+  &__inner{
+    padding-block: rem(8) rem(8);
+    padding-inline: rem(12);
+    width: 100%;
+    max-width: var(--inner-max);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+      @include mq(tab) {
+    padding-block: rem(28) rem(29);
+    padding-inline: rem(30);
+  }
+  }
+  &__title {
+    flex-grow: 1;
+    > a {
+      display: inline-block;
+      width: rem(154);
+      height: rem(38);
+      @include mq(tab) {
+        width: rem(250);
+        height: rem(61);
+      }
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+  &__action {
+    display: none;
+    @include mq(tab) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(22);
+      margin-right: rem(40);
+    }
+  }
+}
