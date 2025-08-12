@@ -11,7 +11,7 @@
   height: rem(80);
   align-items: center;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "Viga", sans-serif;
   font-size: rem(20);
   line-height: 100%;
   background-color: $color-white;
@@ -23,6 +23,42 @@
     content: "";
     width: rem(20);
     height: rem(20);
+    background: url(/img/icon_arrow1.svg) no-repeat center/contain;
+    filter: invert(12%) sepia(11%) saturate(57%) hue-rotate(330deg) brightness(98%) contrast(97%);
+    top: 50%;
+    right: rem(20);
+    transform: translateY(-50%);
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: $color-white;
+    background-color: $color-text;
+
+    &::after {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+.c-button--gb {
+  position: relative;
+  display: flex;
+  width: rem(556);
+  height: rem(70);
+  align-items: center;
+  justify-content: center;
+  font-family: "Viga", sans-serif;
+  font-size: rem(16);
+  line-height: 100%;
+  background-color: $color-secondary;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: rem(16);
+    height: rem(16);
     background: url(/img/icon_arrow1.svg) no-repeat center/contain;
     filter: invert(12%) sepia(11%) saturate(57%) hue-rotate(330deg) brightness(98%) contrast(97%);
     top: 50%;
