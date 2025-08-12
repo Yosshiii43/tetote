@@ -24,9 +24,9 @@ $breakpoint: (
   }
 }
 //使用例 
-@include mq(tab) {
-  background-color: #ffbebe;
-}
+//@include mq(tab) {
+//  background-color: #ffbebe;
+//}
 
 /// コンテナクエリ共通
 @mixin cq($container-name, $min-width) {
@@ -89,23 +89,3 @@ $spDesignSize: 375;
   @return if(unitless($v), $v, math.div($v, 1px));
 }
 
-/*  744px→$minPx, 1160px→$maxPx を px で返す clamp()  */
-@function cqClampPx(
-  $minPx, $maxPx,
-  $minW: 744px, $maxW: 1160px
-) {
-  $min   : to-num($minPx);
-  $max   : to-num($maxPx);
-  $minWn : to-num($minW);
-  $maxWn : to-num($maxW);
-
-  $slope : ($max - $min) / ($maxWn - $minWn);    // unitless
-  $base  : $min - $slope * $minWn;               // unitless
-  $k     : $slope * 100;                         // unitless (px per cqw)
-
-  @return clamp(
-    #{$min}px,
-    calc(#{$base}px + #{$k}cqw),
-    #{$max}px
-  );
-}
