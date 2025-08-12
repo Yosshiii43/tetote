@@ -14,7 +14,7 @@
   /* spacing vars */
   --inner-pl: 20px;   /* SP既定 左padding */
   --inner-pr: 20px;   /* SP既定 右padding */
-  --inner-max: 1320px; /* PC画面幅大の時用(仮) */
+  --inner-max: 1560px; /* PC画面幅大の時用 */
 }
 
 @include mq("pc") {
