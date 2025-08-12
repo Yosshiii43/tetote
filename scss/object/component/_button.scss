@@ -77,14 +77,13 @@
   }
 }
 
-.c-button--gg {
+.c-button--smallGG {
   display: flex;
   width: rem(126);
   height: rem(42);
   align-items: center;
   justify-content: center;
   color: $color-white;
-  font-family: "Viga", sans-serif;
   font-size: rem(14);
   line-height: 100%;
   background-color: $color-secondary;
@@ -93,5 +92,86 @@
   &:focus,
   &:focus-visible {
     background-color: $color-main;
+  }
+}
+
+.c-button--smallBW {
+  display: flex;
+  width: rem(126);
+  height: rem(42);
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: rem(14);
+  line-height: 100%;
+  background-color: $color-text;
+  border: 1px solid $color-text;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: $color-text;
+    background-color: $color-white;
+  }
+}
+
+.c-button--arrowW {
+  position: relative;
+  display: flex;
+  width: rem(58);
+  height: rem(58);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  border: 1px solid $color-text;
+  transition: transform .3s ease;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: rem(16);
+    height: rem(16);
+    background: url(/img/icon_arrow2.svg) no-repeat center/contain;
+    filter: invert(12%) sepia(11%) saturate(57%) hue-rotate(330deg) brightness(98%) contrast(97%);
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    transform: scale(1.2);
+  }
+}
+
+.c-button--arrowB {
+  position: relative;
+  display: flex;
+  width: rem(58);
+  height: rem(58);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-text;
+  transition: transform .3s ease;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: rem(16);
+    height: rem(16);
+    background: url(/img/icon_arrow2.svg) no-repeat center/contain;
+    filter: brightness(0) invert(1);
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    transform: scale(1.2);
   }
 }
