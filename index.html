@@ -28,7 +28,7 @@
       </div>
 
       <button class="c-hamburger c-viga" id="js-hamburger"
-              aria-controls="global-nav" 
+              aria-controls="js-drawerBackground"
               aria-expanded="false"
               aria-label="メニューを開閉">
         <span class="c-hamburger__bar"></span>
@@ -36,35 +36,36 @@
         <span class="c-hamburger__bar"></span>
         <span class="c-hamburger__text">MENU</span>
       </button>
-
-      <div class="p-nav" id="js-navWrapper" aria-hidden="true">
-        <div class="p-nav__logo">
-          <a href="/">
-            <img src="/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
-          </a>
-        </div>
-        <div class="p-nav__menu">
-          <nav id="global-nav" aria-label="グローバルメニュー">
-            <ul class="p-nav__list">
-              <li class="p-nav__item"><a class="p-nav__link" href="/about-us/"><span>about us</span><span>TETOTEについて</span></a></li>
-              <li class="p-nav__item"><a class="p-nav__link" href="/benefits/"><span>benefits</span><span>福利厚生について</span></a></li>
-              <li class="p-nav__item"><a class="p-nav__link" href="/staff/"><span>staff</span><span>社員について</span></a></li>
-              <li class="p-nav__item"><a class="p-nav__link" href="/career/"><span>carrer</span><span>研修制度とキャリアパス</span></a></li>
-              <li class="p-nav__item"><a class="p-nav__link" href="/blog/"><span>blog</span><span>採用ブログ</span></a></li>
-              <li class="p-nav__item"><a class="p-nav__link" href="/faq/"><span>FAQ</span><span>よくある質問</span></a></li>
-            </ul>
-          </nav>
-          <div class="p-nav_bbutton">
-            <a class="c-button--smallBW" href="/details/">募集要項</a>
-            <a class="c-button--smallGG"href="/entry/">entry</a>
-          </div><!--.p-nav_bbutton" -->
-        </div><!-- .p-nav__menu -->
-      </div><!-- .p-nav -->
-
     </div><!-- .p-header__inner -->
   </header>
+  
+  <div class="p-drawer" id="js-drawerBackground" aria-hidden="true">
+    <div class="p-drawer__logo">
+      <a href="/">
+        <img src="/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
+      </a>
+    </div>
+    <div class="p-drawer__menu">
+      <nav id="js-global-menu" aria-label="グローバルメニュー">
+        <ul class="p-drawer__list">
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/about-us/"><span>about us</span><span>TETOTEについて</span></a></li>
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/benefits/"><span>benefits</span><span>福利厚生について</span></a></li>
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/staff/"><span>staff</span><span>社員について</span></a></li>
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/career/"><span>carrer</span><span>研修制度とキャリアパス</span></a></li>
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/blog/"><span>blog</span><span>採用ブログ</span></a></li>
+          <li class="p-drawer__item"><a class="p-drawer__link" href="/faq/"><span>FAQ</span><span>よくある質問</span></a></li>
+        </ul>
+      </nav>
 
-  <main class="l-main">
+      <!-- ドロワー内のボタン群 -->
+      <div class="p-drawer_button">
+        <a class="c-button--smallBW" href="/details/">募集要項</a>
+        <a class="c-button--smallGG"href="/entry/">entry</a>
+      </div><!--.p-drawer_button" -->
+    </div><!-- .p-drawer__menu -->
+  </div><!-- .p-drawer -->
+
+  <main class="l-main" id="main">
     <div class="l-main__head"></div>
     <div class="l-main__body"></div>
   </main>

@@ -6,6 +6,10 @@
 
 .p-header {
   background-color: aqua;
+  position: fixed;
+  width: 100%;
+  z-index: $z-header;
+
   &__inner{
     padding-block: rem(8) rem(8);
     padding-inline: rem(12);

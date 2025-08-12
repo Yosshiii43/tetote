@@ -1,0 +1,35 @@
+/******************************
+ナビ
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-drawer {
+  position: fixed;
+  z-index: $z-navPanel;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: rem(80) rem(24);
+  background: $color-bg;
+  transform: translateY(-100%);
+  transition: transform .3s ease;
+
+  &.is-open { transform: translateY(0); }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__link {
+    display: block;
+    padding: rem(12) 0;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .2s;
+    &:hover { opacity: .7; }
+  }
+}
