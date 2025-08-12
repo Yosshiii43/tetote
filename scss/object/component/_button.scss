@@ -76,3 +76,22 @@
     }
   }
 }
+
+.c-button--gg {
+  display: flex;
+  width: rem(126);
+  height: rem(42);
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-family: "Viga", sans-serif;
+  font-size: rem(14);
+  line-height: 100%;
+  background-color: $color-secondary;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: $color-main;
+  }
+}
