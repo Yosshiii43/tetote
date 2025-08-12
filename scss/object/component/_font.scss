@@ -1,0 +1,18 @@
+/******************************
+フォント
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+
+.c-viga {
+  font-family: "Viga", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.c-poppins {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
