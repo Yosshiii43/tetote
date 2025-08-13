@@ -60,6 +60,9 @@
   }
 }
 
+//-----------------------------------
+//トップページ　スクロールがhero過ぎた時
+//-----------------------------------
 .p-header--sticky {
   position: fixed;
   top: 0;
@@ -68,8 +71,8 @@
   opacity: 1;
   visibility: visible;
   animation: slideDown 0.3s ease-in-out;
-
   background-color: $color-white;
+
   .p-header__title {
     > a {
       img {
@@ -92,5 +95,30 @@
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+//-----------------------------------
+//下層ページ
+//-----------------------------------
+
+body:not(.home) .p-header {
+  background-color: $color-white;
+  
+  .p-header__title {
+    > a {
+      img {
+        filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
+      }
+    }
+  }
+
+  .c-hamburger {
+    &__bar {
+      background-color: $color-text;
+    }
+    &__text {
+      color: $color-text;
+    }
   }
 }

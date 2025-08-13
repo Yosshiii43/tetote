@@ -4,11 +4,6 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
-/******************************
-ハンバーガーメニュー
-******************************/
-@use "../../foundation/forwards" as *;
-
 .c-hamburger { 
   --bar-w: 32px;
   --bar-h: 2px;
