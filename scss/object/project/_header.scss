@@ -98,6 +98,7 @@
   }
 }
 
+
 //-----------------------------------
 //下層ページ
 //-----------------------------------
@@ -119,6 +120,23 @@ body:not(.home) .p-header {
     }
     &__text {
       color: $color-text;
+    }
+  }
+}
+
+
+//-----------------------------------
+//ドロワー　open時
+//-----------------------------------
+
+.p-header.is-open {
+  background-color: none;
+
+  .p-header__title {
+    > a {
+      img {
+        filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
+      }
     }
   }
 }

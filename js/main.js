@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
+  const header = document.querySelector('#js-header');
   const hamburger = document.querySelector('#js-hamburger');
   const drawer = document.querySelector('#js-drawerBackground');
   const main = document.querySelector('#main'); // 本文だけ inert にする
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastFocused = document.activeElement;
     drawer.classList.add('is-open');
     body.classList.add('is-scrollLock');
+    header.classList.add('is-open');
 
     drawer.setAttribute('aria-hidden', 'false');
     setToggleA11y(true);
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeMenu = () => {
     drawer.classList.remove('is-open');
     body.classList.remove('is-scrollLock');
+    header.classList.remove('is-open');
 
     drawer.setAttribute('aria-hidden', 'true');
     setToggleA11y(false);
