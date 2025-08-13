@@ -132,10 +132,18 @@ body:not(.home) .p-header {
 .p-header.is-open {
   background-color: none;
 
-  .p-header__title {
-    > a {
-      img {
-        filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
+  .p-header__inner{
+    //padding-inline: rem(12) rem(8);
+  
+    .p-header__title {
+      > a {
+        //width: rem(150);
+        //height: rem(40);
+        //margin-top: rem(4);
+
+        img {
+          filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
+        }
       }
     }
   }
