@@ -5,7 +5,6 @@
 @use "sass:math";
 
 .p-header {
-  background-color: aqua;
   position: fixed;
   width: 100%;
   z-index: $z-header;
@@ -51,5 +50,32 @@
       gap: rem(22);
       margin-right: rem(40);
     }
+  }
+}
+
+.p-header--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+  animation: slideDown 0.3s ease-in-out;
+
+  background-color: $color-white;
+  .p-header__title {
+    > a {
+      img {
+        filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
+      }
+    }
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
