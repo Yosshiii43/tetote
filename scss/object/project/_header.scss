@@ -50,6 +50,13 @@
       gap: rem(22);
       margin-right: rem(40);
     }
+    
+    a:first-child {
+      font-weight: 700;
+    }
+    a:last-child {
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -68,6 +75,14 @@
       img {
         filter: invert(9%) sepia(31%) saturate(3%) hue-rotate(25deg) brightness(93%) contrast(89%);
       }
+    }
+  }
+
+  .c-hamburger {
+    color: $color-text;
+
+    &__bar {
+      background-color: $color-text;
     }
   }
 }
