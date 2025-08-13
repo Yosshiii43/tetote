@@ -54,6 +54,7 @@
 
   &__bar {
     width: var(--bar-w);
+    
     height: calc(var(--bar-h) * 2);
     transform: translateX(-50%) scaleY(.5);
     -webkit-transform: translateX(-50%) scaleY(.5);
@@ -64,19 +65,19 @@
   &:nth-child(1){ 
     top: 1px;
     @include mq(tab) {
-      top: 5px;
+      top: 2px;
     }
   }
   &:nth-child(2){ 
     top: 10px;
     @include mq(tab) {
-      top: 20px;
+      top: 17px;
     }
   }
   &:nth-child(3){
     top: 19px;
     @include mq(tab) {
-      top: 35px;
+      top: 32px;
     }
   }
   }
@@ -90,12 +91,15 @@
     -ms-transform: translateX(-50%);
     @include mq(tab) {
       width: 34px;
-      bottom: 2px;
+      bottom: 4px;
     }
   }
 
   //開いた状態
   &[aria-expanded="true"] {
+    @include mq(tab) {
+      margin-left: 6px; //デザインカンプのズレに対応
+    }
     .c-hamburger__bar:nth-child(1),
     .c-hamburger__bar:nth-child(3){
       top: 10px;
