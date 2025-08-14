@@ -1,0 +1,56 @@
+/******************************
+ヒーロ内黒背景テキスト
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-heroText {
+  padding: rem(9) rem(12);
+  background-color: $color-text;
+  position: relative;
+  display: inline-block;
+  @include mq(tab) {
+    padding: rem(13) rem(36) rem(13) rem(66);
+  }
+  @include mq(pc) {
+    padding: rem(17) rem(36) rem(17) rem(66);
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    border-top: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: rem(30) solid transparent;
+    border-left: rem(12) solid $color-text;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: calc(-1 * rem(12));
+    @include mq(tab) {
+      border-bottom: rem(44) solid transparent;
+      border-left: rem(30) solid $color-text;
+      right: calc(-1 * rem(30));
+    }
+    @include mq(pc) {
+      border-bottom: rem(58) solid transparent;
+      border-left: rem(30) solid $color-text;
+      right: calc(-1 * rem(30));
+    }
+  }
+
+  p{
+    color: $color-white;
+    font-size: rem(12);
+    font-weight: 700;
+    line-height: 100%;
+    @include mq(tab) {
+      font-size: rem(18);
+    }
+    @include mq(pc) {
+      font-size: rem(24);
+      margin-left: var(--edge); 
+    }
+  }
+}
