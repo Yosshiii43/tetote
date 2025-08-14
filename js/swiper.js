@@ -43,9 +43,9 @@ function initHeroSwiper() {
     rewind: true,
 
     // テンポ
-    speed: 1100, // フェードの“ふわっ”感（1.0〜1.2sが目安）
+    speed: 2000, // フェードの“ふわっ”感（1.0〜1.2sが目安）
     autoplay: {
-      delay: 4600, // ズームとバランス
+      delay: 5000, // ズームとバランス
       disableOnInteraction: false,
       waitForTransition: true,
       stopOnLastSlide: false,
