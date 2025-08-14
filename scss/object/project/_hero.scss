@@ -4,60 +4,84 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
+/* 背景（白フラ防止） */
+.p-hero { background: #000; }
+
 .p-hero {
   width: 100%;
-  height: 667px;        // SP 高さ固定
+  height: 667px;           /* SP: 高さ固定 */
   overflow: hidden;
 
-  .swiper { height: 100%; }
+  .swiper,
+  .swiper-wrapper,
+  .swiper-slide,
+  .slide-media { height: 100%; }
 
-  .swiper-slide { height: 100%; }
+  .swiper-slide { background: #000; }
 
   .slide-media {
     position: relative;
-    height: 100%;
     overflow: hidden;
-
-    /* --- 位置決めは親（slide-media）で --- */
-    /* 画像の --hero-x を読み取り、親を左右にオフセットする */
-    /* ここでは img のカスタムプロパティを参照するため :has() を使わない設計にします */
+    margin: 0;
   }
 
+  /* ▼ ベース状態：translate だけ（scale 1） */
   .p-hero__img {
     position: absolute;
     top: 0;
-
-    /* SP: 縦100%基準で横はみ出し（上下は常に見える） */
+    left: 50%;
     height: 100%;
     width: auto;
     max-width: none;
+    display: block;
 
-    /* --- 位置は img 自身のカスタムプロパティから算出 --- */
-    left: 50%;
-    transform: translateX(calc(-1 * var(--hero-x, 50%))); // 画像の幅基準で移動
-    transform-origin: center center;   // ズームの支点を中央に
-    transition: transform 6s ease;     // ズーム用のみ（位置は固定）
-  }
-
-  /* アクティブ時：ズームだけを子に適用（位置は変えない） */
-  .swiper-slide[class*=-active] .p-hero__img {
-    transform: translateX(calc(-1 * var(--hero-x, 50%))) scale(1.05);
+    /* 各スライドやimgに style="--hero-x:65%" を指定して左右を決める */
+    transform: translateX(calc(-1 * var(--hero-x, 50%))) scale(1);
+    transform-origin: center center;
+    will-change: transform; /* ヒント */
   }
 }
 
-
-/* PC/Tab は幅基準に戻す（必要な箇所だけ上書き） */
+/* PC/タブレットは幅基準（translate なし、scale のみ） */
 @include mq("tab") {
   .p-hero {
-    height: auto; aspect-ratio: 1440 / 823;
+    height: auto;
+    aspect-ratio: 1440 / 823;
 
-    .slide-media .p-hero__img {
+    .p-hero__img {
       position: static;
-      width: 100%; height: auto;
-      transform: none;
-    }
-    .swiper-slide[class*=-active] .slide-media .p-hero__img {
-      transform: scale(1.05);
+      width: 100%;
+      height: auto;
+      transform: scale(1);
     }
   }
+}
+
+/* ▼ ズームのキーフレーム：transform を直接補間 */
+@keyframes heroZoom {
+  from { transform: translateX(calc(-1 * var(--hero-x, 50%))) scale(1); }
+  to   { transform: translateX(calc(-1 * var(--hero-x, 50%))) scale(1.05); }
+}
+
+@keyframes heroZoomPc {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+/* ▼ アクティブ画像にだけ .is-zoom をJSで付ける */
+.p-hero__img.is-zoom {
+  animation: heroZoom 6s ease forwards;
+}
+@include mq("tab") {
+  .p-hero__img.is-zoom {
+    animation: heroZoomPc 6s ease forwards;
+  }
+}
+
+/* 初期白対策（任意） */
+.p-hero:not(.is-inited) .swiper .swiper-slide:first-child { opacity: 1 !important; }
+
+/* 動きを減らす */
+@media (prefers-reduced-motion: reduce) {
+  .p-hero__img.is-zoom { animation: none !important; }
 }

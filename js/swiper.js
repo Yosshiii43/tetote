@@ -7,67 +7,70 @@
 // トップページ ヒーロー部分
 //-------------------------------------------------------------------------
 
+// Swiper CDN(bundle) 前提
 let heroSwiper = null;
 
-const initHeroSwiper = () => {
+function applyZoom(swiper) {
+  // いったん全てのズームを外す
+  const imgs = swiper.el.querySelectorAll('.p-hero__img');
+  imgs.forEach(img => img.classList.remove('is-zoom'));
 
-  // すでにSwiperが存在していたら破棄
+  // アクティブの画像にだけズームをかけ直す（再発火用にreflow）
+  const active = swiper.slides[swiper.activeIndex]?.querySelector('.p-hero__img');
+  if (!active) return;
+  void active.offsetWidth; // reflow
+  active.classList.add('is-zoom');
+}
+
+function initHeroSwiper() {
+  const el = document.querySelector('.p-hero .swiper');
+  if (!el) return;
+
   if (heroSwiper) {
-    heroSwiper.destroy(true, true);
+    try { heroSwiper.destroy(true, true); } catch (e) {}
     heroSwiper = null;
   }
 
-  heroSwiper = new Swiper('.p-hero .swiper', {
-    // 必須・安定化
+  heroSwiper = new Swiper(el, {
     slidesPerView: 1,
     allowTouchMove: false,
 
-    // フェード
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
+    // フェードで滑らかに（白フラッシュ対策で crossFade: true）
+    //effect: 'fade',
+    //fadeEffect: { crossFade: true },
 
-    // ループは使わず「巻き戻し」（fadeと相性がいい）
+    // 2枚でも安定させるため rewind を採用
     loop: false,
     rewind: true,
 
-    // 自動再生
-    speed: 2000,
+    // テンポ（好みに合わせて調整）
+    speed: 1200,
     autoplay: {
-      delay: 7000,
+      delay: 4500,                 // 初回が長く止まって見えない程度に短め
       disableOnInteraction: false,
-      waitForTransition: false,
+      waitForTransition: true,
+      stopOnLastSlide: false,
     },
 
-    //切り替えのアニメーションはドラッグ操作が終了してから開始
-    followFinger: false,
+    // 画像は先読み、リサイズ時は内部で再計算
+    preloadImages: true,
+    updateOnWindowResize: true,
+    observer: true,
+    observeParents: true,
+
+    on: {
+      init(swiper) {
+        // 初回ズームを確実に見せる
+        applyZoom(swiper);
+      },
+      slideChangeTransitionStart(swiper) {
+        // 切替のたびにズームを再発火
+        applyZoom(swiper);
+      },
+    },
   });
-};
 
-//初期化
-window.addEventListener('load', () =>{
-  initHeroSwiper();
-});
+  window.heroSwiper = heroSwiper; // デバッグ用（不要なら削除）
+}
 
-// 例：tab以上を (min-width:744px) と仮定
-  const mql = window.matchMedia('(min-width: 744px)');
-  let currentIsTabUp = mql.matches;
-
-  mql.addEventListener('change', (e) => {
-    // ブレークポイントを跨いだときだけ
-    if (e.matches !== currentIsTabUp) {
-      currentIsTabUp = e.matches;
-
-      // ついでに一時的にトランジション無効（横ズレ見せない）
-      document.body.classList.add('is-resizing');
-      if (window.heroSwiper?.autoplay) heroSwiper.autoplay.stop();
-
-      // Swiper 再初期化
-      initHeroSwiper();
-
-      // 解除
-      requestAnimationFrame(() => {
-        document.body.classList.remove('is-resizing');
-        if (window.heroSwiper?.autoplay) heroSwiper.autoplay.start();
-      });
-    }
-  });
+window.addEventListener('load', initHeroSwiper);
