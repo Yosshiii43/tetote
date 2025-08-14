@@ -103,6 +103,7 @@
 //Hero内部コンテンツ
 //-------------------------------------
 .p-hero {
+  --inner-max: 1560px; /* 念のためここでも定義可 */
   /* 画面幅が --inner-max を超えたら (100vw - max幅) / 2、
      それ以下なら --hero-inner を使う */
   --edge: max(var(--hero-inner), calc((100vw - var(--inner-max)) / 2));

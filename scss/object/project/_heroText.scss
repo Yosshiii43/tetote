@@ -4,7 +4,11 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
+
 .p-heroText {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-wrap: anywhere; 
   padding: rem(9) rem(12);
   background-color: $color-text;
   position: relative;
@@ -12,8 +16,8 @@
   @include mq(tab) {
     padding: rem(13) rem(36) rem(13) rem(66);
   }
-  @include mq(pc) {
-    padding: rem(17) rem(36) rem(17) rem(66);
+  @include mq(pc)  { 
+    padding: rem(17) rem(36) rem(17) calc(var(--edge) + rem(66)); 
   }
 
   &::after {
@@ -50,7 +54,6 @@
     }
     @include mq(pc) {
       font-size: rem(24);
-      margin-left: var(--edge); 
     }
   }
 }
