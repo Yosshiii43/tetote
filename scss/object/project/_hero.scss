@@ -1,0 +1,23 @@
+/******************************
+トップページ　ヒーロー
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-hero {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 375 / 667;
+  /* スライド アクティブ時 */
+  .swiper {
+    height: 100%;
+    .swiper-slide {
+      &[class*=-active] {
+        .slide-media img {
+          transition-delay: 0s;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
