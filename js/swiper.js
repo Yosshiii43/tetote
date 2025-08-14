@@ -47,3 +47,27 @@ const initHeroSwiper = () => {
 window.addEventListener('load', () =>{
   initHeroSwiper();
 });
+
+// 例：tab以上を (min-width:744px) と仮定
+  const mql = window.matchMedia('(min-width: 744px)');
+  let currentIsTabUp = mql.matches;
+
+  mql.addEventListener('change', (e) => {
+    // ブレークポイントを跨いだときだけ
+    if (e.matches !== currentIsTabUp) {
+      currentIsTabUp = e.matches;
+
+      // ついでに一時的にトランジション無効（横ズレ見せない）
+      document.body.classList.add('is-resizing');
+      if (window.heroSwiper?.autoplay) heroSwiper.autoplay.stop();
+
+      // Swiper 再初期化
+      initHeroSwiper();
+
+      // 解除
+      requestAnimationFrame(() => {
+        document.body.classList.remove('is-resizing');
+        if (window.heroSwiper?.autoplay) heroSwiper.autoplay.start();
+      });
+    }
+  });
