@@ -4,13 +4,13 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
-/************************************
- * Hero (Swiper + CSS Fade + Ken Burns)
- ************************************/
+//-------------------------------------
+// Hero (Swiper + CSS Fade + Ken Burns)
+//-------------------------------------
 
 .p-hero {
   width: 100%;
-  height: 667px;   // SP: 高さ固定
+  height: rem(667);   // SP: 高さ固定
   overflow: hidden;
 
   .swiper,
@@ -97,4 +97,25 @@
 @media (prefers-reduced-motion: reduce) {
   .p-hero__img.is-zoom { animation: none !important; }
   .p-hero .swiper .swiper-slide { transition: none !important; }
+}
+
+//-------------------------------------
+//Hero内部コンテンツ
+//-------------------------------------
+.p-hero {
+  position: relative;
+
+  &__catchcopy{
+    position: absolute;
+    bottom: rem(137);
+    left: rem(12);
+    z-index: 10;
+    @include mq(tab) {
+      bottom: 50%;
+      left: rem(66);
+      transform: translateY(calc(50% - 10px));
+    }
+  }
+  &__text{}
+  &__news{}
 }

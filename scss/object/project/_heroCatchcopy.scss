@@ -1,0 +1,12 @@
+/******************************
+ヒーロ内キャッチコピー
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-heroCatchcopy{
+  color: $color-white;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: rclamp(48, 96, 375, 1440);
+  line-height: 120%;
+}
