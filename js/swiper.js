@@ -7,19 +7,18 @@
 // トップページ ヒーロー部分
 //-------------------------------------------------------------------------
 
-// Swiper CDN(bundle) 前提
 let heroSwiper = null;
 
 function applyZoom(swiper) {
-  // いったん全てのズームを外す
-  const imgs = swiper.el.querySelectorAll('.p-hero__img');
-  imgs.forEach(img => img.classList.remove('is-zoom'));
-
-  // アクティブの画像にだけズームをかけ直す（再発火用にreflow）
-  const active = swiper.slides[swiper.activeIndex]?.querySelector('.p-hero__img');
-  if (!active) return;
-  void active.offsetWidth; // reflow
-  active.classList.add('is-zoom');
+  // いったん全部オフ
+  swiper.el.querySelectorAll('.p-hero__img').forEach(img => {
+    img.classList.remove('is-zoom');
+  });
+  // アクティブ画像にだけズームを付け直す（再発火のためにreflow）
+  const activeImg = swiper.slides[swiper.activeIndex]?.querySelector('.p-hero__img');
+  if (!activeImg) return;
+  void activeImg.offsetWidth;
+  activeImg.classList.add('is-zoom');
 }
 
 function initHeroSwiper() {
@@ -27,7 +26,7 @@ function initHeroSwiper() {
   if (!el) return;
 
   if (heroSwiper) {
-    try { heroSwiper.destroy(true, true); } catch (e) {}
+    heroSwiper.destroy(true, true);
     heroSwiper = null;
   }
 
@@ -35,42 +34,39 @@ function initHeroSwiper() {
     slidesPerView: 1,
     allowTouchMove: false,
 
-    // フェードで滑らかに（白フラッシュ対策で crossFade: true）
-    //effect: 'fade',
-    //fadeEffect: { crossFade: true },
+    // ★ Swiperのfadeに戻す（横スライドはしない）
+    effect: 'fade',
+    fadeEffect: { crossFade: true }, // 前後を重ねて“ふわっ”を強調
 
-    // 2枚でも安定させるため rewind を採用
+    // リピートはrewindで
     loop: false,
     rewind: true,
 
-    // テンポ（好みに合わせて調整）
-    speed: 1200,
+    // テンポ
+    speed: 1100, // フェードの“ふわっ”感（1.0〜1.2sが目安）
     autoplay: {
-      delay: 4500,                 // 初回が長く止まって見えない程度に短め
+      delay: 4600, // ズームとバランス
       disableOnInteraction: false,
       waitForTransition: true,
       stopOnLastSlide: false,
     },
 
-    // 画像は先読み、リサイズ時は内部で再計算
     preloadImages: true,
-    updateOnWindowResize: true,
     observer: true,
     observeParents: true,
 
     on: {
       init(swiper) {
-        // 初回ズームを確実に見せる
+        document.querySelector('.p-hero')?.classList.add('is-inited');
         applyZoom(swiper);
       },
       slideChangeTransitionStart(swiper) {
-        // 切替のたびにズームを再発火
         applyZoom(swiper);
       },
     },
   });
 
-  window.heroSwiper = heroSwiper; // デバッグ用（不要なら削除）
+  window.heroSwiper = heroSwiper; // 任意
 }
 
 window.addEventListener('load', initHeroSwiper);
