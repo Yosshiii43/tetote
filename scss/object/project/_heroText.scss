@@ -17,7 +17,7 @@
     padding: rem(13) rem(36) rem(13) rem(66);
   }
   @include mq(pc)  { 
-    padding: rem(17) rem(36) rem(17) calc(var(--edge) + rem(66)); 
+    padding: rem(17) rem(36) rem(17) calc(var(--edge) + rem(66) - var(--hero-inner)); 
   }
 
   &::after {

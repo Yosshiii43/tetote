@@ -104,6 +104,7 @@
 //-------------------------------------
 .p-hero {
   --inner-max: 1560px; /* 念のためここでも定義可 */
+  --hero-inner: 12px; /*SPのheroの左padding*/
   /* 画面幅が --inner-max を超えたら (100vw - max幅) / 2、
      それ以下なら --hero-inner を使う */
   --edge: max(var(--hero-inner), calc((100vw - var(--inner-max)) / 2));
@@ -116,27 +117,35 @@
     z-index: 10;
     @include mq(tab) {
       bottom: 37.3%;
-      left: calc(var(--edge) + rem(66));
+      left: calc(var(--edge) + rem(66) - var(--hero-inner));
     }
   }
-  
+
   &__text{
     position: absolute;
     bottom: rem(89) + rem(30);
     left: 0;
     z-index: 10;
     @include mq(tab) {
+      bottom: 29%;
+    }
+    @include mq(pc) {
       bottom: 27%;
     }
   }
 
   &__news{
     position: absolute;
-    left: calc(var(--edge) + rem(12));
+    left: rem(12);
     bottom: rem(10);
     z-index: 10;
     @include mq(tab) {
-      bottom: rem(38);
+      left: rem(24);
+      bottom: 2%;
+    }
+    @include mq(pc) {
+      left: calc(var(--edge) + rem(71) - var(--hero-inner));
+      bottom: 4.5%;
     }
   }
 }
