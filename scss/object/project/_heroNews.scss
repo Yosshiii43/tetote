@@ -7,7 +7,7 @@
 .p-heroNews {
   display: flex;
   width: calc(100% - rem(12) * 2);
-  height: rem(52);
+  height: rem(48);
   @include mq(tab) {
     width: calc(100% - rem(24) * 2);
     height: rem(62);
@@ -45,7 +45,7 @@
     background-color: $color-white;
     border: 1px solid $color-text;
     border-left: none;
-    width: calc(100vw - rem(52));
+    width: calc(100vw - rem(52) - rem(12) * 2);
     height: 100%;
     padding-inline: rem(10);
     border-radius: 0 50px 50px 0;
@@ -62,7 +62,7 @@
       align-items: center;
       justify-content: space-between;
       gap: rem(16);
-      padding-block: rem(10.6);
+      padding-block: rem(9.6);
       @include mq(tab) {
         font-size: rem(16);
         padding-block: rem(11.8);
