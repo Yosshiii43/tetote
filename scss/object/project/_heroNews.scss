@@ -50,7 +50,7 @@
     padding-inline: rem(10);
     border-radius: 0 50px 50px 0;
     @include mq(tab) {
-      padding-inline: rclamp(24, 90, 768, 1440) rem(47);
+      padding-inline: rclamp(24, 90, 768, 1440) rclamp(24, 46, 768, 1440);
       width: calc(100% - rem(186));
     }
 
