@@ -91,3 +91,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+/*************************************************************************
+ * 1行と複数行の判定(Top Hero内News)
+ *************************************************************************/
+const updateLineHeight = () => {
+  const elems = document.querySelectorAll('.js-lineHeight');
+
+  elems.forEach(elem => {
+    // 一旦クラスをリセット
+    elem.classList.remove('lineHeight--single', 'lineHeight--multi');
+
+    // getComputedStyleでline-heightを取得
+    const computed = window.getComputedStyle(elem);
+    const lineHeight = parseFloat(computed.lineHeight);
+    const height = elem.offsetHeight;
+    const lines = Math.round(height / lineHeight);
+
+    if (lines > 1) {
+      elem.classList.add('lineHeight--multi');
+    } else {
+      elem.classList.add('lineHeight--single');
+    }
+  });
+};
+
+// 初回実行
+window.addEventListener('DOMContentLoaded', updateLineHeight);
+
+// リサイズ時にも再実行（デバウンス付き）
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(updateLineHeight, 200);
+});
