@@ -1,0 +1,84 @@
+/******************************
+ヒーロ内News
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-heroNews {
+  display: flex;
+  width: calc(100% - rem(12) * 2);
+  height: rem(52);
+  @include mq(tab) {
+    width: calc(100% - rem(71) - rem(105));
+    max-width: rem(1283);
+    height: rem(62);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-text;
+    width: rem(52);
+    border-radius: 50px 0 0 50px;
+    @include mq(tab) {
+      width: rem(186);
+    }
+
+    h2 {
+      color: $color-white;
+      font-size: rem(10);
+
+      @include mq(tab) {
+        font-size: rem(24);
+        padding-left: rem(1);
+      }
+    }
+  }
+
+  &__body {
+    background-color: $color-white;
+    border: 1px solid $color-text;
+    border-left: none;
+    width: calc(100vw - rem(52));
+    height: fit-content;
+    padding-inline: rem(10);
+    border-radius: 0 50px 50px 0;
+    @include mq(tab) {
+      padding-inline: rem(90) rem(47);
+      width: calc(100% - rem(186));
+    }
+
+    a {
+      line-height: 1.2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(16);
+      padding-block: rem(8);
+    
+      > span:first-child {
+        display: flex;
+        align-items: flex-start;
+        width: calc(100% - rem(91) - rem(16));
+      }
+      > span:last-child {
+        display: none;
+        @include mq(tab) {
+          width: rem(91);
+          font-size: rem(14);
+          text-transform: uppercase;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          gap: rem(6);
+        }
+        img {
+          width: 10px;
+          height: auto;
+        }
+      }
+    }
+  }
+}
