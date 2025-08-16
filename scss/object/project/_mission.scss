@@ -1,0 +1,65 @@
+/******************************
+ミッション
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-mission {
+  position: relative;
+  padding-block: rem(41) rem(79);
+  @include mq(tab) {
+    padding-block: rem(101) rem(100);
+  }
+
+  .swiper {
+    .swiper-wrapper {
+      transition-timing-function: linear;
+
+      .swiper-slide {
+        width: rclamp(271, 506, 375, 1440);
+
+        .slide-media {
+          img {
+            border-radius: 60px;
+          }
+        }
+      }
+      .slide-media-down{
+        padding-top: rem(27);
+        @include mq(tab) {
+          padding-top: rem(36);
+        }
+      }
+    }
+  }
+
+  &__text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(8);
+    width: fit-content;
+    left: 50%;
+    bottom: rem(48);
+    transform: translateX(-50%);
+    z-index: 10;
+    @include mq(tab) {
+      bottom: rem(109);
+      gap: rem(7);
+    }
+
+    p {
+      display: inline-block;
+      font-size: rclamp(24, 40, 375, 1440);
+      font-weight: 700;
+      line-height: 1.4583;
+      padding: rem(7) rem(11);
+      background-color: $color-white;
+      width: max-content;
+      @include mq(tab) {
+        line-height: 1.45;
+      }
+    }
+  }
+}
