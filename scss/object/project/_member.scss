@@ -5,7 +5,49 @@
 @use "sass:math";
 
 .p-member {
-  &__title {
+  .l-inner--1024{
+    position: relative;
+    background-color: azure;
+    @include mq(pc) {
+      padding-top: rem(45) + rem(136);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .p-member__title {
+      margin-bottom: rem(19);
+      @include mq(pc) {
+        margin-bottom: rem(10);
+        position: absolute;
+        top: rem(45);
+        left: calc(-1 * rem(132));
+      }
+    }
+
+    .p-member__info {
+      line-height: 1.5;
+      margin-bottom: rem(50);
+      @include mq(pc) {
+        margin-bottom: rem(52);
+      }
+    }
+
+    .p-member__swiper {
+      .swiper {
+        .swiper-wrapper {
+          display: flex;
+          gap: rem(23);
+          width: auto;
+
+          .swiper-slide:nth-child(even) {
+            .c-memberCard {
+              margin-top: rem(24);
+            }
+          }
+
+        }
+      }
+    }
 
   }
 }
