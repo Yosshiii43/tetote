@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //--------------------------------------------------------------------------
 // スクロールするとアニメーション付きで追従ヘッダーを出すコード
 //--------------------------------------------------------------------------
+/*
 document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', function() {
     const header = document.querySelector('.p-header');
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
+*/
 
 /*************************************************************************
  * 1行と複数行の判定(Top Hero内News)
