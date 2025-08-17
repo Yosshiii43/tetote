@@ -73,8 +73,6 @@
     padding-inline: rem(16) var(--inner-pr);
     padding-bottom: rem(71);
     @include mq(tab) {
-      --inner-pl: 64px; /* トップ基準の左余白 */
-      --inner-pr: 64px; /* トップ基準の右余白 */
       padding-inline: var(--inner-pl) var(--inner-pr);
       padding-bottom: rem(76);
     }
