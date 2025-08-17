@@ -62,6 +62,9 @@
         @include mq(tab) {
           line-height: 1.45;
         }
+        @media (max-width: 334px) {
+          padding: rem(7) rem(4);
+        }
       }
     }
   }
