@@ -3,13 +3,14 @@
 @use "foundation/base";
 
 ////layouts
-
+@use "layout/inner";
 
 ////object
 //component
 @use "object/component/font";
 @use "object/component/button";
 @use "object/component/hamburger";
+@use "object/component/topSectionTitle";
 
 //project
 @use "object/project/header" as ph;
@@ -19,5 +20,6 @@
 @use "object/project/heroText";
 @use "object/project/heroNews";
 @use "object/project/mission";
+@use "object/project/member";
 
 //utility
