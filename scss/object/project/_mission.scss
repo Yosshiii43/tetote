@@ -5,60 +5,126 @@
 @use "sass:math";
 
 .p-mission {
-  position: relative;
-  padding-block: rem(41) rem(79);
-  @include mq(tab) {
-    padding-block: rem(101) rem(100);
-  }
+  &__head {
+    position: relative;
+    padding-block: rem(41) rem(79);
+    @include mq(tab) {
+      padding-block: rem(101) rem(100);
+    }
 
-  .swiper {
-    .swiper-wrapper {
-      transition-timing-function: linear;
+    .swiper {
+      .swiper-wrapper {
+        transition-timing-function: linear;
 
-      .swiper-slide {
-        width: rclamp(271, 506, 375, 1440);
+        .swiper-slide {
+          width: rclamp(271, 506, 375, 1440);
 
-        .slide-media {
-          img {
-            border-radius: 60px;
+          .slide-media {
+            img {
+              border-radius: 60px;
+            }
+          }
+        }
+
+        .slide-media-down{
+          padding-top: rem(27);
+          @include mq(tab) {
+            padding-top: rem(36);
           }
         }
       }
-      .slide-media-down{
-        padding-top: rem(27);
+    }
+
+    .p-mission__text {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(8);
+      width: fit-content;
+      left: 50%;
+      bottom: rem(48);
+      transform: translateX(-50%);
+      z-index: 10;
+      @include mq(tab) {
+        bottom: rem(109);
+        gap: rem(7);
+      }
+
+      p {
+        display: inline-block;
+        font-size: rclamp(24, 40, 375, 1440);
+        font-weight: 700;
+        line-height: 1.4583;
+        padding: rem(7) rem(11);
+        background-color: $color-white;
+        width: max-content;
         @include mq(tab) {
-          padding-top: rem(36);
+          line-height: 1.45;
         }
       }
     }
   }
 
-  &__text {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: rem(8);
-    width: fit-content;
-    left: 50%;
-    bottom: rem(48);
-    transform: translateX(-50%);
-    z-index: 10;
+  &__body {
+    padding-inline: rem(16) var(--inner-pr);
+    padding-bottom: rem(71);
     @include mq(tab) {
-      bottom: rem(109);
-      gap: rem(7);
+      padding-inline: var(--inner-pl) var(--inner-pr);
+      padding-bottom: rem(76);
+    }
+    > div {
+      margin-inline: auto;
+      background: url(/img/img_map1.png) top center / contain no-repeat;
+      @include mq(tab) {
+        max-width: rem(1024);
+        padding-bottom: rem(6);
+      } 
+
+      p {
+        text-align: center;
+        font-family: Inter;
+        font-size: rclamp(18, 36, 375, 1440);
+        font-weight: 700;
+        line-height: 2.5;
+        @include mq(tab) {
+          line-height: 1.8;
+          font-family: "Noto Sans JP", sans-serif;
+        }
+
+        > span {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      p:first-child { padding-bottom: rclamp(39, 52, 375, 1440); }
+      p:last-child { padding-bottom: rclamp(39, 46, 375, 1440); }
+
     }
 
-    p {
-      display: inline-block;
-      font-size: rclamp(24, 40, 375, 1440);
-      font-weight: 700;
-      line-height: 1.4583;
-      padding: rem(7) rem(11);
-      background-color: $color-white;
-      width: max-content;
+    .c-button--wb {
+      text-transform: uppercase;
+      width: rem(277);
+      height: rem(62);
+      margin-inline: auto;
+      font-size: rem(16);
       @include mq(tab) {
-        line-height: 1.45;
+        width: rem(355);
+        height: rem(80);
+        font-size: rem(20);
+      }
+
+      &::after {
+        width: rem(16);
+        height: rem(16);
+        right: rem(17);
+        @include mq(tab) {
+          width: rem(20);
+          height: rem(20);
+          right: rem(20);
+        }
       }
     }
   }
