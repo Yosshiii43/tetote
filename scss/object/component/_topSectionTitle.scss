@@ -1,0 +1,51 @@
+/******************************
+セクションタイトル
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-topSectionTitle {
+  position: relative;
+
+
+  &__upper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: rem(32);
+    font-weight: 700;
+    line-height: 1;
+    @include mq(tab) {
+      font-size: rem(42);
+    }
+    @include mq(pc) {
+      font-size: rem(52);
+      top: rem(45);
+      left: -132px;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &::first-letter {
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+      text-underline-position: from-font;
+    }
+  }
+
+  &__lower {
+    color: $color-text2;
+    font-size: rem(80);
+    text-transform: uppercase;
+    line-height: 1;
+    @include mq(tab) {
+      font-size: rem(113);
+    }
+    @include mq(pc) {
+      font-size: rem(136);
+    }
+  }
+}
