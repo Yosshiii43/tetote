@@ -6,7 +6,8 @@
 
 .c-topSectionTitle {
   position: relative;
-
+  display: block;
+  width: fit-content;
 
   &__upper {
     position: absolute;
@@ -21,8 +22,8 @@
     }
     @include mq(pc) {
       font-size: rem(52);
-      top: rem(45);
-      left: -132px;
+      top: 50%;
+      left: 50%;
       transform: translateX(-50%) translateY(-50%);
     }
 
@@ -41,6 +42,8 @@
     font-size: rem(80);
     text-transform: uppercase;
     line-height: 1;
+    display: block;
+    width: fit-content;
     @include mq(tab) {
       font-size: rem(113);
     }
