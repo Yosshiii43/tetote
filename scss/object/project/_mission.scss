@@ -70,6 +70,8 @@
     padding-inline: rem(16) var(--inner-pr);
     padding-bottom: rem(71);
     @include mq(tab) {
+      --inner-pl: 64px; /* トップ基準の左余白 */
+      --inner-pr: 64px; /* トップ基準の右余白 */
       padding-inline: var(--inner-pl) var(--inner-pr);
       padding-bottom: rem(76);
     }
@@ -78,7 +80,7 @@
       background: url(/img/img_map1.png) top center / contain no-repeat;
       @include mq(tab) {
         max-width: rem(1024);
-        padding-bottom: rem(6);
+        padding-bottom: rem(7);
       } 
 
       p {
