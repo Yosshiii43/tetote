@@ -2,6 +2,7 @@
  * swiper
  *************************************************************************/
 
+let currentBreakpoint = window.innerWidth >= 768 ? 'tab' : 'sp';
 
 //-------------------------------------------------------------------------
 // トップページ ヒーロー部分
@@ -77,7 +78,6 @@ window.addEventListener('load', initHeroSwiper);
 //-------------------------------------------------------------------------
 
 let missionSwiper = null;
-let currentBreakpoint = window.innerWidth >= 768 ? 'tab' : 'sp';
 
 const initMissionSwiper = () => {
 
@@ -118,5 +118,58 @@ window.addEventListener('resize', () => {
   if (newBreakpoint !== currentBreakpoint) {
     currentBreakpoint = newBreakpoint;
     initMissionSwiper();
+  }
+});
+
+//-------------------------------------------------------------------------
+// トップページ member
+//-------------------------------------------------------------------------
+
+let memberSwiper = null;
+
+const initMemberSwiper = () => {
+
+  if (memberSwiper !== null) {
+    memberSwiper.destroy(true, true);
+  }
+
+  memberSwiper = new Swiper('.p-member .swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 23,
+    loop: true,
+    //loopAdditionalSlides: 1,
+    speed: 8000,
+    autoplay: {
+      delay: 0,
+      reverseDirection: true, // 逆方向の動きを有効にする
+      //disableOnInteraction: false,
+    },
+    freeMode: {
+      enabled: true,
+      momentum: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      1024: {
+        spaceBetween: 43,
+      }
+    },
+  });
+};
+
+//初期化
+window.addEventListener('load', () =>{
+  initMemberSwiper();
+});
+
+// ブレークポイントを跨いだときだけ再初期化
+window.addEventListener('resize', () => {
+  const newBreakpoint = window.innerWidth >= 768 ? 'tab' : 'sp';
+  if (newBreakpoint !== currentBreakpoint) {
+    currentBreakpoint = newBreakpoint;
+    initMemberSwiper();
   }
 });

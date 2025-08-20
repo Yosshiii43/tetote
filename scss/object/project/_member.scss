@@ -5,9 +5,12 @@
 @use "sass:math";
 
 .p-member {
+  padding-bottom: rem(71);
+  @include mq(pc) {
+    padding-bottom: rem(63);
+  }
   .l-inner--1024{
     position: relative;
-    background-color: azure;
     @include mq(pc) {
       padding-top: rem(45) + rem(136);
       padding-left: 0;
@@ -33,21 +36,63 @@
     }
 
     .p-member__swiper {
-      .swiper {
-        .swiper-wrapper {
-          display: flex;
-          gap: rem(23);
-          width: auto;
+      display: flex;
+      padding-bottom: rem(64);
 
-          .swiper-slide:nth-child(even) {
-            .c-memberCard {
-              margin-top: rem(24);
+      .p-member__swiperInner{
+        flex-grow: 1;
+        margin-right: calc(50% - 50vw);
+        overflow: hidden;
+
+        .swiper {
+          .swiper-wrapper {
+            transition-timing-function: linear;
+            .swiper-slide {
+              width: rem(246);
+              @include mq(tab) {
+                width: rem(300);
+              }
+            }
+
+            .swiper-slide:nth-child(even) {
+              .c-memberCard {
+                margin-top: rem(24);
+              }
             }
           }
-
         }
       }
     }
+    .swiper-controller{
+      display: none;
+      @include mq(tab) {
+      width: rem(136);
+      height: rem(58);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      bottom: rem(11);
+      right: rem(19);
+      }
 
+      .swiper-button-prev, 
+      .swiper-button-next {
+        width: rem(58);
+        height: rem(58);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-top: 0;
+      }
+
+      .swiper-button-prev::after {
+        transform: translateX(-50%) translateY(-50%) rotate(180deg);
+      }
+    }
+    .c-button--wb {
+      margin-inline: auto;
+    }
   }
 }
