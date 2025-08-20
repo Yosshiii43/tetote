@@ -6,6 +6,9 @@
 
 .c-memberCard {
   width: rem(246);
+  @include mq(tab) {
+    width: rem(300);
+  }
 
   &__head {
     position: relative;
@@ -25,12 +28,19 @@
       gap: rem(6);
       top: rem(263);
       left: 0;
+      @include mq(tab) {
+        top: rem(331);
+      }
 
       p {
         font-weight: 700;
         line-height: 1;
         background-color: $color-secondary;
         padding: rem(7);
+        @include mq(tab) {
+          font-size: rem(20);
+          padding: rem(5) rem(7);
+        }
       }
     }
   }
