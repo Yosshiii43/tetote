@@ -1,6 +1,6 @@
-/*************************************************************************
+/********************************************************************************
  * swiper
- *************************************************************************/
+ ********************************************************************************/
 
 let currentBreakpoint = window.innerWidth >= 768 ? 'tab' : 'sp';
 
@@ -125,7 +125,7 @@ window.addEventListener('resize', () => {
 //-------------------------------------------------------------------------
 // トップページ member
 //-------------------------------------------------------------------------
-// ====== member（Swiper v8 / CDN）安定版 ======
+// ===== member（Swiper v8 / CDN）: クリック即反応・競合ゼロ版 =====
 let memberSwiper = null;
 
 const initMemberSwiper = () => {
@@ -137,15 +137,15 @@ const initMemberSwiper = () => {
   const prevBtn   = root.querySelector('.swiper-button-prev');
   if (!container || !nextBtn || !prevBtn) return;
 
-  // 既存破棄
   if (memberSwiper) {
     try { memberSwiper.destroy(true, true); } catch (_) {}
     memberSwiper = null;
   }
 
-  // “ほぼ連続”に見えるが、クリックは食われない設定
-  const FLOW_SPEED = 1800;   // 自動スクロールの1ステップ時間
-  const FLOW_DELAY = 1950;   // speed より少し長く（息継ぎ）
+  // あなたの調整値を維持
+  const FLOW_SPEED  = 1600;  // 自動
+  const FLOW_DELAY  = 1800;  // speed より少し長く
+  const CLICK_SPEED = 400;   // クリック時だけ速く
 
   memberSwiper = new Swiper(container, {
     slidesPerView: 'auto',
@@ -154,65 +154,92 @@ const initMemberSwiper = () => {
     speed: FLOW_SPEED,
     autoplay: {
       delay: FLOW_DELAY,
-      // ← ユーザー操作時は必ず autoplay を止める（競合をゼロに）
-      disableOnInteraction: true,
-      waitForTransition: true
+      disableOnInteraction: true, // ユーザー操作で必ず停止
+      waitForTransition: false    // ← 手動で止め/再開するため待たない
     },
-    navigation: {
-      // 純正ナビを使う（方向・枚数の安定性が高い）
-      nextEl: nextBtn,
-      prevEl: prevBtn
-    },
-    allowTouchMove: false, // 誤ドラッグの“途中位置”を残さない
+    // navigation は使わない（競合を断つ）
+    allowTouchMove: false,
     resistanceRatio: 0,
-    breakpoints: { 1024: { spaceBetween: 43 } }
+    breakpoints: { 1024: { spaceBetween: 43 } },
   });
 
-  // --- クリック中だけ高速にして“必ず1枚だけ”動かす ---
-  const NORMAL_SPEED = FLOW_SPEED;
-  const CLICK_SPEED  = 400;
-  let resumeAfterTransition = false;
+  let busy = false;
 
-  // クリック直前で autoplay を確実に止め、速度を一時的に速くする
-  const onPointerDown = () => {
-    if (!memberSwiper) return;
-    // autoplay.stop() は disableOnInteraction:true で自動停止するが、
-    // 念のため明示して“重ね遷移”を防ぐ
+  // --- 入力系：pointerdownで先取りしつつ、clickも保険で拾う ---
+  const triggerMove = (dir) => {
+    if (busy || !memberSwiper) return;
+    busy = true;
+
+    // 1) autoplay即停止
     try { memberSwiper.autoplay.stop(); } catch (_) {}
 
-    memberSwiper.params.speed = CLICK_SPEED;
+    // 2) 進行中トランジションを0msで終了して位置確定
+    const wrap = memberSwiper.wrapperEl;
+    const prevTd = wrap.style.transitionDuration;
+    wrap.style.transitionDuration = '0ms';
+    // reflow
+    // eslint-disable-next-line no-unused-expressions
+    wrap.offsetHeight;
+    wrap.style.transitionDuration = prevTd || '';
 
-    // 途中位置のズレを消しておく（現在スライドへ0ms吸着）
     memberSwiper.setTransition(0);
     memberSwiper.slideTo(memberSwiper.activeIndex, 0, false);
-
-    // 遷移が終わったら speed を戻して autoplay を再開する予約
-    resumeAfterTransition = true;
-  };
-
-  // 遷移完了で復帰処理
-  memberSwiper.on('transitionEnd', () => {
-    if (!memberSwiper) return;
-    memberSwiper.params.speed = NORMAL_SPEED;
-    if (resumeAfterTransition) {
-      resumeAfterTransition = false;
-      // ユーザー操作で止まっている autoplay を再開
-      try { memberSwiper.autoplay.start(); } catch (_) {}
+    if (memberSwiper.params.loop && typeof memberSwiper.loopFix === 'function') {
+      memberSwiper.loopFix();
     }
+    // Swiper内部のアニメーション中フラグを明示的に解除（取りこぼし防止）
+    memberSwiper.animating = false;
+    memberSwiper.updateSlidesProgress();
+    memberSwiper.updateSlidesClasses();
+
+    // 3) コマンドは次のフレームで実行（キャンセル直後の競合回避）
+    const old = memberSwiper.params.speed;
+    let started = false;
+
+    const onStart = () => { started = true; memberSwiper.off('transitionStart', onStart); };
+    memberSwiper.on('transitionStart', onStart);
+
+    requestAnimationFrame(() => {
+      if (!memberSwiper) return;
+      memberSwiper.params.speed = CLICK_SPEED;
+       const targetReal = dir === 'next'
+      ? memberSwiper.realIndex + 1
+      : memberSwiper.realIndex - 1;
+
+    memberSwiper.slideToLoop(targetReal, CLICK_SPEED, true);
+
+    setTimeout(() => {
+      if (!started && memberSwiper) {
+        memberSwiper.slideToLoop(targetReal, CLICK_SPEED, true); // フォールバック一回だけ
+      }
+    }, 120);
   });
 
-  // 純正ナビのクリックより“前”に速さ変更＆停止を差し込む
-  nextBtn.addEventListener('pointerdown', onPointerDown);
-  prevBtn.addEventListener('pointerdown', onPointerDown);
+    // 4) 終了後に復帰
+    memberSwiper.once('transitionEnd', () => {
+      memberSwiper.params.speed = old;
+      if (memberSwiper.params.loop && typeof memberSwiper.loopFix === 'function') {
+        memberSwiper.loopFix();
+      }
+      try { memberSwiper.autoplay.start(); } catch (_) {}
+      busy = false;
+    });
+  };
 
-  // デバッグしたい時だけ公開
-  // window.memberSwiper = memberSwiper;
+  const onPDNext = (e) => { e.preventDefault(); triggerMove('next'); };
+  const onPDPrev = (e) => { e.preventDefault(); triggerMove('prev'); };
+  const onClickNext = (e) => { e.preventDefault(); triggerMove('next'); };
+  const onClickPrev = (e) => { e.preventDefault(); triggerMove('prev'); };
+
+  // pointerdown を優先しつつ、click も保険で拾う（capture で最優先）
+  nextBtn.addEventListener('pointerdown', onPDNext, { capture: true, passive: false });
+  prevBtn.addEventListener('pointerdown', onPDPrev, { capture: true, passive: false });
+  nextBtn.addEventListener('click', onClickNext, { capture: true, passive: false });
+  prevBtn.addEventListener('click', onClickPrev, { capture: true, passive: false });
 };
 
-// 初期化
 window.addEventListener('load', initMemberSwiper);
 
-// ブレークポイント跨ぎでのみ再初期化
 window.addEventListener('resize', () => {
   const newBp = window.innerWidth >= 768 ? 'tab' : 'sp';
   if (newBp !== currentBreakpoint) {
