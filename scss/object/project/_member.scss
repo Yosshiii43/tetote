@@ -46,7 +46,7 @@
 
         .swiper {
           .swiper-wrapper {
-            transition-timing-function: linear;
+            //transition-timing-function: linear;
             .swiper-slide {
               width: rem(246);
               @include mq(tab) {
