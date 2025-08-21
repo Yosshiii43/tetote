@@ -17,6 +17,7 @@
     font-size: rem(32);
     font-weight: 700;
     line-height: 1;
+    width: 100%;
     @include mq(tab) {
       font-size: rem(42);
     }
@@ -24,6 +25,7 @@
       font-size: rem(52);
       top: 50%;
       left: 50%;
+      text-align: center;
       transform: translateX(-50%) translateY(-50%);
     }
 
