@@ -27,13 +27,17 @@
       transform: translateX(-50%) translateY(-50%);
     }
 
-    &::first-letter {
+    span {
       text-decoration-line: underline;
       text-decoration-style: solid;
       text-decoration-skip-ink: none;
-      text-decoration-thickness: auto;
+      text-decoration-thickness: 2px;
       text-underline-offset: auto;
       text-underline-position: from-font;
+      @include mq(tab) {
+        text-decoration-thickness: 2.5px;
+        text-underline-offset: 2px;
+      }
     }
   }
 
