@@ -11,16 +11,14 @@
   }
   .l-inner--1024{
     position: relative;
+    padding-inline: rem(17);
     @include mq(pc) {
       padding-top: rem(45) + rem(136);
-      padding-left: 0;
-      padding-right: 0;
+      padding-inline: rem(34);
     }
 
     .p-member__title {
-      margin-bottom: rem(19);
       @include mq(pc) {
-        margin-bottom: rem(10);
         position: absolute;
         top: rem(45);
         left: calc(-1 * rem(132));
@@ -29,15 +27,20 @@
 
     .p-member__info {
       line-height: 1.5;
-      margin-bottom: rem(50);
+      margin-block: rem(19) rem(50);
       @include mq(pc) {
-        margin-bottom: rem(52);
+        margin-block: rem(10) rem(52);
       }
     }
 
     .p-member__swiper {
       display: flex;
+      padding-inline: rem(9);
       padding-bottom: rem(64);
+      @include mq(tab) {
+        padding-inline: 0;
+        padding-bottom: rem(80);
+      }
 
       .p-member__swiperInner{
         flex-grow: 1;
@@ -56,6 +59,9 @@
             .swiper-slide:nth-child(even) {
               .c-memberCard {
                 margin-top: rem(24);
+                @include mq(tab) {
+                  margin-top: rem(36);
+                }
               }
             }
           }

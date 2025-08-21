@@ -47,16 +47,26 @@
 
   &__body {
     margin-top: rem(13);
+    @include mq(tab) {
+      margin-top: rem(16);
+    }
 
     .c-memberCard__info {
       display: flex;
       gap: rem(13);
       margin-bottom: rem(14);
+      @include mq(tab) {
+        gap: rem(9);
+        margin-bottom: rem(16);
+      }
 
       p {
         font-size: rem(12);
         font-weight: 700;
         line-height: 1;
+        @include mq(tab) {
+          font-size: rem(16);
+        }
       }
     }
 
@@ -64,6 +74,9 @@
       font-size: rem(20);
       font-weight: 700;
       line-height: 1;
+      @include mq(tab) {
+        font-size: rem(24);
+      }
     }
   }
 }
