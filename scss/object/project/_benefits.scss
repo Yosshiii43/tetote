@@ -1,0 +1,120 @@
+/******************************
+top benefits
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-benefits {
+  .l-inner--1024 {
+    @include mq(pc) {
+      padding-left: rem(35);
+      padding-right: rem(35);
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(19);
+    @include mq(pc) {
+      margin-top: rem(45);
+      margin-bottom: rem(10);
+      margin-inline: auto;
+    }
+  }
+
+  &__description {
+    margin-bottom: rem(51);
+    line-height: 1.5;
+    @include mq(pc) {
+      padding-left: rem(134);
+      line-height: 1;
+      margin-bottom: rem(114);
+    }
+  }
+
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(36);
+
+    @include mq(tab) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: rclamp(32, 94, 768, 1440);
+    }
+    .p-benefits__content{
+      position: relative;
+      width: rem(341);
+      @include mq(tab) {
+        width: rclamp(334, 430, 768, 1440);
+      }
+      a {
+        width: 100%;
+        margin-top: rem(36);
+
+        img {
+          width: rem(251);
+          height: auto;
+          display: block;
+          margin-inline: auto;
+          transition: transform .3s ease;
+          position: relative;
+          z-index: -1;
+          @include mq(tab) {
+            width: 100%;
+          }
+        }
+
+        .c-button--arrowB {
+          width: rclamp(42, 58, 768, 1440);
+          height: rclamp(42, 58, 768, 1440);
+          position: absolute;
+          top: rem(170);
+          right: calc(rem(75) - rem(17));
+          @include mq(tab) {
+            top: rclamp(232, 306, 768, 1440);
+            right: rclamp(16, 20, 768, 1440);
+          }
+        }
+
+        h3 {
+          display: block;
+          font-size: rem(24);
+          font-weight: 700;
+          line-height: 1;
+          padding: rem(7);
+          background-color: $color-secondary;
+          width: fit-content;
+          top: rem(228);
+          margin-top: calc(-1 * rem(23));
+          margin-bottom: rem(21);
+          margin-inline: auto;
+          @include mq(tab) {
+            font-size: rclamp(24, 32, 768, 1440);
+            padding: rem(5) rem(7);
+            margin-top: calc(-1 * rem(51));
+            margin-bottom: rem(36);
+          }
+        }
+        p {
+          line-height: 1.5;
+        }
+
+        &:hover,
+        &:focus{
+          img {
+            transform: scale(1.1);
+          }
+          .c-button--arrowB {
+            transform: translateX(rem(32));
+          }
+        }
+
+        &:last-of-type {
+          margin-top: -1px;
+        }
+      }
+    }
+  }
+}
