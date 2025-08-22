@@ -5,6 +5,10 @@ top benefits
 @use "sass:math";
 
 .p-benefits {
+  padding-bottom: rem(78);
+  @include mq(tab) {
+    padding-bottom: rem(107);
+  }
   .l-inner--1024 {
     @include mq(pc) {
       padding-left: rem(35);
