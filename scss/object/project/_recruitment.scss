@@ -1,0 +1,81 @@
+/******************************
+top recruitment
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-recruitment {
+  background-color: $color-beige;
+  padding-bottom: rem(88);
+  @include mq(tab) {
+    padding-bottom: rem(139);
+  }
+  @include mq(pc) {
+    padding-top: rem(45);
+  }
+
+  .l-inner--1024{
+    overflow: hidden;
+  }
+
+  &__title {
+    margin-bottom: rem(19);
+    @include mq(pc) {
+      margin-inline: auto;
+      margin-bottom: rem(6);
+    }
+  }
+
+  &__description {
+    line-height: 1.5;
+    margin-bottom: rem(28);
+    @include mq(pc) {
+      text-align: center;
+      margin-bottom: rem(60);
+    }
+  }
+
+  &__contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 19px;
+    @include mq(tab) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: rem(16);
+      grid-row-gap: rem(21);
+    }
+    .p-recruitment__link {
+      border: none;
+      width: 100%;
+      height: rem(86);
+      max-width: rem(460);
+      margin-inline: auto;
+      font-weight: 700;
+      @include mq(tab) {
+        max-width: none;
+        height: rem(120);
+      }
+    }
+    .p-recruitment__link:first-child {
+      grid-area: 1 / 1 / 2 / 2;
+      @include mq(tab) {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+    }
+    .p-recruitment__link:nth-child(2) {
+      grid-area: 2 / 1 / 3 / 2; 
+      @include mq(tab) {
+        grid-area: 1 / 2 / 2 / 3;
+      }
+    }
+    .p-recruitment__link:last-child {
+      grid-area: 3 / 1 / 4 / 2;
+      @include mq(tab) {
+      grid-area: 2 / 1 / 3 / 3;
+      }
+    }
+  }
+}
