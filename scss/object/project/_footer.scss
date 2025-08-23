@@ -86,12 +86,13 @@ footer
     > div {
       position: relative;
       @include mq(tab) {
-        width: 100%;
+        width: 80%;
         max-width: rem(956);
         margin-inline: auto;
         display: grid;
         grid-template-columns: 250px 1fr;
         gap: rem(109);
+        gap: rclamp(32, 109, 375, 1440);
       }
 
       .p-footer__nav {
@@ -193,6 +194,7 @@ footer
       text-align: center;
       padding-left: rem(9);
       @include mq(tab) {
+        width: 80%;
         text-align: left;
         max-width: rem(956);
         margin-inline: auto;
