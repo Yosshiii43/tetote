@@ -22,3 +22,14 @@ l-inner 汎用インナー
     max-width: 1024px;
   }
 }
+
+.l-inner--1380 {
+  width: 100vw;
+  padding-left:  var(--inner-pl);
+  padding-right: var(--inner-pr);
+  box-sizing: border-box;
+  @include mq("pc") {
+    margin-inline: auto;
+    max-width: rem(1380);
+  }
+}

@@ -6,7 +6,15 @@ footer
 
 .p-footer {
   background-color: $color-beige;
-  padding-bottom: rem(24);
+  @include mq(tab) {
+    background-color: $color-white;
+    padding-bottom: rem(64);
+  }
+
+  &__inner {
+    position: relative;
+  }
+
 
   &__head {
     width: 100vw;
@@ -28,10 +36,17 @@ footer
     background-color: $color-white;
     border-radius: 20px;
     padding: rem(24) rem(24) rem(29);
+    z-index: 1;
     @include mq(tab) {
+      width: 80%;
       margin-top: calc(-1 * rem(136.32));
       padding: rem(50) rem(120);
-      margin-bottom: rem(87);
+      margin-top: 0;
+      margin-bottom: 0;
+      position: absolute;
+      top: calc(-1 * rem(137));
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .p-footer__ctaText {
@@ -61,23 +76,61 @@ footer
   }
 
   &__foot {
-    .p-footer__nav {
-      margin-bottom: rem(48);
-      .p-footer__navList{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: rem(6);
-        .p-footer__navItem{
-          width: 100%;
-          .p-footer__navLink {
-            font-size: rem(14);
-            font-weight: 700;
-            line-height: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    padding-bottom: rem(24);
+    @include mq(tab) {
+      border-radius: 0 0 20px 20px;
+      background-color: $color-beige;
+      padding-top: rem(198);
+      padding-bottom: rem(67);
+    }
+    > div {
+      position: relative;
+      @include mq(tab) {
+        width: 100%;
+        max-width: rem(956);
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: rem(109);
+      }
+
+      .p-footer__nav {
+        margin-bottom: rem(48);
+        @include mq(tab) {
+          rid-area: 1 / 2 / 2 / 3; 
+          margin-top: rem(17);
+          margin-bottom: rem(59);
+        }
+
+        .p-footer__navList{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: rem(6);
+          @include mq(tab) {
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: rem(25) rem(22);
+          }
+
+          .p-footer__navItem{
+            width: 100%;
+            @include mq(tab) {
+              width: fit-content;
+            }
+            .p-footer__navLink {
+              font-size: rem(14);
+              font-weight: 700;
+              line-height: 2;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              @include mq(tab) {
+                font-size: rem(16);
+              }
+            }
           }
         }
       }
@@ -89,6 +142,12 @@ footer
       align-items: center;
       gap: rem(16);
       margin-bottom: rem(29);
+      @include mq(tab) {
+        position: absolute;
+        bottom: calc(-1 * rem(18));
+        right: 0;
+        margin-bottom: 0;
+      }
       .p-footer_snsItem{
         display: block;
         width: rem(24);
@@ -113,7 +172,16 @@ footer
       height: rem(61);
       margin-inline: auto;
       margin-bottom: rem(49);
+      @include mq(tab) {
+        margin-inline: 0;
+        margin-bottom: 0;
+        grid-area: 1 / 1 / 2 / 2;
+      }
       img {
+        width: rem(250);
+        max-width: none;
+        height: auto;
+        aspect-ratio: auto;
         filter: invert(0%) sepia(8%) saturate(12%) hue-rotate(152deg) brightness(103%) contrast(73%);
       }
     }
@@ -124,6 +192,12 @@ footer
       line-height: 1;
       text-align: center;
       padding-left: rem(9);
+      @include mq(tab) {
+        text-align: left;
+        max-width: rem(956);
+        margin-inline: auto;
+        padding-left: 0;
+      }
     }
   }
 }
