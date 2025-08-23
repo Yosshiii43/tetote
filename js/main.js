@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //--------------------------------------------------------------------------
 // ヘッダー情報
 const header = document.querySelector(".p-header");
-const headerHeight = header ? header.offsetHeight + 20 : 0;
+const headerHeight = header ? header.offsetHeight + 0 : 0;
 
 // イージング関数（easeOutExpo）
 function scrollToPos(position) {
