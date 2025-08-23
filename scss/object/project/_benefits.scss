@@ -20,7 +20,7 @@ top benefits
     margin-bottom: rem(19);
     @include mq(pc) {
       margin-top: rem(45);
-      margin-bottom: rem(10);
+      margin-bottom: rem(6);
       margin-inline: auto;
     }
   }
@@ -30,8 +30,7 @@ top benefits
     line-height: 1.5;
     @include mq(pc) {
       padding-left: rem(134);
-      line-height: 1;
-      margin-bottom: rem(114);
+      margin-bottom: rem(110);
     }
   }
 
