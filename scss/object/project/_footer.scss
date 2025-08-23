@@ -5,5 +5,125 @@ footer
 @use "sass:math";
 
 .p-footer {
-  
+  background-color: $color-beige;
+  padding-bottom: rem(24);
+
+  &__head {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 375 / 250;
+    background: url(/img/img_footer_sp.jpg) no-repeat center/contain;
+    @include mq(tab) {
+      background: url(/img/img_footer_pc.jpg) no-repeat center/contain;
+      aspect-ratio: 1440 / 488.32;
+    }
+  }
+
+  &__cta {
+    width: 100%;
+    max-width: rem(956);
+    margin-top: calc(-1 * rem(118));
+    margin-inline: auto;
+    margin-bottom: rem(44);
+    background-color: $color-white;
+    border-radius: 20px;
+    padding: rem(24) rem(24) rem(29);
+    @include mq(tab) {
+      margin-top: calc(-1 * rem(136.32));
+      padding: rem(50) rem(120);
+      margin-bottom: rem(87);
+    }
+
+    .p-footer__ctaText {
+      text-align: center;
+      font-size: rem(14);
+      font-weight: 700;
+      line-height: 2.5;
+      margin-bottom: rem(24);
+      @include mq(tab) {
+        font-size: rem(16);
+        line-height: 1.5;
+        margin-bottom: rem(31);
+      }
+    }
+    .p-footer__ctaButton {
+      width: rem(200);
+      height: rem(54);
+      margin-inline: auto;
+      text-transform: uppercase;
+      text-align: center;
+      @include mq(tab) {
+        width: 100%;
+        max-width: rem(556);
+        height: rem(70);
+      }
+    }
+  }
+
+  &__foot {
+    .p-footer__nav {
+      margin-bottom: rem(48);
+      .p-footer__navList{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: rem(6);
+        .p-footer__navItem{
+          width: 100%;
+          .p-footer__navLink {
+            font-size: rem(14);
+            font-weight: 700;
+            line-height: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    .p-footer__sns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: rem(16);
+      margin-bottom: rem(29);
+      .p-footer_snsItem{
+        display: block;
+        width: rem(24);
+        height: rem(24);
+        .p-footer_snsLink{
+          width: 100%;
+          height: 100%;
+          img {
+            vertical-align: top;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: invert(26%) sepia(5%) saturate(0%) hue-rotate(252deg) brightness(99%) contrast(86%);
+          }
+        }
+      }
+    }
+
+    .p-footer__logo {
+      display: block;
+      width: rem(250);
+      height: rem(61);
+      margin-inline: auto;
+      margin-bottom: rem(49);
+      img {
+        filter: invert(0%) sepia(8%) saturate(12%) hue-rotate(152deg) brightness(103%) contrast(73%);
+      }
+    }
+
+    .p-footer__copyright {
+      color: $color-lightGray;
+      font-size: rem(12);
+      line-height: 1;
+      text-align: center;
+      padding-left: rem(9);
+    }
+  }
 }
