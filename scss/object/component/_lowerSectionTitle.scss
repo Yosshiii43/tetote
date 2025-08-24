@@ -1,0 +1,11 @@
+/******************************
+下層 セクションタイトル
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-lowerSectionTitle {
+  font-size: rclamp(24, 32, 375, 1440);
+  font-weight: 700;
+  line-height: 1;
+}
