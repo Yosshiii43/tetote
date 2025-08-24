@@ -1,0 +1,80 @@
+/******************************
+about-us message
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-message {
+  padding-block: rem(60) rem(51);
+
+  &__title {
+    text-align: center;
+    margin-bottom: rem(60);
+    @include mq(tab) {
+      margin-bottom: rem(109);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    @include mq("tab") {
+      flex-direction: row;
+      gap: 1.724%;
+      align-items: flex-start;
+    }
+
+    .p-message__photo {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+      margin-inline: auto;
+      @include mq(tab) {
+        flex-basis: 49.388%;
+
+      }
+    }
+
+    .p-message__contents {
+      margin-bottom: rem(30);
+      @include mq(tab) {
+        flex-basis: 48.888%;
+        margin-bottom: 0;
+      }
+
+      .p-message__catchcopy {
+        font-size: rem(20);
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: rem(24);
+        @include mq(tab) {
+          font-size: rclamp(20, 32, 768, 1024);
+          margin-top: rem(18);
+          margin-left: calc(-1 * rem(80));
+          margin-bottom: rclamp(24, 44, 768, 1024);
+        }
+      }
+
+      .p-message__text {
+        line-height: 2;
+
+        p~p {
+          margin-top: rclamp(20, 31, 768, 1024);
+        }
+
+        img {
+          display: block;
+          margin-left: auto;
+          width: rem(160);
+          height: auto;
+          aspect-ratio: auto;
+          margin-top: rem(21);
+          @include mq(tab) {
+            width: rem(185);
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

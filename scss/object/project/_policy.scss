@@ -19,7 +19,7 @@ about-us polocy
     margin-bottom: rem(35);
 
     h3 {
-      font-size: rclamp(18, 20, 375, 1024);
+      font-size: rclamp(20, 20, 768, 1024);
       font-weight: 700;
       line-height: 1.5;
       display: flex;
@@ -43,5 +43,8 @@ about-us polocy
     p {
       line-height: 1.5;
     }
+  }
+  &__unit:last-child {
+    margin-bottom: 0;
   }
 }
