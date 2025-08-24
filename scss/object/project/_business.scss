@@ -1,0 +1,125 @@
+/******************************
+about-us business
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-business {
+  padding-block: rem(60) rem(93);
+
+  .l-inner--lower {
+    @include mq(pc) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(44);
+    @include mq(pc) {
+      margin-left: rem(22);
+    }
+  }
+
+  &__description {
+    line-height: 1.5;
+    max-width: rem(681);
+    @include mq(tab) {
+      margin-bottom: rem(33);
+    }
+    @include mq(pc) {
+      margin-left: rem(22);
+    }
+  }
+
+  &__contents {
+    .p-business__unit {
+      padding-block: rem(49) rem(48);
+      @include mq(tab) {
+        padding-inline: rem(22) rem(42);
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(24);
+        @include mq(tab) {
+          flex-direction: row-reverse;
+          gap: 4.375%;
+        }
+
+        .p-business__body {
+          @include mq(tab) {
+            flex-basis: 47.5%;
+            padding-top: rclamp(0, 22, 768, 1024);
+          }
+
+          h3 {
+            color: $color-main;
+            font-size: rclamp(28, 32, 768, 1024);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: rclamp(20, 40, 768, 1024);
+          }
+
+          .p-business__lead {
+            font-size: rclamp(20, 24, 768, 1024);
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: rclamp(20, 40, 768, 1024);
+            @include mq(tab) {
+              max-width: rem(456);
+            }
+          }
+
+          .p-business__text {
+            line-height: 1.5;
+            @include mq(tab) {
+              max-width: rem(430);
+            }
+          }
+        }
+
+        .p-business__img {
+          width: 100%;
+          @include mq(tab) {
+            flex-basis: 48.125%;
+          }
+
+          img { 
+            border-radius: 20px; 
+          }
+        }
+      }
+    }
+
+    .p-business__unit ~ .p-business__unit {
+      border-top: 1px solid $color-secondary;
+    }
+
+    .p-business__unit:first-child {
+      > div .p-business__body h3,
+      > div .p-business__body .p-business__lead{
+        margin-bottom: rclamp(14, 34, 768, 1024);
+      }
+      > div .p-business__img img{
+        width: 100%;
+        max-width: rem(457);
+      } 
+    }
+
+    .p-business__unit:last-child{
+      padding-top: rem(60);
+      > div .p-business__body{
+        padding-top: rclamp(0, 11, 768, 1024);
+
+        .p-business__lead {
+          @include mq(tab) {
+            max-width: rem(432);
+          }
+        }
+      }
+    }
+  }
+}
