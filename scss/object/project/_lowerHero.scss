@@ -25,7 +25,7 @@
   }
 
   &__lead {
-    font-size: rem(64);
+    font-size: rclamp(42, 64, 375, 768);
     text-transform: uppercase;
     padding: rem(3) rem(10);
     //margin-top: rem(75);
