@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.p-header');
     const headerHeight = header.offsetHeight; // ヘッダーの高さを取得
     const scrollY = window.pageYOffset;
-    const hero = document.querySelector('.p-main__head');
+    const hero = document.querySelector('.p-hero');
     const heroHeight = hero.offsetHeight; // ヒーローの高さを取得
     
     
