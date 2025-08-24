@@ -8,4 +8,9 @@
   font-size: rclamp(24, 32, 375, 1440);
   font-weight: 700;
   line-height: 1;
+
+  @media (max-width: 350px) {
+    font-size: rem(22);
+    line-height: 1.5;
+  }
 }
