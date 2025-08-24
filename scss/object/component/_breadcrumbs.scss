@@ -1,0 +1,31 @@
+/******************************
+パンくずリスト
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-breadcrumbs {
+  background-color: $color-paleGray;
+
+  .l-inner--1024  {
+    padding-left: rem(24);
+  }
+
+  &__list {
+    display: flex;
+    gap: rem(4);
+    padding-block: rclamp(12, 20, 375, 768);
+
+    li {
+      font-size: rem(14);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    li:not(:last-child)::after {
+      content: ">";
+      display: inline-block;
+      margin-left: rem(4);
+    }
+  }
+}

@@ -4,7 +4,7 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
-.p-lowerHero {
+.c-lowerHero {
   margin-top: var(--header-h);
   height: rem(339);
   background: url(/img/img_hero_about.jpg) no-repeat center/cover;
