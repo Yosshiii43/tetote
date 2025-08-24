@@ -1,0 +1,54 @@
+/******************************
+about-us polocy
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-policy {
+  padding-block: rem(66) rem(65);
+
+  .l-inner--1024 {
+    @include mq(pc) {
+      padding-left: rem(22);
+      padding-right: rem(22);
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: rem(86);
+  }
+
+  &__unit {
+    background-color: $color-beige;
+    border-radius: 10px;
+    padding: rem(30) rclamp(16, 80, 375, 1024);
+    margin-bottom: rem(35);
+
+    h3 {
+      font-size: rclamp(18, 20, 375, 1024);
+      font-weight: 700;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: rclamp(16, 21, 375, 1024);
+      margin-bottom: rem(21);
+
+      span {
+        font-weight: 400;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: rclamp(32, 48, 375, 1024);
+        height: rclamp(32, 48, 375, 1024);
+        border: 1px solid $color-text;
+        border-radius: 50%;
+      }
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  }
+}

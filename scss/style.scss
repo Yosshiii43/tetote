@@ -14,6 +14,7 @@
 @use "object/component/memberCard";
 @use "object/component/lowerHero";
 @use "object/component/breadcrumbs";
+@use "object/component/lowerSectionTitle";
 
 //project
 @use "object/project/header" as ph;
@@ -28,5 +29,6 @@
 @use "object/project/blog";
 @use "object/project/recruitment";
 @use "object/project/footer" as pf;
+@use "object/project/policy";
 
 //utility
