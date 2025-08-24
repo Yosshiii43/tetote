@@ -1,0 +1,47 @@
+/******************************
+下層ページ　ヒーロー
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-lowerHero {
+  margin-top: var(--header-h);
+  height: calc(rem(339)) ;
+  background: url(/img/img_hero_about.jpg) no-repeat center/cover;
+
+  &__inner {
+    padding-top: rem(75);
+    padding-left: rem(24);
+    padding-right: rem(24);
+  }
+
+  &__lead,
+  &__title,
+  &__outline {
+    display: block;
+    width: fit-content;
+    line-height: 1;
+    background-color: $color-white;
+  }
+
+  &__lead {
+    font-size: rem(64);
+    text-transform: uppercase;
+    padding: rem(3) rem(10);
+    //margin-top: rem(75);
+  } 
+
+  &__title {
+    font-size: rem(24);
+    font-weight: 700;
+    padding: rem(3) rem(10);
+    margin-top: rem(18);
+  }
+
+  &__outline {
+    color: $color-main;
+    font-weight: 700;
+    padding: rem(7) rem(10);
+    margin-top: rem(18);
+  }
+}
