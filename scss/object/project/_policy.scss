@@ -7,13 +7,6 @@ about-us polocy
 .p-policy {
   padding-block: rem(66) rem(65);
 
-  .l-inner--1024 {
-    @include mq(pc) {
-      padding-left: rem(22);
-      padding-right: rem(22);
-    }
-  }
-
   &__title {
     text-align: center;
     margin-bottom: rem(86);
