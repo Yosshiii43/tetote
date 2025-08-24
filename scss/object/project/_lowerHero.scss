@@ -6,7 +6,7 @@
 
 .p-lowerHero {
   margin-top: var(--header-h);
-  height: calc(rem(339)) ;
+  height: rem(339);
   background: url(/img/img_hero_about.jpg) no-repeat center/cover;
 
   &__inner {
@@ -28,7 +28,6 @@
     font-size: rclamp(42, 64, 375, 768);
     text-transform: uppercase;
     padding: rem(3) rem(10);
-    //margin-top: rem(75);
   } 
 
   &__title {
