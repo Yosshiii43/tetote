@@ -25,6 +25,7 @@
       position: absolute;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: rem(6);
       top: rem(263);
       left: 0;
@@ -79,7 +80,7 @@
         font-size: rem(24);
       }
       span~span {
-        margin-left: rem(8);
+        margin-left: rem(6);
       }
     }
   }
