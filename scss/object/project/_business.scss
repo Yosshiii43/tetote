@@ -5,7 +5,7 @@ about-us business
 @use "sass:math";
 
 .p-business {
-  padding-block: rem(60) rem(93);
+  padding-block: rem(60) rem(42);
 
   .l-inner--lower {
     @include mq(pc) {
