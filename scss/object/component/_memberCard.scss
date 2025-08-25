@@ -70,12 +70,16 @@
       }
     }
 
-    h3 {
+    h3,
+    h2 {
       font-size: rem(20);
       font-weight: 700;
       line-height: 1;
       @include mq(tab) {
         font-size: rem(24);
+      }
+      span~span {
+        margin-left: rem(8);
       }
     }
   }
