@@ -4,7 +4,7 @@ staff詳細ページ　head
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
-.c-staffHead {
+.p-staffHead {
   margin-top: var(--header-h);
   background-color: $color-beige;
 
@@ -13,14 +13,18 @@ staff詳細ページ　head
     padding-left: rem(24);
     padding-right: rem(24);
     display: grid;
-    grid-template-columns: 1fr 286px;
-    grid-column-gap: 85px;
+    grid-template-columns: 1fr;
+    gap: rem(32);
+    @include mq(tab){
+      grid-template-columns: 1fr 286px;
+      grid-column-gap: rclamp(32, 85, 768, 1024);
+    }
   }
 
   &__contents {
   margin-top: rem(75) - rem(43);
 
-  .c-staffHead__lead {
+  .p-staffHead__lead {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -36,15 +40,15 @@ staff詳細ページ　head
     }
 
     p:first-child {
-      font-size: rem(36);
+      font-size: rclamp(26, 36, 375, 1024);
     }
 
     p:last-child {
-      font-size: rem(24);
+      font-size: rclamp(20, 24, 375, 1024);
     }
   }
 
-  .c-staffHead__jobType {
+  .p-staffHead__jobType {
     color: $color-main;
     font-size: rem(14);
     font-weight: 700;
@@ -52,15 +56,16 @@ staff詳細ページ　head
     margin-bottom: rem(12);
   }
 
-  .c-staffHead__info {
+  .p-staffHead__info {
     display: flex;
+    flex-direction: row;
     align-items: flex-end;
     justify-content: flex-start;
     gap: rem(20);
     line-height: 1;
     margin-bottom: rem(13);
 
-    .c-staffHead__name {
+    .p-staffHead__name {
       font-size: rem(24);
       font-weight: 700;
 
@@ -69,14 +74,13 @@ staff詳細ページ　head
       }
     }
 
-    .c-staffHead__year {
+    .p-staffHead__year {
 
     }
   }
   }
 
-  .c-staffHead__media {
-    background-color: aqua;
+  .p-staffHead__media {
     img {
       width: rem(286);
       height: rem(368);

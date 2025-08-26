@@ -15,7 +15,7 @@
 @use "object/component/lowerHero";
 @use "object/component/breadcrumbs";
 @use "object/component/lowerSectionTitle";
-@use "object/component/staffHead";
+
 
 //project
 @use "object/project/header" as ph;
@@ -35,5 +35,6 @@
 @use "object/project/business";
 @use "object/project/overview";
 @use "object/project/staff";
+@use "object/project/staffHead";
 
 //utility
