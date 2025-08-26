@@ -1,6 +1,7 @@
 ////foundation
 @use "foundation/reset";
 @use "foundation/base";
+@use "foundation/wordpress";
 
 ////layouts
 @use "layout/inner";
@@ -36,5 +37,6 @@
 @use "object/project/overview";
 @use "object/project/staff";
 @use "object/project/staffHead";
+@use "object/project/staffMain";
 
 //utility

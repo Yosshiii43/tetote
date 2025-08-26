@@ -1,0 +1,86 @@
+/******************************
+staff詳細ページ　main
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-staffMain {
+  --staff-inner-max: 1024px;
+  --staff-pl: 24px;
+  --staff-edge: max(
+    calc((100vw - var(--staff-inner-max)) * 0.5 + 8px),
+    var(--staff-pl)
+  );
+
+  &__inner {
+    padding-block: rem(101) rem(107);
+    @include mq(tab) {
+      padding-left: rem(24);
+      padding-right: rem(24);
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(60);
+    @include mq(tab) {
+      grid-template-columns: 1fr rem(210);
+      gap: rem(70);
+    }
+
+    .p-staffMain__content {
+      margin-bottom: rem(41);
+      
+      h2 {
+        position: relative;
+
+        &::before {
+          display: block;
+          content: "";
+          width: calc( var(--inner-pl) - rem(4));
+          height: 0.5em;
+          border-top: 1px solid $color-text;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateX(calc(-1 * var(--inner-pl))) translateY(rem(1));
+          @include mq(pc) {
+            width: var(--staff-edge);
+            transform: translateX(calc(-100% - rem(16))) translateY(rem(1));
+          }
+        }
+      }
+    }
+  }
+
+  div {
+    margin-bottom: rem(23);
+  }
+
+  h2 {
+    color: $color-text;
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: rem(50);
+  }
+
+  h3 {
+    color: $color-black;
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1.8;
+    &:not(:last-child) {
+      margin-top: 1.8em;
+      margin-bottom: 1.8em;
+    }
+  }
+
+  p {
+    color: $color-black;
+    font-size: rem(16);
+    line-height: 1.8;
+  }
+
+}
