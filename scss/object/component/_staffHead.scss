@@ -1,0 +1,86 @@
+/******************************
+staff詳細ページ　head
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-staffHead {
+  margin-top: var(--header-h);
+  background-color: $color-beige;
+
+  &__inner {
+    padding-block: rem(43);
+    padding-left: rem(24);
+    padding-right: rem(24);
+    display: grid;
+    grid-template-columns: 1fr 286px;
+    grid-column-gap: 85px;
+  }
+
+  &__contents {
+  margin-top: rem(75) - rem(43);
+
+  .c-staffHead__lead {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: rem(18);
+    margin-bottom: rem(30);
+
+    p {
+      font-weight: 700;
+      line-height: 1;
+      background-color: $color-white;
+      padding: rem(3) rem(10);
+    }
+
+    p:first-child {
+      font-size: rem(36);
+    }
+
+    p:last-child {
+      font-size: rem(24);
+    }
+  }
+
+  .c-staffHead__jobType {
+    color: $color-main;
+    font-size: rem(14);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: rem(12);
+  }
+
+  .c-staffHead__info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: rem(20);
+    line-height: 1;
+    margin-bottom: rem(13);
+
+    .c-staffHead__name {
+      font-size: rem(24);
+      font-weight: 700;
+
+      span~span {
+        margin-left: rem(5);
+      }
+    }
+
+    .c-staffHead__year {
+
+    }
+  }
+  }
+
+  .c-staffHead__media {
+    background-color: aqua;
+    img {
+      width: rem(286);
+      height: rem(368);
+      object-fit: cover;
+    }
+  }
+}
