@@ -69,10 +69,8 @@ staff詳細ページ　main
       font-size: rem(16);
       font-weight: 700;
       line-height: 1.8;
-      &:not(:last-child) {
-        margin-top: 1.8em;
-        margin-bottom: 1.8em;
-      }
+      margin-top: 1.8em;
+      margin-bottom: 1.8em;
     }
 
     p {
