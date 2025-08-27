@@ -13,7 +13,7 @@ staff詳細ページ　main
   );
 
   &__inner {
-    padding-block: rem(101) rem(107);
+    padding-top: rem(101);
     @include mq(tab) {
       padding-left: rem(24);
       padding-right: rem(24);
@@ -23,15 +23,15 @@ staff詳細ページ　main
   &__body {
     display: grid;
     grid-template-columns: 1fr;
-    gap: rem(60);
+    gap: rem(41);
+    margin-bottom: rem(18);
     @include mq(tab) {
       grid-template-columns: 1fr rem(210);
       gap: rem(70);
     }
 
     .p-staffMain__content {
-      margin-bottom: rem(41);
-      
+
       h2 {
         position: relative;
 
@@ -51,36 +51,127 @@ staff詳細ページ　main
           }
         }
       }
+
+    div {
+      margin-bottom: rem(24);
+    }
+
+    h2 {
+      color: $color-text;
+      font-size: rem(24);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: rem(50);
+    }
+
+    h3 {
+      color: $color-black;
+      font-size: rem(16);
+      font-weight: 700;
+      line-height: 1.8;
+      &:not(:last-child) {
+        margin-top: 1.8em;
+        margin-bottom: 1.8em;
+      }
+    }
+
+    p {
+      color: $color-black;
+      font-size: rem(16);
+      line-height: 1.8;
+    }
+    }
+
+    .p-staffMain__asid {
+      p {
+        color: $color-darkGray;
+        font-size: rem(14);
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: rem(14);
+      }
+      ul {
+        li {
+          a {
+            color: $color-lightGray;
+            font-size: rem(14);
+            font-weight: 700;
+            line-height: 1.5;
+            margin-left: rem(4);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            &::before {
+              content: "";
+              display: block;
+              width: rem(4);
+              height: rem(4);
+              background-color: $color-lightGray;
+              border-radius: 50%;
+              margin-right: rem(6);
+              margin-top: 2px;
+            }
+          }
+          a.is-current {
+            color: $color-text;
+            &::before {
+              background-color: $color-text;
+            }
+          }
+        }
+        li~li {
+          margin-top: rem(16);
+        }
+      }
     }
   }
 
-  div {
-    margin-bottom: rem(23);
-  }
+  &__other {
+    margin-bottom: rem(139);
+    .l-inner--lower {
+      padding-top: rem(66);
+      @include mq(pc) {
+        padding-left: rem(19);
+        padding-right: rem(19);
+      }
+      h2 {
+        font-size: rem(32);
+        font-weight: 700;
+        line-height: 1.8;
+        text-align: center;
+        margin-bottom: rem(50);
+      }
+      > div {
+        display: grid;
+        grid-template-columns: repeat(1, 300px);
+        justify-content: center;
+        justify-items: center;
+        gap: rem(49) rem(43);
+        @include mq(tab) {
+          grid-template-columns: repeat(2, 300px);
+        }
+        @include mq(pc) {
+          grid-template-columns: repeat(3, 300px);
+        }
 
-  h2 {
-    color: $color-text;
-    font-size: rem(24);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: rem(50);
-  }
-
-  h3 {
-    color: $color-black;
-    font-size: rem(16);
-    font-weight: 700;
-    line-height: 1.8;
-    &:not(:last-child) {
-      margin-top: 1.8em;
-      margin-bottom: 1.8em;
+        .c-memberCard {
+          &__head {
+            margin-bottom: rem(16);
+          }
+          &__body {
+            .c-memberCard__info {
+              margin-bottom: rem(16);
+            }
+            h2 {
+              font-size: rem(24);
+              line-height: 1;
+              text-align: left;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
     }
   }
-
-  p {
-    color: $color-black;
-    font-size: rem(16);
-    line-height: 1.8;
-  }
-
 }
