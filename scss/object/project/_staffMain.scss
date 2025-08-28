@@ -13,7 +13,7 @@ staff詳細ページ　main
   );
 
   &__inner {
-    padding-top: rem(101);
+    padding-top: rem(101) - rem(23);
     @include mq(tab) {
       padding-left: rem(24);
       padding-right: rem(24);
@@ -53,7 +53,7 @@ staff詳細ページ　main
       }
 
     div {
-      margin-bottom: rem(24);
+      margin-bottom: rem(23);
     }
 
     h2 {
@@ -61,26 +61,24 @@ staff詳細ページ　main
       font-size: rem(24);
       font-weight: 700;
       line-height: 1;
+      margin-top: rem(23);
       margin-bottom: rem(50);
-    }
-
-    h3 {
-      color: $color-black;
-      font-size: rem(16);
-      font-weight: 700;
-      line-height: 1.8;
-      margin-top: 1.8em;
-      margin-bottom: 1.8em;
     }
 
     p {
       color: $color-black;
       font-size: rem(16);
-      line-height: 1.8;
+      line-height: rem(29);
     }
+
+    p.block {
+      font-weight: 700;
+    }
+
     }
 
     .p-staffMain__asid {
+      margin-top: rem(23);
       p {
         color: $color-darkGray;
         font-size: rem(14);
