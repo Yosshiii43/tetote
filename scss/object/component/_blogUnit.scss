@@ -1,0 +1,92 @@
+/******************************
+blog unit
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-blogUnit {
+  max-width: rem(460);
+  margin-inline: auto;
+  a{
+    display: flex;
+    background-color: $color-white;
+    border-radius: 10px;
+    max-width: rem(460);
+
+    .c-blogUnit__img {
+      flex-basis: 35.48%;
+      object-fit: cover;
+      border-radius: 10px 0 0 10px;
+      @include mq(tab) {
+        flex-basis: 34.51%;
+      }
+    }
+    .c-blogUnit__text {
+      flex-basis: 64.52%;
+      padding: rem(8) rem(7) rem(5) rem(18);
+      @include mq(tab) {
+        flex-basis: 65.49%;
+        padding: rem(20) rem(23);
+      }
+
+      .c-blogUnit__category {
+        font-size: rem(12);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        gap: rem(4);
+        margin-bottom: rem(8);
+        @include mq(tab) {
+          font-size: rem(14);
+          margin-bottom: rem(23);
+        }
+        
+        &::before {
+          display: block;
+          content: "";
+          width: rem(12);
+          height: rem(14);
+          background: url(/img/icon_blog.svg) no-repeat center/contain;
+          @include mq(tab) {
+            width: rem(14);
+          }
+        }
+      }
+
+      .c-blogUnit__link {
+        font-size: rem(14);
+        font-weight: 700;
+        line-height: 1.5;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+        display: flex;
+        min-height: rem(63);
+        margin-bottom: rem(11);
+        @include mq(tab) {
+          font-size: rem(16);
+          min-height: rem(81);
+          margin-bottom: rem(10);
+        }
+        @include mq(pc) {
+          font-size: rem(18);
+          min-height: rem(81);
+          margin-bottom: rem(10);
+        }
+      }
+
+      .c-blogUnit__date {
+        font-size: rem(12);
+        line-height: 1;
+      }
+    }
+
+    &:hover,
+    &:focus{
+      opacity: 0.7;
+    }
+  }
+}

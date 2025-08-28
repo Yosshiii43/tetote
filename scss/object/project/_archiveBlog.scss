@@ -1,0 +1,34 @@
+/******************************
+archive blog
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-archiveBlog {
+  padding-block: rem(70) rem(70);
+  &__inner {
+    @include mq(tab){
+      padding-block: rem(130) rem(139);
+    }
+    @include mq(pc) {
+      padding-left: rem(34);
+      padding-right: rem(34);
+    }
+    .p-archiveBlog__contents{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: rem(23);
+      @include mq(tab) {
+        grid-template-columns: 1fr 1fr;
+        gap: rem(23) rclamp(23, 52, 768, 1440);
+        margin-bottom: 0;
+      }
+
+      .c-blogUnit {
+        a {
+          background-color: $color-beige;
+        }
+      }
+    }
+  }
+}
