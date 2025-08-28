@@ -5,8 +5,8 @@ archive blog
 @use "sass:math";
 
 .p-archiveBlog {
-  padding-block: rem(70) rem(70);
   &__inner {
+    padding-block: rem(70) rem(70);
     @include mq(tab){
       padding-block: rem(130) rem(139);
     }
