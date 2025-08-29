@@ -57,21 +57,20 @@ staff詳細ページ　main
     }
 
     h2 {
-      color: $color-text;
-      font-size: rem(24);
-      font-weight: 700;
-      line-height: 1;
-      margin-top: rem(23);
-      margin-bottom: rem(50);
-    }
+        font-size: rclamp(20, 24, 375, 768);
+        font-weight: 700;
+        line-height: 1.5;
+        margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
+        margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
+      }
 
     p {
       color: $color-black;
       font-size: rem(16);
-      line-height: rem(29);
+      line-height: 1.82
     }
 
-    p.block {
+    p.bold {
       font-weight: 700;
     }
 
