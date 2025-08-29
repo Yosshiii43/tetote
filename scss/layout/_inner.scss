@@ -41,7 +41,20 @@ l-inner 汎用インナー
   box-sizing: border-box;
   @include mq("pc") {
     margin-inline: auto;
-    max-width: 1024px;
+    max-width: rem(1024);
+    padding-left: rem(22);
+    padding-right: rem(22);
+  }
+}
+
+.l-inner--800 {
+  width: 100vw;
+  max-width: rem(844);
+  margin-inline: auto;
+  padding-left:  var(--inner-pl);
+  padding-right: var(--inner-pr);
+  box-sizing: border-box;
+  @include mq("pc") {
     padding-left: rem(22);
     padding-right: rem(22);
   }
