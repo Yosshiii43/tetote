@@ -1,5 +1,5 @@
 /******************************
-shingle blog
+single blog
 ******************************/
 @use "../../foundation/forwards" as *;
 @use "sass:math";
@@ -11,23 +11,23 @@ shingle blog
     margin-top: var(--header-h);
   }
 
-  .p-shingleBlog__inner {
+  .p-singleBlog__inner {
     padding-block: rem(34) rem(139);
 
-    .p-shingleBlog__contents{
+    .p-singleBlog__contents{
       background-color: $color-white;
       border-radius: 10px;
       padding-block: rem(41) rem(23);
-      padding-inline: rem(40);
+      padding-inline: rclamp(20, 40, 375, 768);
 
-      .p-shingleBlog__head {
+      .p-singleBlog__head {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: rem(19);
         margin-bottom: rem(25) - rem(8);
 
-        .p-shingleBlog__category {
+        .p-singleBlog__category {
           font-size: rem(14);
           line-height: 1;
           display: flex;
@@ -44,20 +44,20 @@ shingle blog
           }
         }
 
-        .p-shingleBlog__date {
+        .p-singleBlog__date {
           font-size: rem(14);
           line-height: 1;
         }
       }
 
-      .p-shingleBlog__title {
-        font-size: rem(32);
+      .p-singleBlog__title {
+        font-size: rclamp(24, 32, 375, 768);
         font-weight: 700;
         line-height: 1.5;
         margin-bottom: rem(41) - rem(8);
       }
 
-      .p-shingleBlog__img {
+      .p-singleBlog__img {
         width: 100%;
         height: auto;
         aspect-ratio: 720 / 411;
@@ -66,11 +66,11 @@ shingle blog
       }
 
       h2 {
-        font-size: rem(24);
+        font-size: rclamp(20, 24, 375, 768);
         font-weight: 700;
         line-height: 1.5;
-        margin-top: rem(23) - rem(6);
-        margin-bottom: rem(50) - rem(6);
+        margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
+        margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
       }
       
       ul {
@@ -92,6 +92,18 @@ shingle blog
               margin-bottom: calc(-1 * rem(6));
           }
         }
+      }
+    }
+  }
+
+  &__nav {
+    background-color: $color-paleGray;
+    .l-inner--lower {
+      padding-top: rem(20);
+      padding-bottom: rem(20);
+      @include mq(pc) {
+        padding-left: rem(50);
+        padding-right: rem(50);
       }
     }
   }

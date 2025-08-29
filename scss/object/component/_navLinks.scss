@@ -1,0 +1,76 @@
+/******************************
+navLinks
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__prev,
+  &__next {
+    flex-basis: 50%;
+    padding-block: rem(11);
+    a{
+      display: flex;
+      align-items: center;
+      gap: rclamp(12, 21, 375, 768);
+      .c-navLinks__label {
+        flex-basis: calc((100vw - var(--inner-pl) - var(--inner-pr)) * 0.5 - rclamp(18, 24, 375, 768) - rclamp(12, 21, 375, 768));
+        max-width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: rem(6);
+        
+        span:first-child {
+          line-height: 1;
+        }
+        span:last-child {
+          font-size: rem(12);
+          line-height: 1;
+          width: 100%;
+          }
+      }
+    }
+  }
+
+  &__prev {
+    border-right: 1px solid $color-text;
+    a {
+      justify-content: flex-start;
+      padding-right: rclamp(12, 21, 375, 768);
+      &::before {
+        content: "";
+        display: block;
+        width: rclamp(18, 24, 375, 768);
+        height: rclamp(18, 24, 375, 768);
+        background: url(/img/icon_left.svg) no-repeat center/contain;
+      }
+
+      .c-navLinks__label {
+        align-items: flex-start;
+      }
+    }
+  }
+
+    &__next {
+    a {
+      justify-content: flex-end;
+      padding-left: rclamp(12, 21, 375, 768);
+      &::after {
+        content: "";
+        display: block;
+        width: rclamp(18, 24, 375, 768);
+        height: rclamp(18, 24, 375, 768);
+        background: url(/img/icon_right.svg) no-repeat center/contain;
+      }
+
+      .c-navLinks__label {
+        align-items: flex-end;
+      }
+    }
+  }
+}
