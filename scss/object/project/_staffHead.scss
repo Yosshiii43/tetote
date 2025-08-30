@@ -22,62 +22,58 @@ staff詳細ページ　head
   }
 
   &__contents {
-  margin-top: rem(75) - rem(43);
+    margin-top: rem(75) - rem(43);
 
-  .p-staffHead__lead {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: rem(18);
-    margin-bottom: rem(30);
+    .p-staffHead__lead {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: rem(18);
+      margin-bottom: rem(30);
 
-    p {
-      font-weight: 700;
-      line-height: 1;
-      background-color: $color-white;
-      padding: rem(3) rem(10);
-    }
+      p {
+        font-weight: 700;
+        line-height: 1;
+        background-color: $color-white;
+        padding: rem(3) rem(10);
+      }
 
-    p:first-child {
-      font-size: rclamp(26, 36, 375, 1024);
-    }
+      p:first-child {
+        font-size: rclamp(26, 36, 375, 1024);
+      }
 
-    p:last-child {
-      font-size: rclamp(20, 24, 375, 1024);
-    }
-  }
-
-  .p-staffHead__jobType {
-    color: $color-main;
-    font-size: rem(14);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: rem(12);
-  }
-
-  .p-staffHead__info {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: rem(20);
-    line-height: 1;
-    margin-bottom: rem(13);
-
-    .p-staffHead__name {
-      font-size: rem(24);
-      font-weight: 700;
-
-      span~span {
-        margin-left: rem(5);
+      p:last-child {
+        font-size: rclamp(20, 24, 375, 1024);
       }
     }
 
-    .p-staffHead__year {
-
+    .p-staffHead__jobType {
+      color: $color-main;
+      font-size: rem(14);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: rem(12);
     }
-  }
+
+    .p-staffHead__info {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: rem(20);
+      line-height: 1;
+      margin-bottom: rem(13);
+
+      .p-staffHead__name {
+        font-size: rem(24);
+        font-weight: 700;
+
+        span~span {
+          margin-left: rem(5);
+        }
+      }
+    }
   }
 
   .p-staffHead__media {
