@@ -7,6 +7,7 @@ lowerMenu
 .c-lowerMenu {
   display: grid;
   grid-template-columns: rem(294);
+  justify-content: center;
   gap: rem(20);
   @include mq(tab) {
     grid-template-columns: minmax(236px, 1fr) minmax(236px, 1fr) minmax(236px, 1fr);
@@ -27,6 +28,9 @@ lowerMenu
     border: 1px solid $color-text;
     border-radius: rem(29);
     background-color: $color-beige;
+    @include mq(tab) {
+      font-size: rclamp(18, 20, 768, 1024);
+    }
 
     span {
       width: fit-content;
@@ -41,6 +45,11 @@ lowerMenu
         height: rem(20);
         background: url(/img/icon_arrowDown.svg) no-repeat center/contain;
         margin-left: rem(10);
+        @include mq(tab) {
+          width: rclamp(18, 20, 768, 1024);
+          height: rclamp(18, 20, 768, 1024);
+          margin-left: rclamp(8, 10, 768, 1024);
+        }
       }
     }
     }

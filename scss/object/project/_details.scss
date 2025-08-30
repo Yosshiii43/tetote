@@ -25,6 +25,22 @@ details
   }
 
   &__menu {
+    margin-bottom: rem(67);
+  }
 
+  &__consultants {
+    .p-details__unit {
+      padding-top: rem(30);
+      margin-bottom: rem(58);
+      .p-details__title {
+        margin-bottom: rem(60) - rem(35.5);
+        @include mq(tab) {
+          margin-bottom: rem(113) - rem(35.5);
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
