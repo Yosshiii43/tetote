@@ -1,0 +1,23 @@
+/******************************
+benefitsVarious
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-benefitsVarious {
+  &__inner {
+    padding-block: rem(70) rem(35);
+
+    @include mq(tab) {
+      padding-block: rem(145) rem(64);
+    }
+  }
+
+  &__title {
+    text-align: left;
+    margin-bottom: rem(60) - rem(35.5);
+    @include mq(tab) {
+    margin-bottom: rem(113) - rem(35.5);
+    }
+  }
+}
