@@ -1,0 +1,50 @@
+/******************************
+benefitsVoice
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-benefitsVoice {
+  &__inner {
+    padding-block: rem(35) rem(70);
+
+    @include mq(tab) {
+      padding-block: rem(64) rem(139);
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(23);
+  }
+
+  &__contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(30);
+    margin-bottom: rem(36);
+    @include mq(tab) {
+      grid-template-columns: 1fr 1fr;
+      gap: rclamp(24, 46, 768, 1024);
+    }
+
+    .p-benefitsVoice__unit {
+      p:first-child {
+        color: $color-main;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: rem(13);
+      }
+
+      h3 {
+        font-size: rem(24);
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: rem(25);
+      }
+
+      p:last-child {
+        line-height: 1.82;
+      }
+    }
+  }
+}
