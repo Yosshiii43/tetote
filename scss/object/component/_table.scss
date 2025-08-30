@@ -1,0 +1,66 @@
+/******************************
+table
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-table {
+    width: 100%;
+    tbody {
+      tr {
+        width: 100%;
+        border-bottom: 1px dashed $color-text;
+        display: flex;
+        flex-direction: column;
+        @include mq(tab) {
+          flex-direction: row;
+        }
+
+        th,
+        td {
+          width: 100%;
+          line-height: 1;
+        }
+
+        th {
+          padding-block: rem(20) rem(10);
+          @include mq(tab) {
+            width: rem(231);
+            padding-block: rem(35.5);
+          }
+        }
+
+        td {
+          padding-block: rem(10) rem(20);
+          @include mq(tab) {
+            width: calc(100% - rem(231));
+            padding-block: rem(35.5);
+          }
+
+          ul {
+            li {
+              line-height: 1.5;
+              margin-left: rem(10);
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+
+              &::before {
+                content: "";
+                display: block;
+                width: rem(4);
+                height: rem(4);
+                background-color: $color-text;
+                border-radius: 50%;
+                margin-right: rem(10);
+                margin-top: 13px;
+              }
+            }
+          }
+          p {
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
