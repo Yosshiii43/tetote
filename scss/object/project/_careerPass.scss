@@ -1,0 +1,83 @@
+/******************************
+careerPass
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-careerPass {
+  &__inner {
+    padding-block: rem(70) - rem(37);
+
+    @include mq(tab) {
+      padding-block: rem(145) rem(139);
+    }
+  }
+
+  &__title {
+    margin-bottom: calc(rem(60) -  rclamp(6, 8, 375, 1440) - rem(4));
+    @include mq(tab) {
+    margin-bottom: calc(rem(113) -  rclamp(6, 8, 375, 1440) - rem(4));
+    }
+  }
+
+  &__contents {
+    width: 100%;
+    p {
+      line-height: 1.8;
+    }
+
+    .p-careerPass__description {
+      margin-bottom: rem(48) - rem(6.4);
+    }
+
+    .p-careerPass__img {
+      margin-bottom: rem(37) - rem(6.4);
+      padding-bottom: rem(20);
+      position: relative;
+      @media (min-width: 734px) {
+        padding-bottom: 0;
+      }
+
+      &::after {
+        position: absolute;
+        bottom: rem(3);
+        left: 0;
+        content: "この画像は横にスクロールできます。";
+        color: #01c2cb;
+        font-size: rem(14);
+        line-height: 1;
+        z-index: 1;
+        @media (min-width: 734px) {
+          content: "";
+        }
+      }
+      .inner{
+        overflow-x: auto;
+        img {
+          width: 100%;
+          min-width: rem(700);
+        }
+      }
+    }
+
+    .p-careerPass__introduction {
+      margin-bottom: rem(89) - rem(6.4);
+    }
+
+    .p-careerPass__unit {
+      h3 {
+        font-size: rclamp(20, 24, 375, 1440);
+        font-weight: 700;
+        line-height: 1;
+        padding: rem(12) rem(21);
+        background-color: $color-secondary;
+        border-radius: 10px;
+        margin-bottom: rem(50);
+      }
+
+      .p-careerPass__text {
+        margin-bottom: rem(37);
+      }
+    }
+  }
+}
