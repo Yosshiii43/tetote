@@ -7,7 +7,8 @@
 .c-lowerSectionTitle {
   font-size: rclamp(24, 32, 375, 1440);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.5;
+  margin-top: calc( -1 * rclamp(6, 8, 375, 1440));
 
   @media (max-width: 350px) {
     font-size: rem(22);
