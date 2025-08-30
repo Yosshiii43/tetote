@@ -1,0 +1,48 @@
+/******************************
+lowerMenu
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-lowerMenu {
+  display: grid;
+  grid-template-columns: rem(294);
+  gap: rem(20);
+  @include mq(tab) {
+    grid-template-columns: minmax(236px, 1fr) minmax(236px, 1fr) minmax(236px, 1fr);
+    gap: rclamp(6, 49, 768, 1024);
+  }
+
+  &__button {
+    a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: rem(20);
+    font-weight: 700;
+    line-height: 1;
+    width: 100%;
+    height: rem(56);
+    border: 1px solid $color-text;
+    border-radius: rem(29);
+    background-color: $color-beige;
+
+    span {
+      width: fit-content;
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+
+      &::after {
+        display: inline-block;
+        content: "";
+        width: rem(20);
+        height: rem(20);
+        background: url(/img/icon_arrowDown.svg) no-repeat center/contain;
+        margin-left: rem(10);
+      }
+    }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+/******************************
+details
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-details {
+  &__inner {
+    padding-block: rem(70);
+    @include mq(tab) {
+      padding-block: rem(145) rem(139);
+    }
+  }
+
+  &__catchcopy {
+    font-size: rclamp(24, 32, 375, 1024);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-top: calc( -1 * rclamp(6, 8, 375, 1024));
+    margin-bottom: calc( rem(113) - rclamp(6, 8, 375, 1024) - rem(6));
+  }
+
+  &__description {
+    margin-bottom: rem(70) - rem(6.4);
+  }
+
+  &__menu {
+
+  }
+}

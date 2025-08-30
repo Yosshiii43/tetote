@@ -19,6 +19,7 @@
 @use "object/component/pagenation";
 @use "object/component/navLinks";
 @use "object/component/table";
+@use "object/component/lowerMenu";
 
 
 //project
@@ -46,5 +47,6 @@
 @use "object/project/benefitsVarious";
 @use "object/project/benefitsVoice";
 @use "object/project/careerPass";
+@use "object/project/details";
 
 //utility
