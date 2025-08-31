@@ -1,0 +1,30 @@
+/******************************
+faq
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-faq {
+  &__inner {
+    padding-block: rem(70);
+    @include mq(tab) {
+      padding-block: rem(145) rem(139);
+    }
+  }
+
+  &__menu {
+    margin-bottom: rem(96);
+  }
+
+  &__unit {
+    .p-faq__title {
+      margin-bottom: calc(rem(60) - rclamp(6, 8, 375, 1024));
+      @include mq(tab) {
+        margin-bottom: calc(rem(113) - rclamp(6, 8, 375, 1024));
+      }
+    }
+  }
+  .p-faq__unit~.p-faq__unit {
+    margin-top: rem(88);
+  }
+}

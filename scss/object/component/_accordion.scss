@@ -1,0 +1,84 @@
+/******************************
+accordion
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-accordion {
+
+  border-top: 1px solid $color-secondary;
+  padding-block: rem(29);
+  &:last-child {
+    border-bottom: 1px solid $color-secondary;
+  }
+  &__summary{
+    /* display: list-item;以外を指定してデフォルトの三角形アイコンを消す */
+    display: grid;//初期値のdisplay:
+    grid-template-columns: 16px 1fr 16px;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    color: $color-text;
+    /* Safariで表示されるデフォルトの三角形アイコンを消す */
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "Q";
+      color: $color-main;
+      font-family: "Viga", sans-serif;
+      font-size: rem(24);
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1;
+    }
+
+    .c-accordion__icon {
+      display: block;
+      position: relative;
+      width: 16px;
+      height: 16px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        background-color: $color-main;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: all .3s;
+      }
+      &::before {
+        width: 16px;
+        height: 2px;
+      }
+      &::after {
+        width: 2px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__content{
+    margin-top: rem(18) - rem(6.4);
+    margin-left: rem(36);
+    margin-right: rem(36);
+  }
+
+
+}
+
+/* アコーディオンが開いた時 */
+.c-accordion[open] {
+  .c-accordion__icon {
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      transform: rotate(90deg) scale(1.5, 1) translateX(-5px) translateY(1px);
+    }
+  }
+}
