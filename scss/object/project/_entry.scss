@@ -1,0 +1,63 @@
+/******************************
+entry
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-entry {
+  background-color: $color-beige;
+  
+  .c-breadcrumbs{
+    margin-top: var(--header-h);
+  }
+
+  &__inner {
+    padding-block: rem(33) rem(57);
+  }
+
+  &__contents {
+    padding-block: rem(58) rem(81);
+    padding-inline: rem(24);
+    background-color: $color-white;
+    border-radius: 10px;
+    @include mq(tab) {
+      padding-inline: rem(71);
+    }
+
+    .p-entry__head {
+      border-bottom: 1px dashed $color-secondary;
+
+      .p-entry__titleEn {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: rclamp(20, 24, 375, 1024);
+        line-height: 1;
+        margin-bottom: rem(29);
+      }
+      .p-entry__title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: calc(rem(51) - rclamp(6, 8, 375, 1024));
+
+        span:first-child{
+          color: $color-main;
+        }
+      }
+
+      .p-entry__text {
+        max-width: rem(510);
+        margin-inline: auto;
+        p {
+          line-height: 1.5;
+        }
+        margin-bottom: rem(95);
+      }
+    }
+
+    .p-entry__body {
+      margin-top: rem(97);
+    }
+  }
+}

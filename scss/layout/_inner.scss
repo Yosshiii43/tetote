@@ -17,7 +17,7 @@ l-inner 汎用インナー
   padding-left:  var(--inner-pl);
   padding-right: var(--inner-pr);
   box-sizing: border-box;
-  @include mq("pc") {
+  @include mq(pc) {
     margin-inline: auto;
     max-width: 1024px;
   }
@@ -28,7 +28,7 @@ l-inner 汎用インナー
   padding-left:  var(--inner-pl);
   padding-right: var(--inner-pr);
   box-sizing: border-box;
-  @include mq("pc") {
+  @include mq(pc) {
     margin-inline: auto;
     max-width: rem(1380);
   }
@@ -39,7 +39,7 @@ l-inner 汎用インナー
   padding-left:  var(--inner-pl);
   padding-right: var(--inner-pr);
   box-sizing: border-box;
-  @include mq("pc") {
+  @include mq(pc) {
     margin-inline: auto;
     max-width: rem(1024);
     padding-left: rem(22);
@@ -54,7 +54,20 @@ l-inner 汎用インナー
   padding-left:  var(--inner-pl);
   padding-right: var(--inner-pr);
   box-sizing: border-box;
-  @include mq("pc") {
+  @include mq(pc) {
+    padding-left: rem(22);
+    padding-right: rem(22);
+  }
+}
+
+.l-inner--entry {
+  width: 100vw;
+  padding-left:  var(--inner-pl);
+  padding-right: var(--inner-pr);
+  box-sizing: border-box;
+  @include mq(pc) {
+    margin-inline: auto;
+    max-width: calc(rem(880) + rem(22) * 2);
     padding-left: rem(22);
     padding-right: rem(22);
   }
