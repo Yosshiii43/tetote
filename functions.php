@@ -154,7 +154,7 @@ function tetote_add_files(){
   wp_enqueue_style(
     'costom-style',
     get_theme_file_uri('/css/style.css'),
-    array(),
+    array('tetote-swiper-css'),
     filemtime( get_theme_file_path('/css/style.css')),
     null
   );
@@ -181,8 +181,8 @@ function tetote_add_files(){
   wp_enqueue_script(
     'tetote-main',
     get_theme_file_uri('/js/main.js'),
-    array(),
-    null,
+    array('tetote-swiper-bundle', 'tetote-swiper'),
+    '1.0',
     true
   );
 
