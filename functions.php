@@ -37,7 +37,7 @@ add_action('after_setup_theme', 'custom_theme_support');
 
 
 // ==============================
-// meta description の出し分け
+// meta title の出し分け
 // ==============================
 add_filter('pre_get_document_title', function ($title) {
   $suffix = '株式会社TETOTE';
@@ -113,6 +113,81 @@ function tetote_meta_description() {
 
   echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
 }
+
+
+// ==============================
+// 外部ファイルの読み込み
+// ==============================
+function tetote_add_files(){
+
+  // Google Fontsのpreconnectを追加
+  wp_enqueue_style(
+    'google-fonts-preconnect-googleapis',
+    'https://fonts.googleapis.com', 
+    array(), 
+    null
+  );
+  wp_enqueue_style(
+    'google-fonts-preconnect-gstatic',
+    'https://fonts.gstatic.com', 
+    array(), 
+    null
+  );
+
+  // Google Fontの読み込み
+  wp_enqueue_style(
+    'tetote-fonts',
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Poppins&family=Viga&display=swap',
+    array(),
+    null
+  );
+
+  //swiper min.cssの読み込み
+  wp_enqueue_style(
+    'tetote-swiper-css',
+    'https://unpkg.com/swiper@8/swiper-bundle.min.css',
+    array(),
+    null
+  );
+
+  // メインスクリプトの読み込み
+  wp_enqueue_style(
+    'costom-style',
+    get_theme_file_uri('/css/style.css'),
+    array(),
+    filemtime( get_theme_file_path('/css/style.css')),
+    null
+  );
+
+  // swiper.min.jsの読み込み（スライダー）
+  wp_enqueue_script(
+    'tetote-swiper-bundle',
+    'https://unpkg.com/swiper@8/swiper-bundle.min.js',
+    array(),
+    null,
+    true
+  );
+
+  // swiper.jsの読み込み）
+  wp_enqueue_script(
+    'tetote-swiper',
+    get_theme_file_uri('/js/swiper.js'),
+    array(),
+    null,
+    true
+  );
+
+  // メインスクリプトの読み込み
+  wp_enqueue_script(
+    'tetote-main',
+    get_theme_file_uri('/js/main.js'),
+    array(),
+    null,
+    true
+  );
+
+}
+add_action('wp_enqueue_scripts','tetote_add_files');
 
 
 // ==============================

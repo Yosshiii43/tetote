@@ -34,9 +34,6 @@
       </div>
     </div>
   </footer>
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="<?php echo esc_url(get_theme_file_uri()); ?>/js/swiper.js" defer></script>
-  <script src="<?php echo esc_url(get_theme_file_uri()); ?>/js/main.js" defer></script>
   <?php wp_footer(); ?>
 </body>
 </html>
