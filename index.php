@@ -197,7 +197,7 @@
             </div>
             <div class="p-topBenefits__content">
               <a href="/topBenefits/">
-                <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_topBenefits1.png" alt="employee topBenefits">
+                <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_benefits1.png" alt="employee topBenefits">
                 <div class="c-button--arrowB"></div>
                 <h3>福利厚生</h3>
                 <p>TETOTEの福利厚生制度は、従業員の健康と幸福を重視し、働きやすい環境を提供することを目的としています。</p>

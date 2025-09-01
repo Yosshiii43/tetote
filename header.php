@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html <?php language_attributes(); ?>>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。" >
   <meta name="robots" content="noindex">
-  <title>採用特設サイト | 株式会社TETOTE</title>
+  <?php tetote_meta_description(); ?>
+  <?php /* <title>は add_theme_support('title-tag') とフィルターで自動生成 */ ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Poppins&family=Viga&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
   <link rel="stylesheet" href="<?php echo esc_url(get_theme_file_uri()); ?>/css/style.css">
+  <?php wp_head(); ?>
 </head>
-<body class="exp-grid home" id="home">
 
+<body <?php body_class( 'exp-grid' ); ?> id='<?php echo get_custom_body_id(); ?>'>
   <header class="l-header p-header" id="js-header">
     <div class="p-header__inner">
       <h1 class="p-header__title">
