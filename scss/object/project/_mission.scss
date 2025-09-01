@@ -80,7 +80,7 @@ top mission
     }
     > div {
       margin-inline: auto;
-      background: url(/img/img_map1.png) top center / contain no-repeat;
+      background: url(/wp-content/themes/tetote/img/img_map1.png) top center / contain no-repeat;
       @include mq(tab) {
         max-width: rem(1024);
         padding-bottom: rem(7);

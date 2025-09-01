@@ -46,7 +46,7 @@ blog unit
           content: "";
           width: rem(12);
           height: rem(14);
-          background: url(/img/icon_blog.svg) no-repeat center/contain;
+          background: url(/wp-content/themes/tetote/img/icon_blog.svg) no-repeat center/contain;
           @include mq(tab) {
             width: rem(14);
           }

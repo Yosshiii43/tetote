@@ -43,7 +43,7 @@ lowerMenu
         content: "";
         width: rem(20);
         height: rem(20);
-        background: url(/img/icon_arrowDown.svg) no-repeat center/contain;
+        background: url(/wp-content/themes/tetote/img/icon_arrowDown.svg) no-repeat center/contain;
         margin-left: rem(10);
         @include mq(tab) {
           width: rclamp(18, 20, 768, 1024);

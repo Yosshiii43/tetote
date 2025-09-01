@@ -20,9 +20,9 @@ footer
     width: 100vw;
     height: auto;
     aspect-ratio: 375 / 250;
-    background: url(/img/img_footer_sp.jpg) no-repeat center/contain;
+    background: url(/wp-content/themes/tetote/img/img_footer_sp.jpg) no-repeat center/contain;
     @include mq(tab) {
-      background: url(/img/img_footer_pc.jpg) no-repeat center/contain;
+      background: url(/wp-content/themes/tetote/img/img_footer_pc.jpg) no-repeat center/contain;
       aspect-ratio: 1440 / 488.32;
     }
   }
