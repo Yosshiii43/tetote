@@ -159,10 +159,10 @@ body:not(.home) .p-header {
   background-color: initial;
 
   .p-header__inner{
-    padding-inline: rem(12) rem(8); //デザインカンプのズレに対応
-    @include mq(tab) {
-      padding-inline: rem(30) rem(24); //デザインカンプのズレに対応
-    }
+    //padding-inline: rem(12) rem(8); //デザインカンプのズレに対応
+    //@include mq(tab) {
+    //  padding-inline: rem(30) rem(24); //デザインカンプのズレに対応
+    //}
   
     .p-header__title {
       > a {
