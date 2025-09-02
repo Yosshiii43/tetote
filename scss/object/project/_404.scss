@@ -1,0 +1,39 @@
+/******************************
+404
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-404 {
+  text-align: center;
+
+  &__inner {
+    padding-block: rem(70);
+    @include mq(tab) {
+      padding-block: rem(145) rem(139);
+    }
+  }
+
+  &__title {
+    font-size: rem(28);
+    font-weight: 700;
+    margin-bottom: rem(60);
+  }
+
+  &__text {
+    font-size: rem(16);
+    margin-bottom: rem(80);
+    color: $color-text;
+  }
+
+  &__btn {
+    width: fit-content;
+    margin-inline: auto;
+    .c-button--wb {
+      @include mq(tab) {
+        width: rem(300);
+        height: rem(60);
+      }
+    }
+  }
+}

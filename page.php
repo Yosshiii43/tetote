@@ -54,7 +54,7 @@
 
   <?php endwhile; else: //ページがないとき ?>
   <?php if (is_404()): ?>
-  <?php get_template_part('tmp/page/page-404'); ?>
+  <?php get_template_part('tmp/page/404'); ?>
   <?php else : ?>
   <p>準備中です。</p>
   <?php endif; ?>
