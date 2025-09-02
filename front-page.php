@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-  <main class="l-main" id="main top">
     <div class="l-main__head p-main__head">
       <div class="p-hero">
         <!-- Slider main container -->
