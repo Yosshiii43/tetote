@@ -14,7 +14,7 @@ benefitsVoice
   }
 
   &__title {
-    margin-bottom: rem(23);
+    margin-bottom: calc(rem(23) - rclamp(6, 8, 375, 1024));
   }
 
   &__contents {

@@ -15,9 +15,9 @@ benefitsVarious
 
   &__title {
     text-align: left;
-    margin-bottom: rem(60) - rem(35.5);
+    margin-bottom: calc(rem(60) - rem(35.5) - rclamp(6, 8, 375, 1024));
     @include mq(tab) {
-    margin-bottom: rem(113) - rem(35.5);
+    margin-bottom: calc(rem(113) - rem(35.5) - rclamp(6, 8, 375, 1024));
     }
   }
 }
