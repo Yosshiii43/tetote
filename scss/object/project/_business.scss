@@ -15,7 +15,7 @@ about-us business
   }
 
   &__title {
-    margin-bottom: rem(44);
+    margin-bottom: calc(rem(44) - rclamp(6, 8, 375, 1024));
     @include mq(pc) {
       margin-left: rem(22);
     }

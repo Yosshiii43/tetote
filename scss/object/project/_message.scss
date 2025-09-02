@@ -9,9 +9,9 @@ about-us message
 
   &__title {
     text-align: center;
-    margin-bottom: rem(60);
+    margin-bottom: calc(rem(60) - rclamp(6, 8, 375, 1024));
     @include mq(tab) {
-      margin-bottom: rem(109);
+      margin-bottom: calc(rem(109) - rclamp(6, 8, 375, 1024));
     }
   }
 

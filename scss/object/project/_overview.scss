@@ -8,6 +8,6 @@ about-us overview
   padding-block: rem(60) rem(139);
 
   &__title {
-    margin-bottom: rem(113) - rem(36);
+    margin-bottom: calc(rem(113) - rem(36) - rclamp(6, 8, 375, 1024));
   }
 }
