@@ -1,5 +1,4 @@
 
-
     <div class="l-main__body">
       <section class="p-careerPass">
         <div class="l-inner--lower p-careerPass__inner">

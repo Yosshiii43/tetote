@@ -1,5 +1,3 @@
-
-
     <div class="l-main__body">
       <section class="p-policy">
         <div class="l-inner--lower">
