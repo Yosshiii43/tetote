@@ -100,7 +100,11 @@ function tetote_meta_description() {
   // 固定ページ（about-us、faqなど）
   } elseif ( is_page() ) {
     $title = get_the_title();
-    $desc  = $base . 'このページでは、' . $title . 'について解説しています。';
+    if ( mb_strpos( $title, 'について' ) !== false ) {
+      $desc = $base . 'このページでは、' . $title . '解説しています。';
+    } else {
+      $desc = $base . 'このページでは、' . $title . 'について解説しています。';
+    }
 
   // その他（カテゴリ・タグ・検索など）
   } elseif ( is_archive() ) {
