@@ -1,0 +1,39 @@
+/******************************
+entry-thanks
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-entryThanks {
+  background-color: $color-beige;
+  margin-bottom: rem(139);
+
+  &__inner {
+    padding-block: rem(34) rem(57);
+    background-color: $color-beige;
+  }
+
+  &__contents {
+    padding-block: calc(rem(58) - rem(8)) rem(95);
+    padding-inline: rem(24);
+    background-color: $color-white;
+    border-radius: 10px;
+    @include mq(tab) {
+      padding-inline: rem(71);
+    }
+
+    h1 {
+      font-size: rem(32);
+      font-weight: 700;
+      line-height: 1.5
+      ;
+      text-align: center;
+      margin-bottom: rem(51) - rem(8);
+    }
+
+    p {
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+}
