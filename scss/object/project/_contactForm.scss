@@ -17,9 +17,15 @@
 
     > p{
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: rem(35);
+      flex-direction: column;
+      gap: rem(8);
+
+      @include mq(tab) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(35);
+      }
     }
 
     label,
@@ -52,9 +58,14 @@
     //生年月日・希望職種・きっかけ
     .p-contactForm__fieldsetWrap {
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: rem(35);
+      flex-direction: column;
+      gap: rem(8);
+      @include mq(tab) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(35);
+      }
 
 
       fieldset{
@@ -74,16 +85,18 @@
           flex-direction: column;
           gap: rem(15);
 
-          > p {
-            span {
-              width: auto;
-            }
+          .wpcf7-form-control-wrap {
+            width: auto;
           }
 
           .p-contactForm__md > p {
             display: flex;
-            flex-direction: row;
-            gap: rem(25);
+            flex-direction: column;
+            gap: rem(27);
+            @include mq(tab){
+              flex-direction: row;
+              gap: rem(25);
+            }
 
             > span{
               display: flex;
@@ -190,6 +203,13 @@
         margin-top: rem(16);
         align-items: flex-start;
 
+        legend {
+          width: 100%;
+          @include mq(tab) {
+            width: rem(128);
+          }
+        }
+
         .wpcf7-checkbox {
           display: flex;
           flex-direction: column;
@@ -235,9 +255,14 @@
         margin-top: rem(1);
         p {
           display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: rem(35);
+          flex-direction: column;
+          gap: rem(8);
+          @include mq(tab) {
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: rem(35);
+          }
 
           label {
             margin-top: rem(14);
