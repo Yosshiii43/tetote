@@ -4,6 +4,7 @@
 
 ////layouts
 @use "layout/inner";
+@use "layout/main";
 
 ////object
 //component
@@ -21,6 +22,7 @@
 @use "object/component/table";
 @use "object/component/lowerMenu";
 @use "object/component/accordion";
+@use "object/component/color";
 
 
 //project
@@ -52,5 +54,6 @@
 @use "object/project/faq";
 @use "object/project/entry";
 @use "object/project/404" as my404;
+@use "object/project/contactForm";
 
 //utility

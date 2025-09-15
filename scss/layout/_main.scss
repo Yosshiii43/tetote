@@ -1,0 +1,11 @@
+/******************************
+main
+******************************/
+@use "../foundation/forwards" as *;
+
+#entry,
+#entry-thanks {
+  .l-main {
+    margin-top: var(--header-h);
+  }
+}

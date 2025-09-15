@@ -77,7 +77,7 @@
 
       <section class="p-member" id="topMember">
         <div class="l-inner--1024">
-          <h2 class="c-topSectionTitle p-member__title">
+          <h2 class=" p-member__title">
             <span class="c-topSectionTitle__upper"><span>人</span>を知る</span>
             <span class="c-topSectionTitle__lower c-poppins">member</span>
           </h2>

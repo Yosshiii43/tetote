@@ -1,0 +1,9 @@
+/******************************
+color
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-color--gold {
+  color: $color-main; 
+}

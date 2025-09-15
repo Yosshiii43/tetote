@@ -6,17 +6,15 @@ entry
 
 .p-entry {
   background-color: $color-beige;
-  
-  .c-breadcrumbs{
-    margin-top: var(--header-h);
-  }
+  margin-bottom: rem(139);
 
   &__inner {
-    padding-block: rem(33) rem(57);
+    padding-block: rem(34) rem(57);
+    background-color: $color-beige;
   }
 
   &__contents {
-    padding-block: rem(58) rem(81);
+    padding-block: rem(57) rem(81);
     padding-inline: rem(24);
     background-color: $color-white;
     border-radius: 10px;
@@ -58,6 +56,7 @@ entry
 
     .p-entry__body {
       margin-top: rem(97);
+      background-color: $color-white;
     }
   }
 }
