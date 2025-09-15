@@ -51,9 +51,16 @@
       border: 1px solid $color-secondary;
       background: $color-beige;
       outline: none;
-      color: $color-placeholder;
       line-height: 1;
     }
+
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    input[type="tel"]::placeholder,
+    textarea::placeholder {
+      color: $color-placeholder;
+    }
+
 
     //生年月日・希望職種・きっかけ
     .p-contactForm__fieldsetWrap {
