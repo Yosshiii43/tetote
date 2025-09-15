@@ -7,7 +7,7 @@
               <h1 class="p-entry__title c-lowerSectionTitle"><span>新卒・中途採用</span><span>エントリーフォーム</span></h1>
               <div class="p-entry__text">
                 <p>当社へ入社ご希望の方は、下記の送信フォームより送信して下さい。</p>
-                <p>※は必須項目になります。</p>
+                <p><span class="c-color--gold">※</span>は必須項目になります。</p>
               </div>
             </div>
             <div class="p-entry__body">
