@@ -20,7 +20,7 @@
       return document.getElementById(id);
     }).filter(Boolean);
 
-    // Smooth scroll on click
+    // Smooth scroll on click （main.jsで実装済みのためコメントアウト）
     links.forEach(function(link){
       link.addEventListener('click', function(e){
         e.preventDefault();

@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // スムーススクロール
 //--------------------------------------------------------------------------
 // ヘッダー情報
+/*
 const header = document.querySelector(".p-header");
 const headerHeight = header ? header.offsetHeight + 0 : 0;
 
@@ -167,7 +168,7 @@ if (urlHash) {
     });
   }
 }
-
+*/
 
 //--------------------------------------------------------------------------
 // スクロールするとアニメーション付きで追従ヘッダーを出すコード

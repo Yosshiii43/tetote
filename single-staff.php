@@ -136,7 +136,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
             } elseif ( has_post_thumbnail() ) {
                 the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) );
             } else {
-                echo '<img src="' . esc_url( get_theme_file_uri( '/img/img_member_default.jpg' ) ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+                echo '<img src="' . esc_url( 'http://placehold.jp/572x776.png?text=No Image' ) . '" alt="' . esc_attr( get_the_title() ) . '">';
             }
           ?>
         </div>
@@ -180,47 +180,88 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
     <div class="p-staffMain__other">
       <div class="l-inner--lower">
         <h2>その他のメンバー</h2>
-        <?php
-          $args = array(
+        <div class="p-staffMain__otherList">
+          <?php
+          $args = [
             'post_type'      => 'staff',
             'posts_per_page' => 3,
-            'post__not_in'   => array( get_the_ID() ),
-          );
-          $other = new WP_Query( $args );
-          if ( $other->have_posts() ) :
-        ?>
-          <div class="p-staffMain__otherList">
-            <?php while ( $other->have_posts() ) : $other->the_post(); ?>
-              <article class="c-memberCard">
-                <a href="<?php the_permalink(); ?>">
-                  <div class="c-memberCard__head">
-                    <?php
-                      if ( has_post_thumbnail() ) {
-                        the_post_thumbnail( 'medium', array( 'class' => 'c-memberCard__media', 'alt' => get_the_title() ) );
-                      } else {
-                        echo '<img class="c-memberCard__media" src="' . esc_url( get_theme_file_uri( '/img/img_member_default.jpg' ) ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+            'orderby'        => 'rand',
+            'post__not_in'   => [ get_the_ID() ], // 今表示中のスタッフは除外
+          ];
+          $other_staffs = new WP_Query($args);
+
+          if ($other_staffs->have_posts()) :
+            while ($other_staffs->have_posts()) : $other_staffs->the_post();
+
+              // ACFフィールド取得
+              $staff_photo   = get_field('staff_photo');
+              $staff_messages = get_field('staff_messages');
+              $message_1     = $staff_messages['message_1'] ?? '';
+              $message_2     = $staff_messages['message_2'] ?? '';
+              $staff_name    = get_field('staff_name');
+              $last_name     = $staff_name['last_name'] ?? '';
+              $first_name    = $staff_name['first_name'] ?? '';
+              $join_year     = get_field('join_year');
+              $job_type      = wp_get_post_terms(get_the_ID(), 'job_type', ['fields' => 'names']);
+              $job_type_name = $job_type ? $job_type[0] : '';
+              $staff_photo_field = get_field('staff_photo');
+              $photo_id = null;
+              $photo_url = '';
+              $alt = get_the_title();
+
+              // ACF の返り値が配列の場合
+              if ( is_array($staff_photo_field) && ! empty($staff_photo_field['id']) ) {
+                  $photo_id = intval( $staff_photo_field['id'] );
+              } elseif ( is_numeric($staff_photo_field) ) {
+                  // ACF が ID を返す設定の場合
+                  $photo_id = intval($staff_photo_field);
+              } elseif ( is_array($staff_photo_field) && ! empty($staff_photo_field['url']) ) {
+                  // URL を返す設定の場合
+                  $photo_url = $staff_photo_field['url'];
+              }
+          ?>
+            <article class="c-memberCard">
+              <a href="<?php the_permalink(); ?>">
+                <div class="c-memberCard__head">
+                  <?php if ( $photo_id ) {
+                      // wp_get_attachment_image_src でURLとサイズを取得
+                      $img_data = wp_get_attachment_image_src( $photo_id, 'medium' );
+                      if ( $img_data ) {
+                          echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
                       }
-                    ?>
-                    <div class="c-memberCard__text">
-                      <?php if ( $excerpt = get_field('card_lead') ) : ?>
-                        <p><?php echo esc_html( $excerpt ); ?></p>
-                      <?php endif; ?>
-                    </div>
+                  } elseif ( ! empty($photo_url) ) {
+                      // URLで返ってきた場合はサイズが不明 → 固定値
+                      echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($alt) . '" width="600" height="758">';
+                  } elseif ( has_post_thumbnail() ) {
+                      // サムネイルあり
+                      $thumb_id = get_post_thumbnail_id();
+                      $img_data = wp_get_attachment_image_src( $thumb_id, 'medium' );
+                      echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
+                  } else {
+                      // プレースホルダー
+                      echo '<img class="c-memberCard__media" src="http://placehold.jp/600x758.png?text=No Image" alt="' . esc_attr($alt) . '" width="600" height="758">';
+                  }
+                  ?>
+                  <div class="c-memberCard__text">
+                    <?php if ($message_1): ?><p><?php echo esc_html($message_1); ?></p><?php endif; ?>
+                    <?php if ($message_2): ?><p><?php echo esc_html($message_2); ?></p><?php endif; ?>
                   </div>
-                  <div class="c-memberCard__body">
-                    <div class="c-memberCard__info">
-                      <?php if ( $job = get_field('job_type') ) : ?><p><?php echo esc_html( $job ); ?></p><?php endif; ?>
-                      <?php if ( $year = get_field('join_year') ) : ?><p><?php echo esc_html( $year ); ?><span>入社</span></p><?php endif; ?>
-                    </div>
-                    <h3><?php the_title(); ?></h3>
+                </div>
+                <div class="c-memberCard__body">
+                  <div class="c-memberCard__info">
+                    <p><?php echo esc_html($job_type_name); ?></p>
+                    <p><?php echo esc_html($join_year); ?><span>入社</span></p>
                   </div>
-                </a>
-              </article>
-            <?php endwhile; wp_reset_postdata(); ?>
-          </div>
-        <?php else : ?>
-          <p>他のメンバーはまだ登録されていません。</p>
-        <?php endif; ?>
+                  <h2><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h2>
+                </div>
+              </a>
+            </article>
+          <?php
+            endwhile;
+            wp_reset_postdata();
+          endif;
+          ?>
+        </div>
       </div>
     </div><!-- .p-staffMain__other -->
 
