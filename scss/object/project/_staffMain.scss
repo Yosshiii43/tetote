@@ -77,7 +77,16 @@ staff詳細ページ　main
     }
 
     .p-staffMain__asid {
-      margin-top: rem(23);
+      display: none;
+      @include mq(tab) {
+        display: block;
+        align-self: start;
+        margin-top: rem(23);
+        position: sticky;
+        top: rem(118); 
+        width: rem(234);
+      }
+
       p {
         color: $color-darkGray;
         font-size: rem(14);
@@ -108,7 +117,7 @@ staff詳細ページ　main
               margin-top: 2px;
             }
           }
-          a.is-current {
+          a.is-active {
             color: $color-text;
             &::before {
               background-color: $color-text;
@@ -169,4 +178,36 @@ staff詳細ページ　main
       }
     }
   }
+/*
+  &__asid {
+    display: none;
+    @include mq(pc) {
+      display: inline;
+      position: sticky;
+      top: 120px; 
+      float: right;
+      width: 260px;
+
+      .p-staffMain__toc { 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+
+        li {
+          margin: 0 0 .5rem 0;
+
+          a {
+            text-decoration: none; 
+            color: $color-lightGray; 
+            line-height: 1.5;
+          }
+
+          a.is-active {
+            font-weight: 700; 
+            color: $color-text; 
+          }
+        }
+      }
+    }
+  }*/
 }

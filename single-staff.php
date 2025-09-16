@@ -1,290 +1,235 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。このページでは、社員について解説しています。" >
-  <meta name="robots" content="noindex">
-  <title>社員について | 株式会社TETOTE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Poppins&family=Viga&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="exp-grid staff" id="staff-01">
+<?php
+/**
+ * single-staff.php
+ * Staff single template — integrates ACF group fields and job_type taxonomy.
+ *
+ * ACF fields used (as per your setup):
+ * - staff_messages (group)
+ *    - message_1 (text)
+ *    - message_2 (text)
+ * - staff_name (group)
+ *    - last_name (text)
+ *    - first_name (text)
+ * - join_year (text)
+ * - staff_introduction (text)
+ * - staff_photo (image field returning ID)
+ *
+ * Taxonomy:
+ * - job_type (single term expected)
+ *
+ * Features:
+ * - Outputs ACF fields with proper escaping
+ * - Renders post content and injects IDs into H2 headings for TOC anchors
+ * - Generates a TOC sidebar (PC only) that follows scroll and highlights active section via IntersectionObserver
+ * - Other members section uses WP_Query excluding current post
+ */
+get_header(); ?>
 
-  <header class="l-header p-header p-header--sticky" id="js-header">
-    <div class="p-header__inner">
-      <p class="p-header__title">
-        <a href="/">
-          <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
-        </a>
-      </p>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-      <div class="p-header__action">
-        <a class="c-button--smallBW" href="/details/">募集要項</a>
-        <a class="c-button--smallGG c-viga"href="/entry/">entry</a>
-      </div>
+<?php
+// --- Fetch structured ACF data ---
+$messages = get_field('staff_messages'); // group
+$last_name = get_field('staff_name')['last_name'] ?? '';
+$first_name = get_field('staff_name')['first_name'] ?? '';
+$join_year = get_field('join_year');
+$introduction = get_field('staff_introduction');
+$photo_id = get_field('staff_photo'); // assuming returns attachment ID
 
-      <button class="c-hamburger c-viga" id="js-hamburger"
-              aria-controls="js-drawerBackground"
-              aria-expanded="false"
-              aria-label="メニューを開閉">
-        <span class="c-hamburger__bar"></span>
-        <span class="c-hamburger__bar"></span>
-        <span class="c-hamburger__bar"></span>
-        <span class="c-hamburger__text">menu</span>
-      </button>
-    </div><!-- .p-header__inner -->
-  </header>
+// Taxonomy: job_type (single)
+$job_terms = get_the_terms( get_the_ID(), 'job_type' );
+$job_name = '';
+if ( $job_terms && ! is_wp_error( $job_terms ) ) {
+    // take the first term
+    $job_name = esc_html( $job_terms[0]->name );
+}
 
-  <div class="p-drawer" id="js-drawerBackground" aria-hidden="true">
-    <div class="p-drawer__inner">
-      <div class="p-drawer__logo">
-        <a href="/">
-          <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
-        </a>
-      </div>
-      <div class="p-drawer__menu">
-        <nav id="js-global-menu" aria-label="グローバルメニュー">
-          <ul class="p-drawer__list">
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/about-us/"><span class="c-viga ">about us</span><span>TETOTEについて</span></a></li>
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/staff/"><span class="c-viga ">staff</span><span>社員について</span></a></li>
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/blog/"><span class="c-viga ">blog</span><span>採用ブログ</span></a></li>
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/benefits/"><span class="c-viga ">benefits</span><span>福利厚生について</span></a></li>
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/career/"><span class="c-viga ">carrer</span><span>研修制度とキャリアパス</span></a></li>
-            <li class="p-drawer__item"><a class="p-drawer__link" href="/faq/"><span class="c-viga ">FAQ</span><span>よくある質問</span></a></li>
-          </ul>
-        </nav>
+// --- Prepare content and extract h2 headings, inject ids into h2 tags ---
+$raw_content = apply_filters( 'the_content', get_the_content() );
 
-        <!-- ドロワー内のボタン群 -->
-        <div class="p-drawer_button">
-          <a class="c-button--smallBW" href="/details/">募集要項</a>
-          <a class="c-button--smallGG c-viga"href="/entry/">entry</a>
-        </div><!--.p-drawer_button" -->
-      </div><!-- .p-drawer__menu -->
-    </div><!-- .p-drawer__inner -->
-  </div><!-- .p-drawer -->
+// Find all h2 contents
+$headings = array();
+if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
+    foreach ( $matches[1] as $h ) {
+        // strip tags inside heading and make a safe slug
+        $text = wp_strip_all_tags( $h );
+        $id = sanitize_title( $text );
+        // ensure unique ids if duplicates exist
+        $orig_id = $id;
+        $i = 2;
+        while ( in_array( $id, array_column($headings, 'id'), true ) ) {
+            $id = $orig_id . '-' . $i;
+            $i++;
+        }
+        $headings[] = array( 'id' => $id, 'text' => $text );
+    }
 
-  <main class="l-main" id="main top">
+    // Replace h2 tags to inject ids in order
+    $index = 0;
+    $raw_content = preg_replace_callback(
+        '/<h2\b([^>]*)>(.*?)<\/h2>/is',
+        function( $m ) use ( &$index, $headings ) {
+            if ( ! isset( $headings[$index] ) ) {
+                return $m[0];
+            }
+            $id = esc_attr( $headings[$index]['id'] );
+            $attrs = trim( $m[1] );
+            // If existing id attribute, keep it (but prefer our generated)
+            $new = '<h2 id="' . $id . '"' . ( $attrs ? ' ' . $attrs : '' ) . '>' . $m[2] . '</h2>';
+            $index++;
+            return $new;
+        },
+        $raw_content
+    );
+}
+?>
 
-    <div class="l-main__head p-main__head">
-      <div class="p-staffHead">
-        <div class="l-inner--lower p-staffHead__inner">
-          <div class="p-staffHead__contents">
+<main class="l-main" id="main" role="main">
+
+  <div class="l-main__head p-main__head">
+    <div class="p-staffHead">
+      <div class="l-inner--lower p-staffHead__inner">
+        <div class="p-staffHead__contents">
+
+          <!-- messages (group: staff_messages => message_1, message_2) -->
+          <?php if ( ! empty( $messages ) && ( ! empty( $messages['message_1'] ) || ! empty( $messages['message_2'] ) ) ) : ?>
             <div class="p-staffHead__lead">
-              <p>あなたが担当で良かった</p>
-              <p>この一言が、最高のやりがい</p>
+              <?php if ( ! empty( $messages['message_1'] ) ) : ?>
+                <p><?php echo esc_html( $messages['message_1'] ); ?></p>
+              <?php endif; ?>
+              <?php if ( ! empty( $messages['message_2'] ) ) : ?>
+                <p><?php echo esc_html( $messages['message_2'] ); ?></p>
+              <?php endif; ?>
             </div>
-            <p class="p-staffHead__jobType">コンサルタント</p>
-            <div class="p-staffHead__info">
-              <h1 class="p-staffHead__name"><span>西村</span><span>優</span></h1>
-              <p class="p-staffHead__year">2011年<span>入社</span></p>
-            </div>
-            <p class="p-staffHead__outline">東京大学工学部を卒業後、大手IT企業でシステムエンジニアとして5年間、システム開発に携わった。その後、TETOTEに転職し、IT戦略策定やシステム導入プロジェクトの支援に従事。豊富な経験と知識を活かし、クライアントの課題解決に貢献している。</p>
+          <?php endif; ?>
+
+          <!-- job type taxonomy -->
+          <?php if ( ! empty( $job_name ) ) : ?>
+            <p class="p-staffHead__jobType"><?php echo $job_name; ?></p>
+          <?php endif; ?>
+
+          <!-- name (group staff_name => last_name / first_name) -->
+          <div class="p-staffHead__info">
+            <?php if ( $last_name || $first_name ) : ?>
+              <h1 class="p-staffHead__name"><span><?php echo esc_html( $last_name ); ?></span><span><?php echo esc_html( $first_name ); ?></span></h1>
+            <?php else : ?>
+              <h1 class="p-staffHead__name"><?php the_title(); ?></h1>
+            <?php endif; ?>
+
+            <?php if ( $join_year ) : ?>
+              <p class="p-staffHead__year"><?php echo esc_html( $join_year ); ?><span>入社</span></p>
+            <?php endif; ?>
           </div>
-          <div class="p-staffHead__media">
-            <img class="" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_member01.jpg" alt="西村優ポートレート" width="600" height="758">
-          </div>
+
+          <!-- short outline/intro -->
+          <?php if ( $introduction ) : ?>
+            <p class="p-staffHead__outline"><?php echo wp_kses_post( nl2br( $introduction ) ); ?></p>
+          <?php endif; ?>
+
+        </div><!-- .p-staffHead__contents -->
+
+        <!-- media (staff_photo or featured image fallback) -->
+        <div class="p-staffHead__media">
+          <?php
+            if ( $photo_id ) {
+                echo wp_get_attachment_image( $photo_id, 'large', false, array( 'alt' => get_the_title() ) );
+            } elseif ( has_post_thumbnail() ) {
+                the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) );
+            } else {
+                echo '<img src="' . esc_url( get_theme_file_uri( '/img/img_member_default.jpg' ) ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+            }
+          ?>
         </div>
-      </div><!-- .p-staffHead -->
 
-      <div class="c-breadcrumbs">
-        <div class="l-inner--lower p-breadcrumbs__inner">
-          <ol class="c-breadcrumbs__list">
-            <li><a href="/">top</a></li>
-            <li><a href="/staff/">staff</a></li>
-            <li><a href="/staff/nishimura"></a>nishimura</li>
-          </ol>
-        </div>
-      </div><!-- .c-breadcrumbs -->
-    </div><!-- .l-main__head .p-main__head-->
+      </div><!-- .l-inner--lower .p-staffHead__inner -->
 
-    <div class="l-main__body p-staffMain">
-      <div class="l-inner--lower p-staffMain__inner">
-        <div class="p-staffMain__body">
-          <section class="p-staffMain__content">
-            <h2>普段の業務内容について</h2>
-            <div>
-              <p>TETOTEのコンサルティング本部で、ITコンサルタントとして勤務しています。主な業務内容は、以下の3つです。</p>
-            </div>
+      <!-- breadcrumb -->
+      <?php if ( function_exists( 'breadcrumb' ) ) : breadcrumb(); endif; ?>
 
-            <div>
-              <p class="bold">1. クライアントの経営課題のヒアリングと分析</p>
-              <p>　</p>
-              <p>クライアント企業の経営者やIT部門の責任者から、経営課題や業務内容、既存のシステム状況などをヒアリングし、課題解決のためのIT戦略を策定します。</p>
-              <p>　</p>
-              <p class="bold">2. システム導入プロジェクトの支援</p>
-              <p>　</p>
-              <p>システム導入プロジェクトの企画・立案から導入後の運用まで、一貫して支援します。</p>
-              <p>　</p>
-              <p class="bold">3. IT人材育成</p>
-              <p>　</p>
-              <p>クライアント企業のIT部門向けに、ITスキル向上のための研修やセミナーを実施します。</p>
-              <p>これらの業務を通して、クライアント企業のIT戦略の立案から実行までを支援し、課題解決に貢献しています。</p>
-            </div>
+    </div><!-- .p-staffHead -->
+  </div><!-- .l-main__head -->
 
-            <h2>学生時代に力を入れたことは？</h2>
-            <div>
-              <p>学生時代に力を入れたことは、ロボットプログラミングサークルでの活動です。</p>
-              <p>私は、東京大学工学部在学中に、ロボットプログラミングサークルに所属していました。サークルでは、二足歩行ロボットや自律走行ロボットなどの製作に取り組み、全国大会にも出場しました。</p>
-              <p>この活動を通して、問題解決能力、チームワーク力、プレゼンテーション能力を身につけました。</p>
-              <p>特に、二足歩行ロボットの製作では、ロボットが歩行できるようにするためのプログラムを開発しました。試行錯誤を繰り返しながら、目標を達成するために必要な知識を積極的に学び、チームメンバーと協力して課題を解決しました。</p>
-              <p>この経験は、現在の仕事、つまり、クライアントの課題を解決するために、必要な知識を積極的に学び、チームメンバーと協力して課題を解決する、ここに活かされています。</p>
-            </div>
+  <div class="l-main__body p-staffMain">
+    <div class="l-inner--lower p-staffMain__inner">
+      <div class="p-staffMain__body">
 
-            <h2>TETOTEを志望した理由は？</h2>
-            <div>
-              <p>IT戦略策定からシステム導入まで一貫して支援できる点です。</p>
-              <p>前職でシステムエンジニアとして5年間、システム開発に携わった中で、単なる技術課題解決ではなく、クライアントの経営課題解決に貢献したいと考えるようになりました。</p>
-              <p>TETOTEは、IT戦略策定から導入まで一貫して支援できる数少ないコンサルティング会社です。自分の技術力と経営視点を活かし、課題解決に貢献したいという想いを叶えられる環境だと確信しました。</p>
-            </div>
+        <!-- Main content area (post content with injected h2 ids) -->
+        <section class="p-staffMain__content">
+          <?php
+            // Output the sanitized content (already filtered and with h2 ids)
+            echo $raw_content;
+          ?>
+        </section>
 
-            <h2>やりがいを感じる瞬間は？</h2>
-            <div>
-              <p>特に印象深いのは、大手製造業のA社でのプロジェクトです。A社は、生産管理システムの老朽化により、作業効率の低下とコスト増加に悩んでいました。</p>
-              <p>私は、A社の経営層や現場担当者と綿密なヒアリングを行い、課題を分析しました。そして、最新のクラウド技術を活用した新しい生産管理システムを提案しました。</p>
-              <p>導入後は、作業効率が大幅に向上し、コストも削減できました。さらに、システムの使いやすさが好評で、現場担当者からも感謝の言葉を頂きました。</p>
-              <p>この経験を通して、ITの力でクライアントの課題解決に貢献できる仕事の価値を実感しました。</p>
-            </div>
-
-            <h2>どんな人と一緒に働きたい？</h2>
-            <div>
-              <p>自分の考えを相手に分かりやすく伝え、相手の意見を尊重できる人です。</p>
-              <p>このような人々と共に働くことで、互いに刺激を与え合い、より高いレベルを目指していけると考えています。</p>
-            </div>
-
-            <h2>応募者へのメッセージ</h2>
-            <div>
-              <p>TETOTEは、「ITの力で社会課題を解決する」というビジョンを掲げ、日々成長している会社です。</p>
-              <p>高い志を持ち、自ら考え行動できる人と一緒に働きたいです。</p>
-              <p>一緒に、社会に貢献できる仕事に挑戦しましょう！</p>
-            </div>
-          </section>
-
-          <div class="p-staffMain__asid">
+        <!-- Sidebar: table of contents (generated from headings) -->
+        <?php if ( ! empty( $headings ) ) : ?>
+          <aside class="p-staffMain__asid" aria-label="目次">
             <p>目次</p>
-            <ul>
-              <li><a class="is-current" href="">普段の業務内容について</a></li>
-              <li><a>学生時代に力を入れたことは？</a></li>
-              <li><a>TETOTEを志望した理由は？</a></li>
-              <li><a>やりがいを感じる瞬間は？</a></li>
-              <li><a>どんな人と一緒に働きたい？</a></li>
-              <li><a>応募者へのメッセージ</a></li>
-          </ul>
-          </div><!-- .p-staffMain__asid-->
-        </div><!-- .p-staffMain__body -->
-      </div><!-- .l-inner--lower .p-staffMain__inner-->
-
-      <div class="p-staffMain__other">
-        <div class="l-inner--lower">
-          <h2>その他のメンバー</h2>
-          <div>
-            <article class="c-memberCard">
-              <a href="/staff/takahashi/">
-                <div class="c-memberCard__head">
-                  <img class="c-memberCard__media" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_member04.jpg" alt="高橋智ポートレート" width="600" height="758">
-                  <div class="c-memberCard__text">
-                    <p>ビジネスの課題を</p>
-                    <p>データで解決する醍醐味</p>
-                  </div>
-                </div>
-                <div class="c-memberCard__body">
-                  <div class="c-memberCard__info">
-                    <p>データサイエンティスト</p>
-                    <p>2002年<span>入社</span></p>
-                  </div>
-                  <h2><span>高橋</span><span>智</span></h2>
-                </div>
-              </a>
-            </article><!-- c-memberCard" -->
-            <article class="c-memberCard">
-              <a href="/staff/takada/">
-                <div class="c-memberCard__head">
-                  <img class="c-memberCard__media" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_member05.jpg" alt="高田凛ポートレート" width="600" height="758">
-                  <div class="c-memberCard__text">
-                    <p>どんな難解な案件も</p>
-                    <p>チームで突破できる強い連携</p>
-                  </div>
-                </div>
-                <div class="c-memberCard__body">
-                  <div class="c-memberCard__info">
-                    <p>コンサルタント</p>
-                    <p>2006年<span>入社</span></p>
-                  </div>
-                  <h2><span>高田</span><span>凛</span></h2>
-                </div>
-              </a>
-            </article><!-- c-memberCard" -->
-            <article class="c-memberCard">
-              <a href="/staff/tachibana/"></a>
-              <div class="c-memberCard__head">
-                <img class="c-memberCard__media" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_member06.jpg" alt="橘光ポートレート" width="600" height="758">
-                <div class="c-memberCard__text">
-                  <p>お客様と一緒に開発</p>
-                  <p>豊富なプライム案件が魅力です</p>
-                </div>
-              </div>
-              <div class="c-memberCard__body">
-                <div class="c-memberCard__info">
-                  <p>システム事業部課長</p>
-                  <p>2007年<span>入社</span></p>
-                </div>
-                <h2><span>橘</span><span>光</span></h2>
-              </div>
-            </article><!-- c-memberCard" -->
-          </div>
-        </div>
-      </div>
-
-    </div><!-- .l-main__body -->
-
-
-
-    <div class="l-main__foot">
-      
-    </div><!-- .l-main__foot -->
-  </main>
-
-  <footer class="l-footer p-footer">
-    <div class="p-footer__head">
-    </div>
-    <div class="l-inner--1380 p-footer__inner">
-      <div class="p-footer__cta">
-        <p class="p-footer__ctaText">わたしたちと一緒に働く仲間を募集中です。<br>
-          少数精鋭のチームで、<br>
-          あなたも会社も一緒に成長していきましょう。</p>
-        <a class="p-footer__ctaButton c-button--gb c-viga" href="">entry</a>
-      </div>
-      <div class="p-footer__foot">
-        <div>
-          <nav class="p-footer__nav">
-            <ul class="p-footer__navList">
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/">ホーム</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/about-us/">TETOTEについて</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/#topMember">人を知る</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/career/">研修制度とキャリアパス</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/benefits/">福利厚生</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/blog/">採用ブログ</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/details/">募集要項</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/faq/">よくある質問</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/about-us/#profile">会社概要</a></li>
+            <ul class="p-staffMain__toc" id="staff-toc">
+              <?php foreach ( $headings as $h ) : ?>
+                <li><a href="#<?php echo esc_attr( $h['id'] ); ?>"><?php echo esc_html( $h['text'] ); ?></a></li>
+              <?php endforeach; ?>
             </ul>
-          </nav>
-          <ul class="p-footer__sns">
-            <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@facebook-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_facebook.svg" alt="facebook"></a></li>
-            <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@twitter-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_twitter.svg" alt="twitter"></a></li>
-            <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@youtube-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_youtube.svg" alt="youtube"></a></li>
-          </ul>
-          <a class="p-footer__logo" href="/"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt=""></a>
-        </div>
-        <p class="p-footer__copyright c-viga">&copy; 2024 TETOTE All Right Reserved.</p>
+          </aside>
+        <?php endif; ?>
+
+      </div><!-- .p-staffMain__body -->
+    </div><!-- .l-inner--lower .p-staffMain__inner -->
+
+    <!-- Other members (exclude current) -->
+    <div class="p-staffMain__other">
+      <div class="l-inner--lower">
+        <h2>その他のメンバー</h2>
+        <?php
+          $args = array(
+            'post_type'      => 'staff',
+            'posts_per_page' => 3,
+            'post__not_in'   => array( get_the_ID() ),
+          );
+          $other = new WP_Query( $args );
+          if ( $other->have_posts() ) :
+        ?>
+          <div class="p-staffMain__otherList">
+            <?php while ( $other->have_posts() ) : $other->the_post(); ?>
+              <article class="c-memberCard">
+                <a href="<?php the_permalink(); ?>">
+                  <div class="c-memberCard__head">
+                    <?php
+                      if ( has_post_thumbnail() ) {
+                        the_post_thumbnail( 'medium', array( 'class' => 'c-memberCard__media', 'alt' => get_the_title() ) );
+                      } else {
+                        echo '<img class="c-memberCard__media" src="' . esc_url( get_theme_file_uri( '/img/img_member_default.jpg' ) ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+                      }
+                    ?>
+                    <div class="c-memberCard__text">
+                      <?php if ( $excerpt = get_field('card_lead') ) : ?>
+                        <p><?php echo esc_html( $excerpt ); ?></p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                  <div class="c-memberCard__body">
+                    <div class="c-memberCard__info">
+                      <?php if ( $job = get_field('job_type') ) : ?><p><?php echo esc_html( $job ); ?></p><?php endif; ?>
+                      <?php if ( $year = get_field('join_year') ) : ?><p><?php echo esc_html( $year ); ?><span>入社</span></p><?php endif; ?>
+                    </div>
+                    <h3><?php the_title(); ?></h3>
+                  </div>
+                </a>
+              </article>
+            <?php endwhile; wp_reset_postdata(); ?>
+          </div>
+        <?php else : ?>
+          <p>他のメンバーはまだ登録されていません。</p>
+        <?php endif; ?>
       </div>
-    </div>
-  </footer>
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="<?php echo esc_url(get_theme_file_uri()); ?>/js/swiper.js" defer></script>
-  <script src="<?php echo esc_url(get_theme_file_uri()); ?>/js/main.js" defer></script>
-</body>
-</html>
+    </div><!-- .p-staffMain__other -->
+
+  </div><!-- .l-main__body -->
+
+  <div class="l-main__foot"></div>
+
+</main>
+
+<?php endwhile; endif; ?>
+
+<?php get_footer(); ?>

@@ -172,10 +172,19 @@ function tetote_add_files(){
     true
   );
 
-  // swiper.jsの読み込み）
+  // swiper.jsの読み込み
   wp_enqueue_script(
     'tetote-swiper',
     get_theme_file_uri('/js/swiper.js'),
+    array(),
+    null,
+    true
+  );
+
+  // staff.jsの読み込み
+  wp_enqueue_script(
+    'tetote-staff',
+    get_theme_file_uri('/js/staff.js'),
     array(),
     null,
     true
@@ -532,4 +541,68 @@ if (!function_exists('ys_locate_page_template')) {
     //見つからなければ空文字を返す。
     return ''; 
   }
+}
+
+
+/*-----------------------------------------------
+ * ACF の staff_slug フィールドを post_name に反映する
+ * - ACF の保存後フックで実行
+ * - 再帰防止のため静的フラグを使用
+-----------------------------------------------*/
+add_action('acf/save_post', 'tetote_sync_staff_slug_to_post_name', 20);
+
+function tetote_sync_staff_slug_to_post_name( $post_id ) {
+  // リビジョンは無視
+  if ( wp_is_post_revision( $post_id ) ) {
+    return;
+  }
+
+  // 投稿タイプが staff でなければ無視
+  $post_type = get_post_type( $post_id );
+  if ( $post_type !== 'staff' ) {
+    return;
+  }
+
+  static $running = false;
+  if ( $running ) {
+    return; // 再帰防止
+  }
+
+  $running = true;
+
+  // ACF フィールド名 'staff_slug' の値を取得（安全のため get_post_meta を使用）
+  $acf_slug = get_post_meta( $post_id, 'staff_slug', true );
+
+  // 空なら終了（運用で未入力の場合は何もしない）
+  if ( empty( $acf_slug ) ) {
+    $running = false;
+    return;
+  }
+
+  // サニタイズしてスラッグ化
+  $slug = sanitize_title( $acf_slug );
+
+  // 現在の投稿情報を取得
+  $post = get_post( $post_id );
+  if ( ! $post ) {
+    $running = false;
+    return;
+  }
+
+  // 既に同じスラッグなら何もしない
+  if ( $slug === $post->post_name ) {
+    $running = false;
+    return;
+  }
+
+  // 重複回避：WP のユニーク化関数を使う
+  $unique_slug = wp_unique_post_slug( $slug, $post_id, $post->post_status, $post->post_type, $post->post_parent );
+
+  // 投稿スラッグを更新（これが save をトリガーするが、静的フラグで再帰を防いでいる）
+  wp_update_post( array(
+    'ID'        => $post_id,
+    'post_name' => $unique_slug,
+  ) );
+
+  $running = false;
 }

@@ -63,8 +63,10 @@
     </div><!-- .p-drawer__inner -->
   </div><!-- .p-drawer -->
 
+  <?php if ( ! is_singular('staff') ) : ?>
   <main class="l-main" id="main">
     <div class="l-main__head p-main__head">
+  <?php endif; ?>
 
       <?php
       // --- LowerHero: 表示対象ページ（ホワイトリスト）と固定文言 ---
@@ -104,5 +106,6 @@
         <?php breadcrumb(); ?>
         <!-- ▲ breadcrumb =============================== -->
       <?php endif; ?>
-
-    </div><!-- .l-main__head .p-main__head-->
+      <?php if ( ! is_singular('staff') ) : ?>
+      </div><!-- .l-main__head .p-main__head-->
+      <?php endif; ?>
