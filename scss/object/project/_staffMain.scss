@@ -35,7 +35,7 @@ staff詳細ページ　main
       h2 {
         position: relative;
 
-        &::before {
+        &::before { //左サイドに1pxの線
           display: block;
           content: "";
           width: calc( var(--inner-pl) - rem(4));
@@ -52,31 +52,13 @@ staff詳細ページ　main
         }
       }
 
-    div {
-      margin-bottom: rem(23);
-    }
-
-    h2 {
-        font-size: rclamp(20, 24, 375, 768);
-        font-weight: 700;
-        line-height: 1.5;
-        margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
+      h2:first-child{
+        margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
       }
 
-    h2:first-child{
-      margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
-    }
-
-    p {
-      color: $color-black;
-      font-size: rem(16);
-      line-height: 1.82
-    }
-
-    p.bold {
-      font-weight: 700;
-    }
-
+      p {
+        color: $color-black;
+      }
     }
 
     .p-staffMain__asid {
