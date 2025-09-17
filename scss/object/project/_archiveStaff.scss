@@ -1,0 +1,44 @@
+/******************************
+staffアーカイブページ
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-archiveStaff {
+
+  &__inner {
+    padding-block: rem(130) rem(139);
+    padding-inline: rem(19);
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(1, 300px);
+    justify-content: center;
+    justify-items: center;
+    gap: rem(47) rem(43);
+    @include mq(tab) {
+      grid-template-columns: repeat(2, 300px);
+    }
+    @include mq(pc) {
+      grid-template-columns: repeat(3, 300px);
+    }
+
+    .c-memberCard {
+      &__head {
+        margin-bottom: rem(16);
+      }
+      &__body {
+        .c-memberCard__info {
+          margin-bottom: rem(16);
+        }
+        h2 {
+          font-size: rem(24);
+          line-height: 1;
+          text-align: left;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
