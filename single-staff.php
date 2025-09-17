@@ -250,7 +250,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
                 <div class="c-memberCard__body">
                   <div class="c-memberCard__info">
                     <p><?php echo esc_html($job_type_name); ?></p>
-                    <p><?php echo esc_html($join_year); ?><span>入社</span></p>
+                    <p><?php echo esc_html($join_year); ?><span>年入社</span></p>
                   </div>
                   <h2><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h2>
                 </div>

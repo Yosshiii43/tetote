@@ -163,36 +163,4 @@ staff詳細ページ　main
       }
     }
   }
-/*
-  &__asid {
-    display: none;
-    @include mq(pc) {
-      display: inline;
-      position: sticky;
-      top: 120px; 
-      float: right;
-      width: 260px;
-
-      .p-staffMain__toc { 
-        list-style: none; 
-        padding: 0; 
-        margin: 0; 
-
-        li {
-          margin: 0 0 .5rem 0;
-
-          a {
-            text-decoration: none; 
-            color: $color-lightGray; 
-            line-height: 1.5;
-          }
-
-          a.is-active {
-            font-weight: 700; 
-            color: $color-text; 
-          }
-        }
-      }
-    }
-  }*/
 }
