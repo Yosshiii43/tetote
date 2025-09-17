@@ -181,15 +181,6 @@ function tetote_add_files(){
     true
   );
 
-  // staff.jsの読み込み
-  wp_enqueue_script(
-    'tetote-staff',
-    get_theme_file_uri('/js/staff.js'),
-    array(),
-    null,
-    true
-  );
-
   // メインスクリプトの読み込み
   wp_enqueue_script(
     'tetote-main',
@@ -201,6 +192,39 @@ function tetote_add_files(){
 
 }
 add_action('wp_enqueue_scripts','tetote_add_files');
+
+
+/*-------------------------------------
+ 外部ファイルの読み込み2（フロントページのみ）
+-------------------------------------*/
+function load_home_script_on_front_page() {
+    if ( is_front_page() ) {
+      wp_enqueue_script(
+      'tetote-home',
+      get_theme_file_uri('/js/home.js'),
+      array(),
+      null,
+      true
+    );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'load_home_script_on_front_page' );
+
+/*-------------------------------------
+ 外部ファイルの読み込み3（staffのみ）
+-------------------------------------*/
+function load_staff_script_on_front_page() {
+    if ( is_page('staff') || is_archive('staff') ) {
+      wp_enqueue_script(
+      'tetote-staff',
+      get_theme_file_uri('/js/staff.js'),
+      array(),
+      null,
+      true
+    );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'load_staff_script_on_front_page' );
 
 
 /*-------------------------------
