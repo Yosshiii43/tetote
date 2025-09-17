@@ -24,10 +24,10 @@ staff詳細ページ　main
     display: grid;
     grid-template-columns: 1fr;
     gap: rem(41);
-    margin-bottom: rem(18);
+    margin-bottom: rem(66) - rem(15);
     @include mq(tab) {
       grid-template-columns: 1fr rem(210);
-      gap: rem(70);
+      gap: rem(56);
     }
 
     .p-staffMain__content {
@@ -60,9 +60,12 @@ staff詳細ページ　main
         font-size: rclamp(20, 24, 375, 768);
         font-weight: 700;
         line-height: 1.5;
-        margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
         margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
       }
+
+    h2:first-child{
+      margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
+    }
 
     p {
       color: $color-black;
@@ -134,7 +137,7 @@ staff詳細ページ　main
   &__other {
     margin-bottom: rem(139);
     .l-inner--lower {
-      padding-top: rem(66);
+      padding-top: rem(42);
       @include mq(pc) {
         padding-left: rem(19);
         padding-right: rem(19);

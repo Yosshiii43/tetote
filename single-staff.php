@@ -117,7 +117,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
             <?php endif; ?>
 
             <?php if ( $join_year ) : ?>
-              <p class="p-staffHead__year"><?php echo esc_html( $join_year ); ?><span>入社</span></p>
+              <p class="p-staffHead__year"><?php echo esc_html( $join_year ); ?><span>年入社</span></p>
             <?php endif; ?>
           </div>
 
@@ -154,7 +154,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
       <div class="p-staffMain__body">
 
         <!-- Main content area (post content with injected h2 ids) -->
-        <section class="p-staffMain__content">
+        <section class="p-staffMain__content c-content">
           <?php
             // Output the sanitized content (already filtered and with h2 ids)
             echo $raw_content;

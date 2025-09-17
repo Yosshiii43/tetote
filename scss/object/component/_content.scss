@@ -1,0 +1,32 @@
+/******************************
+content
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.c-content {
+  h2.wp-block-heading {
+    font-size: rclamp(20, 24, 375, 768);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
+  }
+
+  p {
+    font-size: rem(16);
+    line-height: 1.82;
+    margin-top: rem(23);
+    margin-bottom: rem(15);
+  }
+  p:first-child{
+    margin-top: 0;
+  }
+
+  ul.wp-block-list {
+    margin-bottom: rem(15);
+    li{
+      margin-left: 1em;
+      list-style-type: "・";
+    }
+  }
+}
