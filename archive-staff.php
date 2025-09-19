@@ -58,8 +58,8 @@
                           echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
                       }
                       } elseif ( ! empty($photo_url) ) {
-                          // URLで返ってきた場合はサイズが不明 → 固定値
-                          echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($alt) . '" width="600" height="758">';
+                          // URLで返ってきた場合はサイズが不明 → width/heightなし
+                          echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($alt) . '">';
                       } elseif ( has_post_thumbnail() ) {
                           // サムネイルあり
                           $thumb_id = get_post_thumbnail_id();
