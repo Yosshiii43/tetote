@@ -5,23 +5,25 @@ get_header();
 
     <div class="l-main__body">
       <div class="l-inner--lower p-archiveBlog__inner">
-              <div class="p-archiveBlog__contents">
+        <div class="p-archiveBlog__contents">
 
-        <?php
-        // WP ループ
-        if ( have_posts() ) :
-
-          while ( have_posts() ) : the_post();
+          <?php 
+            if ( have_posts() ) :
+            while ( have_posts() ) : the_post();
 
             // 投稿リンク（将来的にパーマリンク構造が変わっても動く）
             $permalink = esc_url( get_permalink() );
 
-            // サムネイル（なければテーマ内のデフォルト画像にフォールバック）
+            // サムネイル
             if ( has_post_thumbnail() ) {
+              $thumbID = get_post_thumbnail_id( $post->ID );
               $thumb = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+              $thumalt = get_post_meta( $thumbID, '_wp_attachment_image_alt', true );
             } else {
-              $thumb = esc_url( get_theme_file_uri( '/img/img_blog1.jpg' ) ); // 適宜変更
+              $thumb = "https://placehold.jp/24/f0f0f1/666/160x180.png?text=No%20Image";
+              $thumalt = "no image";
             }
+
 
             // カテゴリ（最初のカテゴリ名を表示）
             $cats = get_the_category();
@@ -40,7 +42,7 @@ get_header();
 
             <div class="p-blog__content c-blogUnit">
               <a href="<?php echo $permalink; ?>">
-                <img class="c-blogUnit__img" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+                <img class="c-blogUnit__img" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo ( $thumalt ); ?>" width="300" height="300">
                 <div class="c-blogUnit__text">
                   <?php if ( $cat_name ) : ?>
                     <p class="c-blogUnit__category"><?php echo $cat_name; ?></p>
