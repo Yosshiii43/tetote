@@ -13,7 +13,21 @@ $last_name = get_field('staff_name')['last_name'] ?? '';
 $first_name = get_field('staff_name')['first_name'] ?? '';
 $join_year = get_field('join_year');
 $introduction = get_field('staff_introduction');
-$photo_id = get_field('staff_photo'); // assuming returns attachment ID
+$staff_photo_field = get_field('staff_photo');
+$photo_id = null;
+$photo_url = '';
+$alt = '';
+// ACF の返り値が配列の場合
+if ( is_array($staff_photo_field) && ! empty($staff_photo_field['id']) ) {
+    $photo_id = intval( $staff_photo_field['id'] );
+    $alt = $staff_photo_field['alt'];
+} elseif ( is_numeric($staff_photo_field) ) {
+    // ACF が ID を返す設定の場合
+    $photo_id = intval($staff_photo_field);
+} elseif ( is_array($staff_photo_field) && ! empty($staff_photo_field['url']) ) {
+    // URL を返す設定の場合
+    $photo_url = $staff_photo_field['url'];
+}
 
 // Taxonomy: job_type (single)
 $job_terms = get_the_terms( get_the_ID(), 'job_type' );
@@ -64,7 +78,6 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
 ?>
 
 <main class="l-main" id="main" role="main">
-
   <div class="l-main__head p-main__head">
     <div class="p-staffHead">
       <div class="l-inner--lower p-staffHead__inner">
@@ -111,12 +124,22 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
         <div class="p-staffHead__media">
           <?php
             if ( $photo_id ) {
-                echo wp_get_attachment_image( $photo_id, 'large', false, array( 'alt' => get_the_title() ) );
-            } elseif ( has_post_thumbnail() ) {
-                the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) );
-            } else {
-                echo '<img src="' . esc_url( 'http://placehold.jp/572x776.png?text=No Image' ) . '" alt="' . esc_attr( get_the_title() ) . '">';
-            }
+              $img_data = wp_get_attachment_image_src( $photo_id, 'medium' );
+              if ( $img_data ) {
+                  echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
+              }
+              } elseif ( ! empty($photo_url) ) {
+                  // URLで返ってきた場合はサイズが不明 → 固定値
+                  echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($alt) . '" width="600" height="758">';
+              } elseif ( has_post_thumbnail() ) {
+                  // サムネイルあり
+                  $thumb_id = get_post_thumbnail_id();
+                  $img_data = wp_get_attachment_image_src( $thumb_id, 'medium' );
+                  echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
+              } else {
+                  // プレースホルダー
+                  echo '<img class="c-memberCard__media" src="http://placehold.jp/600x758.png?text=No Image" alt="' . esc_attr($alt) . '" width="600" height="758">';
+              }
           ?>
         </div>
 
@@ -198,6 +221,8 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
                   // URL を返す設定の場合
                   $photo_url = $staff_photo_field['url'];
               }
+              
+
           ?>
             <article class="c-memberCard">
               <a href="<?php the_permalink(); ?>">
@@ -206,19 +231,19 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
                       // wp_get_attachment_image_src でURLとサイズを取得
                       $img_data = wp_get_attachment_image_src( $photo_id, 'medium' );
                       if ( $img_data ) {
-                          echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
+                          echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($photo_alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
                       }
                   } elseif ( ! empty($photo_url) ) {
                       // URLで返ってきた場合はサイズが不明 → 固定値
-                      echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($alt) . '" width="600" height="758">';
+                      echo '<img class="c-memberCard__media" src="' . esc_url($photo_url) . '" alt="' . esc_attr($photo_alt) . '" width="600" height="758">';
                   } elseif ( has_post_thumbnail() ) {
                       // サムネイルあり
                       $thumb_id = get_post_thumbnail_id();
                       $img_data = wp_get_attachment_image_src( $thumb_id, 'medium' );
-                      echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
+                      echo '<img class="c-memberCard__media" src="' . esc_url($img_data[0]) . '" alt="' . esc_attr($photo_alt) . '" width="' . esc_attr($img_data[1]) . '" height="' . esc_attr($img_data[2]) . '">';
                   } else {
                       // プレースホルダー
-                      echo '<img class="c-memberCard__media" src="http://placehold.jp/600x758.png?text=No Image" alt="' . esc_attr($alt) . '" width="600" height="758">';
+                      echo '<img class="c-memberCard__media" src="http://placehold.jp/600x758.png?text=No Image" alt="no image" width="600" height="758">';
                   }
                   ?>
                   <div class="c-memberCard__text">
