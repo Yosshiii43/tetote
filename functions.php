@@ -569,6 +569,28 @@ if (!function_exists('ys_locate_page_template')) {
 
 
 /*-----------------------------------------------
+ * staff詳細ページのurlに/blog/が挟まらないようにする
+-----------------------------------------------*/
+add_filter( 'register_post_type_args', 'tetote_override_staff_rewrite_args', 10, 2 );
+function tetote_override_staff_rewrite_args( $args, $post_type ) {
+    if ( $post_type !== 'staff' ) {
+        return $args;
+    }
+
+    // rewrite を上書き（/staff/slug/ にしたい場合）
+    $args['rewrite']    = array(
+        'slug'       => 'staff',
+        'with_front' => false,
+    );
+
+    // アーカイブスラッグも明示（/staff/）
+    $args['has_archive'] = 'staff';
+
+    return $args;
+}
+
+
+/*-----------------------------------------------
  * ACF の staff_slug フィールドを post_name に反映する
  * - ACF の保存後フックで実行
  * - 再帰防止のため静的フラグを使用
