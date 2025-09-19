@@ -27,6 +27,7 @@ function custom_theme_support() {
   add_theme_support( 'custom-background' );
   add_theme_support( 'align-wide' );
   add_theme_support( 'editor-styles' );
+  add_image_size('post_eyecath', 1440, 422, true);
   add_editor_style( array( '/css/editor-style.css' ) );
   //add_theme_support( "custom-header", $array );
   register_nav_menus( array(
