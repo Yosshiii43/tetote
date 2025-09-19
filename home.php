@@ -37,7 +37,7 @@ get_header();
 
 
             // 日付フォーマット
-            $date = get_the_date( 'Y.m.d' );
+            $date = get_the_modified_time( 'Y.m.d' );
             ?>
 
             <div class="p-blog__content c-blogUnit">
