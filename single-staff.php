@@ -1,27 +1,6 @@
 <?php
 /**
- * single-staff.php
  * Staff single template — integrates ACF group fields and job_type taxonomy.
- *
- * ACF fields used (as per your setup):
- * - staff_messages (group)
- *    - message_1 (text)
- *    - message_2 (text)
- * - staff_name (group)
- *    - last_name (text)
- *    - first_name (text)
- * - join_year (text)
- * - staff_introduction (text)
- * - staff_photo (image field returning ID)
- *
- * Taxonomy:
- * - job_type (single term expected)
- *
- * Features:
- * - Outputs ACF fields with proper escaping
- * - Renders post content and injects IDs into H2 headings for TOC anchors
- * - Generates a TOC sidebar (PC only) that follows scroll and highlights active section via IntersectionObserver
- * - Other members section uses WP_Query excluding current post
  */
 get_header(); ?>
 
