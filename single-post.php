@@ -24,7 +24,7 @@ get_header(); ?>
             }
 
             // 日付フォーマット
-            $date = get_the_date( 'Y.m.d' );
+            $date = get_the_modified_time( 'Y.m.d' );
 
             // サムネイル
             if ( has_post_thumbnail() ) {
@@ -38,7 +38,7 @@ get_header(); ?>
             ?>
 
           <div class="p-singleBlog__head">
-            <p class="p-singleBlog__category"><?php echo esc_html( $cat_name ); ?>></p>
+            <p class="p-singleBlog__category"><?php echo esc_html( $cat_name ); ?></p>
             <p class="p-singleBlog__date"><?php echo esc_html( $date ); ?></p>
           </div>
           <h1 class="p-singleBlog__title"><?php the_title(); ?></h1>
@@ -48,24 +48,37 @@ get_header(); ?>
       </div><!-- l-inner--800 p-singleBlog__inner-->
 
       <div class="p-singleBlog__nav">
+        <?php
+        $prev = get_previous_post();
+        $next = get_next_post();
+        ?>
         <div class="l-inner--lower">
           <ul class="c-navLinks">
-            <li class="c-navLinks__prev">
-              <a href="@@後で設定@@">
-                <span class="c-navLinks__label">
-                  <span>内定者向け研修を行いました</span>
-                  <span>2024.08.25</span>
-                </span>
-              </a>
-            </li>
-            <li class="c-navLinks__next">
-              <a href="@@後で設定@@">
-                <span class="c-navLinks__label">
-                  <span>【新卒採用2024】エントリー受付中！</span>
-                  <span>2024.08.25</span>
-                </span>
-              </a>
-            </li>
+            <?php if ( $prev ): ?>
+              <li class="c-navLinks__prev">
+                <a href="<?php echo esc_url( get_permalink( $prev ) ); ?>" rel="prev">
+                  <span class="c-navLinks__label">
+                    <span><?php echo esc_html( get_the_title( $prev ) ); ?></span>
+                    <span><?php echo esc_html( get_the_modified_time( 'Y.m.d', $prev ) ); ?></span>
+                  </span>
+                </a>
+              </li>
+            <?php else: ?>
+              <li></li>
+            <?php endif; ?>
+
+            <?php if ( $next ): ?>
+              <li class="c-navLinks__next">
+                <a href="<?php echo esc_url( get_permalink( $next ) ); ?>">
+                  <span class="c-navLinks__label">
+                    <span><?php echo esc_html( get_the_title( $next ) ); ?></span>
+                    <span><?php echo esc_html( get_the_modified_time( 'Y.m.d', $next ) ); ?></span>
+                  </span>
+                </a>
+              </li>
+            <?php else: ?>
+              <li></li>
+            <?php endif; ?>
           </ul>
           
           <?php
