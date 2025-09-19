@@ -13,6 +13,7 @@
 
   &__list {
     display: flex;
+    flex-wrap: wrap;
     gap: rem(4);
     padding-block: rclamp(12, 20, 375, 768);
 
