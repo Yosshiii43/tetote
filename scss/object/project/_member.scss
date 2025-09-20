@@ -46,7 +46,7 @@ top member
 
     .p-member__swiperInner{
       flex-grow: 1;
-      margin-right: calc(50% - 50vw);
+      @include bleed-side(right);
       overflow: hidden;
 
       .swiper {

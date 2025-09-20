@@ -89,3 +89,47 @@ $spDesignSize: 375;
   @return if(unitless($v), $v, math.div($v, 1px));
 }
 
+
+// -----------------------------------------------------------------------------
+// bleed helpers
+// 使い方:
+//   @include bleed-side(right);
+//   @include bleed-side(left);
+//   @include bleed-both();     // 左右ともビュー端まで伸ばす（full-bleed）
+// またはユーティリティクラス:
+//   .u-bleed-right { @include bleed-side(right); }
+// -----------------------------------------------------------------------------
+
+// サイド単体（左または右）をビュー端まで伸ばす
+@mixin bleed-side($side: right) {
+  // レイアウト前提：親は中央寄せ（margin-inline:auto）で幅が <= 100vw
+  // 親に padding-inline がある場合の影響を避けるため content-box を推奨
+  box-sizing: content-box;
+
+  @if $side == right {
+    /* 要素を右にズラして、幅を増やして右端をビュー端に合わせる */
+    margin-right: calc(50% - 50vw);
+  } @else if $side == left {
+    /* 左をビュー端まで伸ばす場合（鏡像） */
+    margin-left: calc(50% - 50vw);
+  } @else {
+    @error "bleed-side: \$side must be 'left' or 'right'";
+  }
+
+  /* ズラした分だけ幅を広げる（右だけ伸ばすためのトリック） */
+  width: calc(100% + (50vw - 50%));
+  overflow: visible; /* 必要に応じて hidden に変更可（ただし切れる可能性あり） */
+}
+
+// 両側をビュー端まで伸ばす（フルブリード）
+@mixin bleed-both() {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+// --- ユーティリティクラス例（必要なら使う） ---
+.u-bleed-right { @include bleed-side(right); }
+.u-bleed-left  { @include bleed-side(left); }
+.u-bleed-both  { @include bleed-both(); }
