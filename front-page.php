@@ -28,16 +28,27 @@
           <div class="p-heroNews__head">
             <h2 class="c-viga">news</h2>
           </div>
+          <?php $news_query = new WP_Query(
+              array(
+                'post_type' => 'post',
+                'posts_per_page' => 1, //記事数
+              )
+            ); ?>
+          <?php if ($news_query->have_posts()) : ?>
+          <?php $news_query->the_post(); ?>
           <div class="p-heroNews__body">
-            <a href="@@後で入れる@@">
-              <span class="js-lineHeight">2024年度働きやすさランキング一位を取得しました！！</span>
-              <span><span class="c-viga">view more</span><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_arrow1.svg" alt="" width="20" height="20"></span>
-            </a>
-          </div>
-        </div>
-
+            <?php $redirect_url = get_field('contents_redirect_url'); ?>
+              <a href="<?php echo esc_url($redirect_url ? $redirect_url : get_permalink()); ?>">
+                <span class="js-lineHeight"><?php echo esc_html(get_the_title()); ?></span>
+                <span><span class="c-viga">view more</span><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_arrow1.svg" alt="" width="20" height="20"></span>
+              </a>
+            <?php else: ?>
+            <p>記事がありません</p>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
+          </div><!-- p-heroNews__body -->
+        </div><!-- p-hero__news p-heroNews -->
       </div><!-- .p-hero -->
-
     </div><!-- .l-main__head .p-main__head-->
 
     <div class="l-main__body">
@@ -77,7 +88,7 @@
 
       <section class="p-member" id="topMember">
         <div class="l-inner--1024">
-          <h2 class=" p-member__title">
+          <h2 class="p-member__title c-topSectionTitle">
             <span class="c-topSectionTitle__upper"><span>人</span>を知る</span>
             <span class="c-topSectionTitle__lower c-poppins">member</span>
           </h2>

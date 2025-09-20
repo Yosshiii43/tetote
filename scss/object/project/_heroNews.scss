@@ -46,7 +46,6 @@
     border: 1px solid $color-text;
     border-left: none;
     width: calc(100vw - rem(52) - rem(12) * 2);
-    height: 100%;
     padding-inline: rem(10);
     border-radius: 0 50px 50px 0;
     @include mq(tab) {
@@ -65,6 +64,7 @@
       padding-block: rem(9.6);
       @include mq(tab) {
         font-size: rem(16);
+        gap: rem(32);
         padding-block: rem(11.8);
       }
     
@@ -72,9 +72,12 @@
         display: flex;
         align-items: center;
         height: fit-content;
-        overflow-y: scroll;
+        overflow: hidden;
+        display: -webkit-box; //2行以上非表示(...あり)
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         @include mq(tab) {
-          width: calc(100% - rem(91) - rem(16));
+          width: calc(100% - rem(91) - rem(32));
         }
       }
 
