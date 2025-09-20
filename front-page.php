@@ -228,46 +228,60 @@
               日々の現場の様子をご紹介します。</p>
           </div>
           <div class="p-blog__contents">
+            <?php $blog_query = new WP_Query(
+              array(
+                'post_type' => 'post',
+                'posts_per_page' => 4, //記事数
+              )
+            ); ?>
+          <?php if ($blog_query->have_posts()) : ?>
+            <?php while ($blog_query->have_posts()) : ?>
+            <?php $blog_query->the_post(); ?>
+            <?php
+              // 投稿リンク（将来的にパーマリンク構造が変わっても動く）
+              $permalink = esc_url( get_permalink() );
+
+              // サムネイル
+              if ( has_post_thumbnail() ) {
+                $thumbID = get_post_thumbnail_id( $post->ID );
+                $thumb = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+                $thumalt = get_post_meta( $thumbID, '_wp_attachment_image_alt', true );
+              } else {
+                $thumb = "https://placehold.jp/24/f0f0f1/666/160x180.png?text=No%20Image";
+                $thumalt = "no image";
+              }
+
+              // カテゴリ（最初のカテゴリ名を表示）
+              $cats = get_the_category();
+              $cat_name = '';
+              if ( ! empty( $cats ) && ! is_wp_error( $cats ) ) {
+                $cat_name = esc_html( $cats[0]->name );
+              }
+
+              //タイトル
+              $title = get_the_title();
+
+
+              // 日付フォーマット
+              $date = get_the_modified_time( 'Y.m.d' );
+            ?>
             <div class="p-blog__content c-blogUnit">
-              <a href="/@@後で入れる@@">
-                <img class="c-blogUnit__img" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_blog1.jpg" alt="研修会場で話す女性講師">
+              <a href="<?php echo $permalink; ?>">
+                <img class="c-blogUnit__img" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo ( $thumalt ); ?>" width="300" height="300">
                 <div class="c-blogUnit__text">
-                  <p class="c-blogUnit__category">社内研修</p>
-                  <p class="c-blogUnit__link">新入社員向けに、入社前研修を行いました。</p>
-                  <p class="c-blogUnit__date">2025.03.25</p>
+                  <?php if ( $cat_name ) : ?>
+                    <p class="c-blogUnit__category"><?php echo $cat_name; ?></p>
+                  <?php endif; ?>
+                  <p class="c-blogUnit__link"><?php echo esc_html( wp_strip_all_tags( $title ) ); ?></p>
+                  <p class="c-blogUnit__date"><?php echo esc_html( $date ); ?></p>
                 </div>
               </a>
-            </div>
-            <div class="p-blog__content c-blogUnit">
-              <a href="/@@後で入れる@@">
-                <img class="c-blogUnit__img" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_blog2.jpg" alt="研修会場">
-                <div class="c-blogUnit__text">
-                  <p class="c-blogUnit__category">社内研修</p>
-                  <p class="c-blogUnit__link">内定者向け研修を行いました。</p>
-                  <p class="c-blogUnit__date">2024.08.25</p>
-                </div>
-              </a>
-            </div>
-            <div class="p-blog__content c-blogUnit">
-              <a href="/@@後で入れる@@">
-                <img class="c-blogUnit__img" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_blog3.jpg" alt="景色を眺めるリュックサックを背負った人たちの後ろ姿">
-                <div class="c-blogUnit__text">
-                  <p class="c-blogUnit__category">社内イベント</p>
-                  <p class="c-blogUnit__link">【社員旅行2023】沖縄でリフレッシュ！チームワークも深まった！</p>
-                  <p class="c-blogUnit__date">2024.03.25</p>
-                </div>
-              </a>
-            </div>
-            <div class="p-blog__content c-blogUnit">
-              <a href="/@@後で入れる@@">
-                <img class="c-blogUnit__img" src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_blog4.jpg" alt="腕組みをして笑顔を見せる男性社員と女性社員">
-                <div class="c-blogUnit__text">
-                  <p class="c-blogUnit__category">お知らせ</p>
-                  <p class="c-blogUnit__link">【新卒採用2024】エントリー受付中！</p>
-                  <p class="c-blogUnit__date">2024.03.01</p>
-                </div>
-              </a>
-            </div>
+            </div><!-- p-blog__content c-blogUnit -->
+            <?php endwhile; ?>
+            <?php else: ?>
+              <p>記事がありません</p>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
           </div><!-- .p-blog__contents -->
           <a class="p-blog__viewMore c-viga" href="/blog/"><span class="c-button--arrowW"></span>view more</a>
         </div><!-- .l-inner--1024 -->
