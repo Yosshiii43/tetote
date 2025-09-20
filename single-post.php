@@ -29,7 +29,7 @@ get_header(); ?>
             // サムネイル
             if ( has_post_thumbnail() ) {
               $thumbID = get_post_thumbnail_id( $post->ID );
-              $thumb = get_the_post_thumbnail_url( get_the_ID(), 'fullsize' );
+              $thumb = get_the_post_thumbnail_url( get_the_ID(), 'full' );
               $thumalt = get_post_meta( $thumbID, '_wp_attachment_image_alt', true );
             } else {
               $thumb = "https://placehold.jp/24/f0f0f1/666/720x411.png?text=No%20Image";
