@@ -103,7 +103,7 @@
                   <?php $member_query = new WP_Query(
                     array(
                       'post_type' => 'staff',
-                      'posts_per_page' => 8, //記事数
+                      'posts_per_page' => -1, //記事数
                     )
                   ); ?>
                   <?php if ($member_query->have_posts()) : ?>
