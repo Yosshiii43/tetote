@@ -21,6 +21,7 @@ top recruitment
   &__title {
     margin-bottom: rem(19);
     @include mq(pc) {
+      width: fit-content;
       margin-inline: auto;
       margin-bottom: rem(6);
     }

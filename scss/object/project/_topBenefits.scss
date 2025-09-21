@@ -19,6 +19,7 @@ top topBenefits
   &__title {
     margin-bottom: rem(19);
     @include mq(pc) {
+      width: fit-content;
       margin-top: rem(45);
       margin-bottom: rem(6);
       margin-inline: auto;
@@ -26,6 +27,7 @@ top topBenefits
   }
 
   &__description {
+    width: auto;
     margin-bottom: rem(51);
     line-height: 1.5;
     @include mq(pc) {

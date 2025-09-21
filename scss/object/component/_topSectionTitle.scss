@@ -5,7 +5,6 @@
 @use "sass:math";
 
 .c-topSectionTitle {
-  position: relative;
   display: block;
   width: fit-content;
   max-width: calc(100vw - var(--inner-pl));
@@ -19,11 +18,13 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+    color: $color-text;
     font-size: rem(32);
     font-weight: 700;
     line-height: 1;
-    width: 100%;
+    width: fit-content;
     max-width: calc(100vw - var(--inner-pl));
+    z-index: 1;
     @include mq(tab) {
       font-size: rem(42);
     }
@@ -50,6 +51,7 @@
   }
 
   &__lower {
+    position: relative;
     color: $color-text2;
     font-size: rem(80);
     text-transform: uppercase;

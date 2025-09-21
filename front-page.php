@@ -89,8 +89,9 @@
       <section class="p-member" id="topMember">
         <div class="l-inner--1024">
           <h2 class="c-topSectionTitle p-member__title">
-            <span class="c-topSectionTitle__upper"><span>人</span>を知る</span>
-            <span class="c-topSectionTitle__lower c-poppins">member</span>
+            <span class="c-topSectionTitle__lower c-poppins">member
+              <span class="c-topSectionTitle__upper c-notoSans"><span>人</span>を知る</span>
+            </span>
           </h2>
           <div class="p-member__description">
             <p>TETOTEの社員がどういった信念を持って働いているのか、<br>
@@ -132,8 +133,9 @@
       <section class="p-topBenefits" id="toptopBenefits">
         <div class="l-inner--1024">
           <h2 class="c-topSectionTitle p-topBenefits__title">
-            <span class="c-topSectionTitle__upper"><span>制度・環境</span>を知る</span>
-            <span class="c-topSectionTitle__lower c-poppins">topBenefits</span>
+            <span class="c-topSectionTitle__lower c-poppins">benefits
+              <span class="c-topSectionTitle__upper c-notoSans"><span>制度・環境</span>を知る</span>
+            </span>
           </h2>
           <div class="p-topBenefits__description">
             <p>当社では働く従業員とそのご家族が健やかに過ごせるよう、多様な研修、福利厚生を提供しています。</p>
@@ -162,8 +164,9 @@
       <section class="p-blog" id="topBlog">
         <div class="l-inner--1024">
           <h2 class="c-topSectionTitle p-blog__title">
-            <span class="c-topSectionTitle__upper">採用ブログ</span>
-            <span class="c-topSectionTitle__lower c-poppins">blog</span>
+            <span class="c-topSectionTitle__lower c-poppins">blog
+              <span class="c-topSectionTitle__upper c-notoSans">採用ブログ</span>
+            </span>
           </h2>
           <div class="p-blog__description">
             <p>採用情報やイベント情報、社員の紹介など、<br>
@@ -193,8 +196,9 @@
       <section class="p-recruitment" id="topRecruitment">
          <div class="l-inner--1024">
           <h2 class="c-topSectionTitle p-recruitment__title">
-            <span class="c-topSectionTitle__upper">採用情報</span>
-            <span class="c-topSectionTitle__lower c-poppins">recruitment</span>
+            <span class="c-topSectionTitle__lower c-poppins">recruitment
+              <span class="c-topSectionTitle__upper c-notoSans">採用情報</span>
+            </span>
           </h2>
           <div class="p-recruitment__description">
             <p>募集要項（職種、業務内容、応募条件、選考フロー）とよくある質問・会社概要などをまとめています。</p>
