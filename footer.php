@@ -23,7 +23,7 @@
           </ul>
           <a class="p-footer__logo" href="/"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt=""></a>
         </div>
-        <p class="p-footer__copyright c-viga">&copy; 2024 TETOTE All Right Reserved.</p>
+        <p class="p-footer__copyright c-viga">&copy; <?php echo esc_html(date('Y')); ?> TETOTE All Right Reserved.</p>
       </div>
     </div>
   </footer>
