@@ -95,7 +95,7 @@
         </div><!-- .l-inner--lower -->
       </section><!-- .p-business -->
 
-      <section class="p-overview">
+      <section class="p-overview" id="overview">
         <div class="l-inner--lower">
           <h2 class="p-overview__title c-lowerSectionTitle">会社概要</h2>
           <table class="p-overview__table c-table">

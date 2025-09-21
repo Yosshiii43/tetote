@@ -31,7 +31,7 @@ function custom_theme_support() {
   add_editor_style( array( '/css/editor-style.css' ) );
   //add_theme_support( "custom-header", $array );
   register_nav_menus( array(
-    'main_nav' => 'main-nav',
+    'footer_nav' => 'footer-menu',
      ));
 }
 add_action('after_setup_theme', 'custom_theme_support');

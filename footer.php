@@ -11,17 +11,10 @@
       <div class="p-footer__foot">
         <div>
           <nav class="p-footer__nav">
-            <ul class="p-footer__navList">
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/">ホーム</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/about-us/">TETOTEについて</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/#topMember">人を知る</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/career/">研修制度とキャリアパス</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/topBenefits/">福利厚生</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/blog/">採用ブログ</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/details/">募集要項</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/faq/">よくある質問</a></li>
-              <li class="p-footer__navItem"><a class="p-footer__navLink" href="/about-us/#profile">会社概要</a></li>
-            </ul>
+            <?php wp_nav_menu( array( 
+              'theme_location' => 'footer_nav' ,
+              'menu_class' => 'p-footer__navList'
+              ) ); ?>
           </nav>
           <ul class="p-footer__sns">
             <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@facebook-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_facebook.svg" alt="facebook"></a></li>

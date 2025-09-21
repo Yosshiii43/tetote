@@ -116,12 +116,12 @@ footer
             gap: rem(25) rem(22);
           }
 
-          .p-footer__navItem{
+          > li{
             width: 100%;
             @include mq(tab) {
               width: fit-content;
             }
-            .p-footer__navLink {
+            a {
               font-size: rem(14);
               font-weight: 700;
               line-height: 2;
