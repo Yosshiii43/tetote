@@ -103,8 +103,10 @@
                 <div class="swiper-wrapper">
                   <?php $member_query = new WP_Query(
                     array(
-                      'post_type' => 'staff',
+                      'post_type'      => 'staff',
                       'posts_per_page' => -1, //記事数
+                      'orderby'        => 'ID',
+                      'order'          => 'ASC',
                     )
                   ); ?>
                   <?php if ($member_query->have_posts()) : ?>
