@@ -12,11 +12,19 @@
 <body <?php body_class( 'exp-grid' ); ?> id='<?php echo get_custom_body_id(); ?>'>
   <header class="l-header p-header" id="js-header">
     <div class="p-header__inner">
-      <h1 class="p-header__title">
-        <a href="/">
-          <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
-        </a>
-      </h1>
+      <?php if(is_front_page()): ?>
+        <h1 class="p-header__title">
+          <a href="/">
+            <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
+          </a>
+        </h1>
+      <?php else : ?>
+        <p class="p-header__title">
+          <a href="/">
+            <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING" width="250" height="61">
+          </a>
+        </p>
+      <?php endif ; ?>
 
       <div class="p-header__action">
         <a class="c-button--smallBW" href="/details/">募集要項</a>
