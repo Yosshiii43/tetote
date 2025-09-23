@@ -18,7 +18,7 @@ top blog
   &__title {
     margin-bottom: rem(19);
     @include mq(tab) {
-      margin-bottom: rem(31);
+      margin-bottom: rem(30);
     }
     @include mq(pc) {
       margin-left: calc(-1 * rem(47));
@@ -29,7 +29,7 @@ top blog
     line-height: 1.5;
     margin-bottom: rem(43);
     @include mq(tab) {
-      margin-bottom: rem(61);
+      margin-bottom: rem(60);
     }
   }
 
@@ -59,8 +59,8 @@ top blog
     gap: rem(13);
     @include mq(tab) {
       position: absolute;
-      top: rem(39);
-      right: rem(54);
+      top: rem(38.4);
+      right: rem(54.5);
     }
   }
 }
