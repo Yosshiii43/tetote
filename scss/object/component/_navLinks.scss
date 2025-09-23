@@ -74,3 +74,9 @@ navLinks
     }
   }
 }
+
+.c-navLinks:not(:has(.c-navLinks__prev)){
+  .c-navLinks__next {
+    border-left: 1px solid $color-text;
+  }
+}
