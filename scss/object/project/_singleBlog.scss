@@ -17,7 +17,7 @@ single blog
     .p-singleBlog__contents{
       background-color: $color-white;
       border-radius: 10px;
-      padding-block: rem(41) rem(23);
+      padding-top: rem(41);
       padding-inline: rclamp(20, 40, 375, 768);
 
       .p-singleBlog__head {
@@ -63,35 +63,6 @@ single blog
         aspect-ratio: 720 / 411;
         object-fit: cover;
         margin-bottom: rem(45);
-      }
-
-      h2 {
-        font-size: rclamp(20, 24, 375, 768);
-        font-weight: 700;
-        line-height: 1.5;
-        margin-top: calc(rem(23) - rclamp(5, 6, 375, 768));
-        margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
-      }
-      
-      ul {
-        li {
-          margin-left: rem(10);
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          line-height: 1.82;
-
-          &::before {
-              content: "";
-              display: block;
-              width: rem(4);
-              height: rem(4);
-              background-color: $color-text;
-              border-radius: 50%;
-              margin-right: rem(10);
-              margin-bottom: calc(-1 * rem(6));
-          }
-        }
       }
     }
   }
