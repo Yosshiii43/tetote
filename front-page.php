@@ -22,7 +22,10 @@
 
         <p class="p-hero__catchcopy p-heroCatchcopy c-viga">BECOME A <br>CHALLENGER.</p>
 
-        <div class="p-hero__text p-heroText"><p>君の挑戦が、意思が、未来を変える</p></div>
+        <div class="p-hero__text p-heroText">
+          <p>君の挑戦が、意思が、未来を変える</p>
+          <div class="trapezoid_reverse"></div>
+        </div>
 
         <div class="p-hero__news p-heroNews">
           <div class="p-heroNews__head">

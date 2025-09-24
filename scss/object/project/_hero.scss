@@ -123,7 +123,7 @@
 
   &__text{
     position: absolute;
-    bottom: rem(89) + rem(30);
+    bottom: rem(120);
     left: 0;
     z-index: 10;
     @include mq(tab) {

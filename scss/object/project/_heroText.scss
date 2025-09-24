@@ -10,7 +10,7 @@
   box-sizing: border-box;
   overflow-wrap: anywhere; 
   padding: rem(9) rem(12);
-  background-color: $color-text;
+  //background-color: $color-text;
   position: relative;
   display: inline-block;
   @include mq(tab) {
@@ -19,7 +19,29 @@
   @include mq(pc)  { 
     padding: rem(17) rem(36) rem(17) calc(var(--edge) + rem(66) - var(--hero-inner)); 
   }
-
+  p {
+    position: relative;
+    z-index: 10;
+  }
+  .trapezoid_reverse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% + rem(13.5));
+    border-top: rem(30) solid $color-text;
+    border-right: 20px solid transparent;
+    z-index: 9;
+    @include mq(tab) {
+      width: calc(100% + rem(24));
+      border-top: rem(44) solid $color-text;
+    }
+    @include mq(pc) {
+      width: calc(100% + rem(31));
+      border-top: rem(58) solid $color-text;
+      border-right: rem(30) solid transparent;
+    }
+  }
+/*
   &::after {
     position: absolute;
     display: block;
@@ -42,7 +64,7 @@
       border-left: rem(30) solid $color-text;
       right: calc(-1 * rem(30));
     }
-  }
+  }*/
 
   p{
     color: $color-white;
