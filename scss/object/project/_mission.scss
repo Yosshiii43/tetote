@@ -25,7 +25,10 @@ top mission
 
           .slide-media {
             img {
+              width: rclamp(271, 506, 375, 1440);
+              height: rclamp(210, 393, 375, 1440);
               border-radius: 60px;
+              object-fit: cover;
             }
           }
         }
@@ -74,15 +77,22 @@ top mission
   }
 
   &__body {
-    padding-inline: rem(16) var(--inner-pr);
+    margin-inline: rem(16) var(--inner-pr);
     @include mq(tab) {
-      padding-inline: var(--inner-pl) var(--inner-pr);
+      margin-inline: var(--inner-pl) var(--inner-pr);
     }
+
     > div {
       margin-inline: auto;
-      background: url(/wp-content/themes/tetote/img/img_map1.png) top center / contain no-repeat;
+      background: url(/wp-content/themes/tetote/img/img_map1.png);
+      background-position-x: rem(9);
+      background-position-y: top;
+      background-size: rem(320);
+      background-repeat: no-repeat;
       @include mq(tab) {
         max-width: rem(1024);
+        background-position-x: center;
+        background-size: contain;
         padding-bottom: rem(7);
       } 
 
@@ -103,7 +113,13 @@ top mission
         }
       }
 
-      p:first-child { padding-bottom: rclamp(39, 52, 375, 1440); }
+      p:first-child { 
+        padding-bottom: rclamp(39, 52, 375, 1440);
+        margin-top: -1px;
+        @include mq(tab) {
+          margin-top: 0;
+        }
+      }
       p:last-child { padding-bottom: rclamp(39, 46, 375, 1440); }
     }
 
