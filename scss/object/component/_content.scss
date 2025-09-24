@@ -118,12 +118,10 @@ content
       position: absolute;
       top: 10px;
       left: 15px;
-      content: "\f10d";
-      font-family: FontAwesome;
-      color: $color-secondary;
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 900;
+      content: "";
+      width: rem(28);
+      height: rem(28);
+      background: url(/wp-content/themes/tetote//img/icon_quot.svg) center/contain no-repeat;
     }
 
     p {
