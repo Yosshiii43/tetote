@@ -62,5 +62,12 @@ top blog
       top: rem(38.4);
       right: rem(54.5);
     }
+
+    &:hover {
+      .c-button--arrowW {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
   }
 }
