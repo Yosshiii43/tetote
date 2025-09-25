@@ -31,7 +31,7 @@
     background: url(/wp-content/themes/tetote/img/icon_arrow1.svg) no-repeat center/contain;
     filter: invert(12%) sepia(11%) saturate(57%) hue-rotate(330deg) brightness(98%) contrast(97%);
     top: 50%;
-    right: rem(17);
+    right: rem(16);
     transform: translateY(-50%);
     @include mq(tab) {
       width: rem(20);
