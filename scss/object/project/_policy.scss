@@ -27,7 +27,8 @@ about-us polocy
       gap: rclamp(16, 21, 375, 1024);
       margin-bottom: rem(21);
 
-      span {
+      span:first-child {
+        font-size: rclamp(16, 20, 768, 1024);
         font-weight: 400;
         flex-shrink: 0;
         display: flex;
@@ -37,7 +38,9 @@ about-us polocy
         height: rclamp(30, 48, 375, 1024);
         border: 1px solid $color-text;
         border-radius: 50%;
-        margin-top: calc(-1 * rclamp( 0, 9, 375, 1024));
+      }
+      span:last-child {
+        margin-top: rclamp( 0, 9, 375, 1024);
       }
     }
 
