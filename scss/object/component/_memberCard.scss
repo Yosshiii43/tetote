@@ -16,10 +16,15 @@
     width: 100%;
     height: auto;
     .c-memberCard__media {
-      width: 100%;
-      height: auto;
+      width: rem(246);
+      height: rem(311);
       aspect-ratio: auto;
       border-radius: 30px;
+      object-fit: cover;
+      @include mq(tab) {
+        width: rem(300);
+        height: rem(379);
+      }
     }
     .c-memberCard__text {
       position: absolute;
