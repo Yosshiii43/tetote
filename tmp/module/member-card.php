@@ -28,7 +28,9 @@
   }
 ?>
   <article class="c-memberCard">
+    <?php if(! is_front_page()): ?>
     <a href="<?php the_permalink(); ?>">
+    <?php endif; ?>
       <div class="c-memberCard__head">
         <?php if ( $photo_id ) {
             // wp_get_attachment_image_src でURLとサイズを取得
@@ -61,5 +63,7 @@
         </div>
         <h2><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h2>
       </div>
+    <?php if(! is_front_page()): ?>
     </a>
+    <?php endif; ?>
   </article>
