@@ -40,11 +40,11 @@
       text-decoration-line: underline;
       text-decoration-style: solid;
       text-decoration-skip-ink: none;
-      text-decoration-thickness: 2px;
-      text-underline-offset: auto;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 1.5px;
       text-underline-position: from-font;
       @include mq(tab) {
-        text-decoration-thickness: 2.5px;
+        text-decoration-thickness: 1.5px;
         text-underline-offset: 2px;
       }
     }
