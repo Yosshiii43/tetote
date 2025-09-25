@@ -125,20 +125,6 @@ function tetote_meta_description() {
 -------------------------------*/
 function tetote_add_files(){
 
-  // Google Fontsのpreconnectを追加
-  wp_enqueue_style(
-    'google-fonts-preconnect-googleapis',
-    'https://fonts.googleapis.com', 
-    array(), 
-    null
-  );
-  wp_enqueue_style(
-    'google-fonts-preconnect-gstatic',
-    'https://fonts.gstatic.com', 
-    array(), 
-    null
-  );
-
   // Google Fontの読み込み
   wp_enqueue_style(
     'tetote-fonts',

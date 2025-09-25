@@ -6,6 +6,7 @@
   <meta name="robots" content="noindex">
   <?php tetote_meta_description(); ?>
   <?php /* <title>は add_theme_support('title-tag') とフィルターで自動生成 */ ?>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <?php wp_head(); ?>
 </head>
 
