@@ -65,6 +65,7 @@ footer
       width: rem(200);
       height: rem(54);
       margin-inline: auto;
+      font-size: rem(14);
       text-transform: uppercase;
       text-align: center;
       @include mq(tab) {
