@@ -6,7 +6,7 @@ benefitsVoice
 
 .p-benefitsVoice {
   &__inner {
-    padding-block: rem(35) rem(70);
+    padding-block: rem(33) rem(65);
 
     @include mq(tab) {
       padding-block: rem(64) rem(139);

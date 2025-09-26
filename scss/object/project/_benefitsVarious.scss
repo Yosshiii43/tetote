@@ -6,7 +6,7 @@ benefitsVarious
 
 .p-benefitsVarious {
   &__inner {
-    padding-block: rem(70) rem(35);
+    padding-block: rem(66) rem(35);
 
     @include mq(tab) {
       padding-block: rem(145) rem(64);
