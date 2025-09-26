@@ -6,7 +6,7 @@ careerPass
 
 .p-careerPass {
   &__inner {
-    padding-block: rem(70) - rem(37);
+    padding-block: rem(66);
 
     @include mq(tab) {
       padding-block: rem(145) rem(139);
@@ -14,10 +14,7 @@ careerPass
   }
 
   &__title {
-    margin-bottom: calc(rem(60) -  rclamp(6, 8, 375, 1024) - rem(4));
-    @include mq(tab) {
-    margin-bottom: calc(rem(113) -  rclamp(6, 8, 375, 1024) - rem(4));
-    }
+    margin-bottom: calc(rclamp(60, 113, 375, 1024) - rclamp(6, 8, 375, 1024) - rem(4));
   }
 
   &__contents {
