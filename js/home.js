@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------
 // スクロールするとアニメーション付きで追従ヘッダーを出すコード
 //--------------------------------------------------------------------------
-/*
+
 document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', function() {
     const header = document.querySelector('.p-header');
@@ -23,5 +23,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-*/
