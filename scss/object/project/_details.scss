@@ -6,7 +6,7 @@ details
 
 .p-details {
   &__inner {
-    padding-block: rem(70);
+    padding-block: rem(66) rem(65);
     @include mq(tab) {
       padding-block: rem(145) rem(139);
     }
@@ -17,7 +17,10 @@ details
     font-weight: 700;
     line-height: 1.5;
     margin-top: calc( -1 * rclamp(6, 8, 375, 1024));
-    margin-bottom: calc( rem(113) - rclamp(6, 8, 375, 1024) - rem(6));
+    margin-bottom: calc( rem(70) - rclamp(6, 8, 375, 1024) - rem(6));
+    @include mq(tab) {
+      margin-bottom: calc( rem(113) - rclamp(6, 8, 375, 1024) - rem(6));
+    }
   }
 
   &__description {
@@ -25,13 +28,19 @@ details
   }
 
   &__menu {
-    margin-bottom: rem(67);
+    margin-bottom: rem(52);
+    @include mq(tab) {
+      margin-bottom: rem(67);
+    }
   }
 
   &__contents {
     .p-details__unit {
       padding-top: rem(30);
-      margin-bottom: rem(58);
+      margin-bottom: rem(48);
+      @include mq(tab) {
+        margin-bottom: rem(58);
+      }
       .p-details__title {
         margin-bottom: rem(60) - rem(35.5);
         @include mq(tab) {
