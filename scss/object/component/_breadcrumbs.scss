@@ -14,8 +14,9 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: rem(4);
-    padding-block: rclamp(12, 20, 375, 768);
+    padding-block: calc(rclamp(12, 20, 375, 768) - rem(1.395));
 
     li {
       font-size: rem(14);
@@ -34,4 +35,11 @@
 #entry .c-breadcrumbs,
 #entry-thanks .c-breadcrumbs{
   margin-top: var(--header-h);
+}
+
+.single-post .c-breadcrumbs {
+
+  li:last-child {
+    line-height: 1.2;
+  }
 }
