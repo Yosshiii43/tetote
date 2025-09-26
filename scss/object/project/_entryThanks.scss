@@ -14,12 +14,13 @@ entry-thanks
   }
 
   &__contents {
-    padding-block: calc(rem(58) - rem(8)) rem(95);
+    padding-block: calc(rem(58) - rem(8)) rem(72);
     padding-inline: rem(24);
     background-color: $color-white;
     border-radius: 10px;
     @include mq(tab) {
       padding-inline: rem(71);
+      padding-block: calc(rem(58) - rem(8)) rem(95);
     }
 
     h1 {
