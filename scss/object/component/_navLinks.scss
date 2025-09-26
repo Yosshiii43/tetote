@@ -12,7 +12,7 @@ navLinks
   &__prev,
   &__next {
     flex-basis: 50%;
-    padding-block: rem(11);
+    padding-block: rem(7) rem(11);
     a{
       display: flex;
       align-items: center;
@@ -23,10 +23,10 @@ navLinks
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: rem(6);
+        gap: rem(2);
         
         span:first-child {
-          line-height: 1;
+          line-height: 1.5;
         }
         span:last-child {
           font-size: rem(12);
@@ -48,6 +48,8 @@ navLinks
         width: rclamp(18, 24, 375, 768);
         height: rclamp(18, 24, 375, 768);
         background: url(/wp-content/themes/tetote/img/icon_left.svg) no-repeat center/contain;
+        margin-top: rem(4);
+        flex-shrink: 0;
       }
 
       .c-navLinks__label {
@@ -66,6 +68,8 @@ navLinks
         width: rclamp(18, 24, 375, 768);
         height: rclamp(18, 24, 375, 768);
         background: url(/wp-content/themes/tetote/img/icon_right.svg) no-repeat center/contain;
+        margin-top: rem(4);
+        flex-shrink: 0;
       }
 
       .c-navLinks__label {
