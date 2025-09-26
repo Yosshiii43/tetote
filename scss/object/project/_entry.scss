@@ -14,11 +14,12 @@ entry
   }
 
   &__contents {
-    padding-block: rem(57) rem(81);
+    padding-block: rem(52) calc(rem(52) - rem(27));//p-contactForm formの最後のscriptにつくgap分を引く
     padding-inline: rem(24);
     background-color: $color-white;
     border-radius: 10px;
     @include mq(tab) {
+      padding-block: rem(57) calc(rem(81) - rem(27));//p-contactForm formの最後のscriptにつくgap分を引く
       padding-inline: rem(71);
     }
 
@@ -50,13 +51,19 @@ entry
         p {
           line-height: 1.5;
         }
-        margin-bottom: rem(95);
+        margin-bottom: rem(48);
+        @include mq(tab) {
+          margin-bottom: rem(95);
+        }
       }
     }
 
     .p-entry__body {
-      margin-top: rem(97);
+      margin-top: rem(50);
       background-color: $color-white;
+      @include mq(tab) {
+        margin-top: rem(97);
+      }
     }
   }
 }
