@@ -6,25 +6,31 @@ faq
 
 .p-faq {
   &__inner {
-    padding-block: rem(70);
+    padding-block: rem(66) rem(65);
     @include mq(tab) {
-      padding-block: rem(145) rem(139);
+      padding-block: rem(146) rem(139);
     }
   }
 
   &__menu {
-    margin-bottom: rem(96);
+    margin-bottom: rem(82) - rem(30);
+    @include mq(tab) {
+      margin-bottom: rem(96) - rem(30);
+    }
+
   }
 
   &__unit {
+    padding-top: rem(30);
+    padding-bottom: rem(58);
     .p-faq__title {
-      margin-bottom: calc(rem(60) - rclamp(6, 8, 375, 1024));
+      margin-bottom: calc(rem(42) - rclamp(6, 8, 375, 1024));
       @include mq(tab) {
-        margin-bottom: calc(rem(113) - rclamp(6, 8, 375, 1024));
+        margin-bottom: calc(rem(112) - rclamp(6, 8, 375, 1024));
       }
     }
   }
-  .p-faq__unit~.p-faq__unit {
-    margin-top: rem(88);
+  &__unit:last-child {
+    padding-bottom: 0;
   }
 }
