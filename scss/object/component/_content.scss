@@ -6,7 +6,8 @@ content
 
 .c-content {
   $marginDefault: 23px;
-  border: 1px solid transparent;
+  margin: -1px;//borderをつけることによりサイズが変わってしまうことへの対策
+  border: 1px solid transparent;//c-contentの最後の要素のmargin-bottomを活かすための対策
   box-sizing: border-box;
 
   //見出し
