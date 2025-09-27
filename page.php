@@ -45,10 +45,13 @@
   <!-- ▲ tmp =================================================== -->
 
   <?php if(!empty($post->post_content)): //投稿画面から入力した本文を出力 ?>
-  <div class="wp-post">
-    <!-- 各コンポーネントブロックのクラス名はJSで付与 -->
-    <?php the_content();?>
-
+  <div class="p-wpPost">
+    <div class="p-wpPost__inner l-inner--lower">
+      <div class="p-wpPost__body">
+        <!-- 各コンポーネントブロックのクラス名はJSで付与 -->
+        <?php the_content();?>
+      </div>
+    </div>
   </div>
   <?php endif; ?>
 

@@ -1,0 +1,337 @@
+/******************************
+固定ページ
+******************************/
+@use "../../foundation/forwards" as *;
+@use "sass:math";
+
+.p-wpPost {
+  &__inner {
+    padding-block: rem(66);
+    @include mq(tab) {
+      padding-block: rem(140);
+    }
+
+    .p-wpPost__body {
+      margin: -1px;//borderをつけることによりサイズが変わってしまうことへの対策
+      border: 1px solid transparent;//c-contentの最後の要素のmargin-bottomを活かすための対策
+      box-sizing: border-box;
+      > * {
+        max-width: 100%;
+      }
+
+      //見出し
+      h2 {
+        font-size: rclamp(20, 24, 375, 768);
+        font-weight: 700;
+        line-height: 1.5;
+        margin-top: calc(-1 * rclamp(5, 6, 375, 768));
+        margin-bottom: calc(rem(50) - rclamp(5, 6, 375, 768));
+      }
+      h3 {
+        font-size: rclamp(18, 20, 375, 768);
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: rem(36);
+      }
+      h4 {
+        font-size: rclamp(17, 18, 375, 768);
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: rem(32);
+      }
+      h5 {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: rem(28);
+      }
+      h6 {
+        font-size: rem(16);
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: rem(24);
+      }
+
+      //リスト
+      ul {
+        margin-left: 1.5em;
+        margin-bottom: $marginDefault;
+        > li {
+          position: relative;
+            
+          &::before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            top: 0.9em;
+            left: -0.9em;
+            border-radius: 50%;
+            background-color: #222;
+            }
+
+          ul {
+            margin-left: 1.5em;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      ol {
+        margin-left: 1em;
+        margin-bottom: $marginDefault;
+        > li {
+          list-style-type: decimal;
+          > ul {
+            margin-left: 1em;
+            margin-bottom: 0;
+          }
+        }
+      }
+      li ol { //入れ子の下層のmargin-bottom削除
+        margin-bottom: 0;
+      }
+
+      ol li a,
+      ul li a {
+        margin-left: 1em;
+        text-decoration: underline;
+      }
+
+      //段落
+      p {
+        font-size: rem(16);
+        line-height: 1.82;
+        margin-bottom: $marginDefault;
+      }
+
+      //リンク
+      p {
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      //引用
+      blockquote {
+        position: relative;
+        padding: 35px 15px 10px 15px;
+        box-sizing: border-box;
+        font-style: italic;
+        background: #f5f5f5;
+        color: #777777;
+        border-left: 4px solid $color-secondary;
+        margin-bottom: $marginDefault;
+
+        &:before{
+          display: inline-block;
+          position: absolute;
+          top: 10px;
+          left: 15px;
+          content: "";
+          width: rem(28);
+          height: rem(28);
+          background: url(/wp-content/themes/tetote//img/icon_quot.svg) center/contain no-repeat;
+        }
+
+        p {
+          padding: 0;
+          margin: 7px 0;
+          line-height: 1.7;
+        }
+
+        cite {
+          display: block;
+          text-align: right;
+          color: #888888;
+          font-size: 0.9em
+        }
+      }
+
+      //table
+      table{
+        border-collapse: collapse;
+        margin-bottom: $marginDefault;
+        tbody {
+          border: 1px solid $color-text;
+          tr {
+            border-bottom: 1px solid $color-text;
+            tr:last-child {
+              border-bottom: none;
+            }
+          }
+          th,td {
+            border-right: 1px solid $color-text;
+            padding: rem(4);
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+      }
+
+      //定義リスト
+      dl {
+        margin-bottom: $marginDefault;
+        
+        dd {
+          margin-bottom: rem(8);
+        }
+      }
+
+      //コード
+      pre {
+        max-width: 100%;
+        margin-bottom: $marginDefault;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Menlo, Consolas, monaco, monospace;
+        padding: .8em 1em;
+      }
+
+      //Keybordタグ
+      kbd {
+        margin-bottom: $marginDefault;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Menlo, Consolas, monaco, monospace;
+        padding: .2em .3em;
+      }
+
+      //整形済みテキスト
+      pre {
+        max-width: 100%;
+        margin-bottom: $marginDefault;
+      }
+
+      //HTML要素タグテスト//
+      //住所タグ
+      address {
+        margin-bottom: $marginDefault;
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      //ギャラリー
+      .wp-block-gallery {
+        margin-bottom: $marginDefault;
+      }
+
+      //ファイル
+      .wp-block-file {
+        margin-bottom: $marginDefault;
+
+        a {
+          text-decoration: underline;
+        }
+        a.wp-block-file__button {
+          text-decoration: none;
+          color: $color-white;
+          background-color: $color-secondary;
+          &:hover,
+          &:focus {
+            background-color: $color-main;
+          }
+        }
+      }
+
+      //ボタン
+      .wp-block-buttons {
+        margin-bottom: $marginDefault;
+      }
+      .wp-block-button {
+        margin-bottom: $marginDefault;
+
+        a.wp-block-button__link {
+          color: $color-text;
+          background-color: $color-secondary;
+
+          &:hover,
+          &:focus {
+            color: $color-white;
+            background-color: $color-text;
+          }
+        }
+      }
+
+      .wp-block-button.is-style-outline {
+        a.wp-block-button__link {
+          color: $color-text;
+          border-color: $color-text;
+          background-color: $color-white;
+
+          &:hover,
+          &:focus {
+            color: $color-white;
+            background-color: $color-text;
+          }
+        }
+      }
+
+      //画像
+      figure.wp-block-image {
+        max-width: 100%;
+      }
+
+      //横並び、縦並び、グリッド
+      .wp-block-group {
+        margin-bottom: $marginDefault;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      //区切り
+      .wp-block-separator{
+        margin-top: $marginDefault;
+        margin-bottom: $marginDefault;
+        border-bottom: 1px solid $color-darkGray;
+        &.is-style-wide{
+          width: 100%;
+          border-bottom: 1px solid $color-darkGray;
+        }
+        &.is-style-dots{
+          width: 100%;
+        }
+      }
+
+      //スペーサー
+      .wp-block-spacer {
+        height: 60px;
+      }
+
+      //wp-block-embed
+      figure.wp-block-embed {
+        margin-bottom: $marginDefault;
+      }
+
+      //YouTube
+      figure.wp-block-embed-youtube {
+        margin-bottom: $marginDefault;
+      }
+
+      //Twitter
+      figure.wp-block-embed-twitter {
+        margin-bottom: $marginDefault;
+        .wp-block-embed__wrapper {
+          .twitter-tweet {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      //Googleマップ埋め込み（カスタムHTMLブロック）
+      iframe {
+        max-width: 100%;
+        margin-bottom: $marginDefault;
+      }
+
+      //preタグ
+      pre {
+        overflow-x: scroll;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@
             <p class="p-careerPass__description">弊社では、コンサルタントのキャリアパスを、大きく4つのステージに分けています。</p>
             <div class="p-careerPass__img" >
               <div class="inner">
-                <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_tetoteCarrerPath1.png" 
+                <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_tetote-carrer-path1.png" 
                     alt="TETOTEでのキャリアパス *コンサルタントの場合
                           01 コンサルタント 入社後2〜3年 プロジェクトチームの一員として、データ分析、資料作成、クライアントとの調整などを担当
                           02 シニアコンサルタント コンサルタント経験3〜5年 プロジェクトリーダーとして、プロジェクト全体の指揮を執る

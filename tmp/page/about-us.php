@@ -74,7 +74,7 @@
                   <p class="p-business__text">お客様が抱える課題へ、ヒアリングベースで提案型営業を行い、コンサルタントとの連携で課題解決を目指します。</p>
                 </div>
                 <div class="p-business__img">
-                  <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_solutionSales1.jpg" alt="微笑みながらノートパソコンに入力するスーツ姿の30代男性">
+                  <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_solution-sales1.jpg" alt="微笑みながらノートパソコンに入力するスーツ姿の30代男性">
                 </div>
               </div>
             </section>
