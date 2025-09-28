@@ -36,6 +36,11 @@ function custom_theme_support() {
 }
 add_action('after_setup_theme', 'custom_theme_support');
 
+/*-------------------------------
+  インクルード ※基本的には触らなくてよい
+-------------------------------*/
+// /* フォーム */
+require get_template_directory() . '/lib/func-form.php';
 
 /*-------------------------------
  meta title の出し分け
