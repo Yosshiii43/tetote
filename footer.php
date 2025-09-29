@@ -6,7 +6,7 @@
         <p class="p-footer__ctaText">わたしたちと一緒に働く仲間を募集中です。<br>
           少数精鋭のチームで、<br>
           あなたも会社も一緒に成長していきましょう。</p>
-        <a class="p-footer__ctaButton c-button--gb c-viga" href="">entry</a>
+        <a class="p-footer__ctaButton c-button--gb c-viga" href="/entry/">entry</a>
       </div>
       <div class="p-footer__foot">
         <div>
