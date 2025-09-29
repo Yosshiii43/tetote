@@ -77,7 +77,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
 }
 ?>
 
-<main class="l-main" id="main" role="main">
+<main class="l-main" id="main">
   <div class="l-main__head p-main__head">
     <div class="p-staffHead">
       <div class="l-inner--lower p-staffHead__inner">
@@ -143,7 +143,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
           ?>
         </div>
 
-      </div><!-- .l-inner--lower .p-staffHead__inner -->
+      </div><!-- .l-innerlower .p-staffHead__inner -->
 
       <!-- breadcrumb -->
       <?php if ( function_exists( 'breadcrumb' ) ) : breadcrumb(); endif; ?>
@@ -176,7 +176,7 @@ if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $raw_content, $matches ) ) {
         <?php endif; ?>
 
       </div><!-- .p-staffMain__body -->
-    </div><!-- .l-inner--lower .p-staffMain__inner -->
+    </div><!-- .l-innerlower .p-staffMain__inner -->
 
     <!-- Other members (exclude current) -->
     <div class="p-staffMain__other">
