@@ -129,8 +129,8 @@
           </div><!-- .p-member__swiper -->
           <a class="c-button--wb c-viga" href="/staff/">view more</a>
           <div class="swiper-controller">
-            <button class="swiper-button-prev c-button--arrowW"></button>
-            <button class="swiper-button-next c-button--arrowW"></button>
+            <button class="swiper-button-prev c-button--arrowW" aria-label="pre"></button>
+            <button class="swiper-button-next c-button--arrowW" aria-label="next"></button>
           </div>
         </div><!-- .l-inner--1024 -->
       </section><!-- .p-member-->
