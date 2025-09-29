@@ -21,7 +21,7 @@
             <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@twitter-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_twitter.svg" alt="twitter"></a></li>
             <li class="p-footer_snsItem"><a class="p-footer_snsLink" href="@@youtube-link@@"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/icon_youtube.svg" alt="youtube"></a></li>
           </ul>
-          <a class="p-footer__logo" href="/"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt=""></a>
+          <a class="p-footer__logo" href="/"><img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_logo.svg" alt="TETOTE.co.ltd RECRUITING"></a>
         </div>
         <p class="p-footer__copyright c-viga">&copy; <?php echo esc_html(date('Y')); ?> TETOTE All Right Reserved.</p>
       </div>
