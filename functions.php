@@ -644,3 +644,10 @@ function tetote_sync_staff_slug_to_post_name( $post_id ) {
 
   $running = false;
 }
+
+
+/*-----------------------------------------------
+ * WordPress6.7
+ * - contain-intrinsic-sizeプロパティの無効化
+-----------------------------------------------*/
+remove_action( 'wp_head', 'wp_print_auto_sizes_contain_css_fix', 1 );
