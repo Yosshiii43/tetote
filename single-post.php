@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-  <main class="l-main p-singleBlog" id="main" role="main">
+  <main class="l-main p-singleBlog" id="main">
 
     <!-- ▼ breadcrumb =============================== -->
       <?php breadcrumb(); ?>
@@ -46,7 +46,7 @@ get_header(); ?>
               <?php the_content() ?>
             </div>
           </div><!-- p-singleBlog__contents -->
-        </div><!-- l-inner--800 p-singleBlog__inner-->
+        </div><!-- l-inner800 p-singleBlog__inner-->
 
         <div class="p-singleBlog__nav">
           <?php
@@ -81,7 +81,7 @@ get_header(); ?>
                 <li></li>
               <?php endif; ?>
             </ul>
-          </div><!-- l-inner--lower -->
+          </div><!-- l-innerlower -->
         </div><!-- p-singleBlog__nav -->
       <?php
         endwhile;
