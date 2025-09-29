@@ -228,6 +228,9 @@ function get_custom_body_id() {
         if ($post && isset($post->post_name)) {
             return esc_attr($post->post_name);
         }
+    } elseif (is_archive('staff')) {
+      return 'staff';
+    
     } elseif (is_category() || is_tag() || is_tax()) {
         $term = get_queried_object();
         if ($term && isset($term->slug)) {
