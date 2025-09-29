@@ -26,7 +26,7 @@
   $date = get_the_modified_time( 'Y.m.d' );
 ?>
 
-<article class="c-blogUnit">
+<div class="c-blogUnit">
   <a href="<?php echo $permalink; ?>">
     <img class="c-blogUnit__img" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo ( $thumalt ); ?>" width="300" height="300">
     <div class="c-blogUnit__text">
@@ -37,4 +37,4 @@
       <p class="c-blogUnit__date"><?php echo esc_html( $date ); ?></p>
     </div>
   </a>
-</article><!--c-blogUnit -->
+</div><!--c-blogUnit -->
