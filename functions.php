@@ -230,7 +230,8 @@ function get_custom_body_id() {
         }
     } elseif (is_archive('staff')) {
       return 'staff';
-    
+    } elseif (is_home()) {
+      return 'blog';
     } elseif (is_category() || is_tag() || is_tax()) {
         $term = get_queried_object();
         if ($term && isset($term->slug)) {
