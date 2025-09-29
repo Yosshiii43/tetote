@@ -29,7 +29,7 @@
 
       <div class="p-header__action">
         <a class="c-button--smallBW" href="/details/">募集要項</a>
-        <a class="c-button--smallGG c-viga"href="/entry/">entry</a>
+        <a class="c-button--smallGG c-viga" href="/entry/">entry</a>
       </div>
 
       <button class="c-hamburger c-viga" id="js-hamburger"
@@ -66,7 +66,7 @@
         <!-- ドロワー内のボタン群 -->
         <div class="p-drawer_button">
           <a class="c-button--smallBW" href="/details/">募集要項</a>
-          <a class="c-button--smallGG c-viga"href="/entry/">entry</a>
+          <a class="c-button--smallGG c-viga" href="/entry/">entry</a>
         </div><!--.p-drawer_button" -->
       </div><!-- .p-drawer__menu -->
     </div><!-- .p-drawer__inner -->
