@@ -72,10 +72,10 @@
     </div><!-- .p-drawer__inner -->
   </div><!-- .p-drawer -->
 
-  <?php if ( ! is_singular('staff') && is_singular('post') ) : ?>
-  <main class="l-main" id="main">
-    <div class="l-main__head p-main__head">
+  <?php if ( ! is_singular('staff') && ! is_singular('post') ) : ?>
+    <main class="l-main" id="main">
   <?php endif; ?>
+  
       <?php
       // --- LowerHero: 表示対象ページ（ホワイトリスト）と固定文言 ---
       $lh = null;
@@ -98,22 +98,19 @@
       ?>
 
       <?php if ( $lh ) : ?>
-        <div class="c-lowerHero">
-          <div class="l-inner--lower c-lowerHero__inner">
-            <p class="c-lowerHero__lead c-viga"><?php echo esc_html($lh['lead']); ?></p>
-            <h1 class="c-lowerHero__title"><?php echo esc_html($lh['title']); ?></h1>
-            <?php if (!empty($lh['outline'])): ?>
-              <p class="c-lowerHero__outline"><?php echo esc_html($lh['outline']); ?></p>
-            <?php endif; ?>
-          </div>
-        </div><!-- .p-lowerHero -->
+          <div class="c-lowerHero">
+            <div class="l-inner--lower c-lowerHero__inner">
+              <p class="c-lowerHero__lead c-viga"><?php echo esc_html($lh['lead']); ?></p>
+              <h1 class="c-lowerHero__title"><?php echo esc_html($lh['title']); ?></h1>
+              <?php if (!empty($lh['outline'])): ?>
+                <p class="c-lowerHero__outline"><?php echo esc_html($lh['outline']); ?></p>
+              <?php endif; ?>
+            </div>
+          </div><!--c-lowerHero -->
       <?php endif; ?>
 
       <?php if ( ! is_front_page() && ! is_singular('staff') && ! is_singular('post') ) : ?>
         <!-- ▼ breadcrumb =============================== -->
         <?php breadcrumb(); ?>
         <!-- ▲ breadcrumb =============================== -->
-      <?php endif; ?>
-      <?php if ( ! is_singular('staff') ) : ?>
-      </div><!-- .l-main__head .p-main__head-->
       <?php endif; ?>
