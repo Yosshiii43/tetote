@@ -42,7 +42,7 @@
                   TETOTE は、最新の知識やスキルを習得し、常に成長し続けるコンサルタントを育成します。</p>
             </section>
           </div><!-- p-careerPass__contents -->
-        </div><!-- l-inner--lower p-careerPass__inner -->
+        </div><!-- l-innerlower p-careerPass__inner -->
       </section><!-- p-careerPass--->
     </div><!-- l-main__body -->
   </main>

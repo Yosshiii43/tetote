@@ -72,7 +72,7 @@
             </section>
           </div><!-- p-benefitsVoice__contents -->
           <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_benefits-user-voices1.jpg" alt="微笑むスーツ姿の男性社員と女性社員">
-        </div><!-- l-inner--lower p-benefitsVoice__inner -->
+        </div><!-- l-innerlower p-benefitsVoice__inner -->
       </section><!-- p-benefitsVoice -->
     </div><!-- l-main__body -->
   </main>
