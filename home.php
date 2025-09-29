@@ -15,7 +15,7 @@ get_header();
           <?php endif; ?>
         </div><!-- .p-archiveBlog__contents -->
 
-        <div class="p-archiveBlog__pagination" aria-label="Posts pagination">  
+        <div class="p-archiveBlog__pagination">  
           <?php
             // ページネーション
             the_posts_pagination( array(
