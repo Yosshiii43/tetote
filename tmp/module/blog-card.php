@@ -26,15 +26,19 @@
   $date = get_the_modified_time( 'Y.m.d' );
 ?>
 
-<div class="c-blogUnit">
+<article class="c-blogUnit">
   <a href="<?php echo $permalink; ?>">
     <img class="c-blogUnit__img" src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo ( $thumalt ); ?>" width="300" height="300">
     <div class="c-blogUnit__text">
       <?php if ( $cat_name ) : ?>
         <p class="c-blogUnit__category"><?php echo $cat_name; ?></p>
       <?php endif; ?>
-      <p class="c-blogUnit__link"><?php echo esc_html( wp_strip_all_tags( $title ) ); ?></p>
+      <?php if(is_front_page()) : ?>
+        <h3 class="c-blogUnit__link"><?php echo esc_html( wp_strip_all_tags( $title ) ); ?></h3>
+      <?php else: ?>
+        <h2 class="c-blogUnit__link"><?php echo esc_html( wp_strip_all_tags( $title ) ); ?></h2>
+      <?php endif; ?>
       <p class="c-blogUnit__date"><?php echo esc_html( $date ); ?></p>
     </div>
   </a>
-</div><!--c-blogUnit -->
+</article><!--c-blogUnit -->
