@@ -92,7 +92,7 @@
               </div>
             </section>
           </div>
-        </div><!-- .l-inner--lower -->
+        </div><!-- .l-innerlower -->
       </section><!-- .p-business -->
 
       <section class="p-overview" id="overview">
@@ -139,8 +139,7 @@
               </tr>
             </tbody>
           </table>
-        </div><!-- .l-inner--lower -->
+        </div><!-- .l-innerlower -->
       </section><!-- .p-overview -->
 
     </div><!-- l-main__body -->
-  </main>
