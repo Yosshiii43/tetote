@@ -155,7 +155,7 @@
               </a>
             </div>
             <div class="p-topBenefits__content">
-              <a href="/topBenefits/">
+              <a href="/benefits/">
                 <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_benefits1.png" alt="employee topBenefits">
                 <div class="c-button--arrowB"></div>
                 <h3>福利厚生</h3>
@@ -211,7 +211,7 @@
           <div class="p-recruitment__contents">
             <a class="p-recruitment__link c-button--wb" href="/details/">募集要項</a>
             <a class="p-recruitment__link c-button--wb" href="/faq/">よくある質問</a>
-            <a class="p-recruitment__link c-button--wb" href="/about-us/#profile">会社概要</a>
+            <a class="p-recruitment__link c-button--wb" href="/about-us/#overview">会社概要</a>
           </div>
         </div>
       </section>
