@@ -43,6 +43,5 @@
             </section>
           </div><!-- p-careerPass__contents -->
         </div><!-- l-innerlower p-careerPass__inner -->
-      </section><!-- p-careerPass--->
+      </section><!-- p-careerPass -->
     </div><!-- l-main__body -->
-  </main>
