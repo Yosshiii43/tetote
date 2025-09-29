@@ -127,7 +127,7 @@
             <button class="swiper-button-prev c-button--arrowW"></button>
             <button class="swiper-button-next c-button--arrowW"></button>
           </div>
-        </div><!-- .l-inner--1024 -->
+        </div><!-- .l-inner1024 -->
       </section><!-- .p-member-->
 
       <section class="p-topBenefits" id="toptopBenefits">
@@ -190,7 +190,7 @@
             <?php wp_reset_postdata(); ?>
           </div><!-- .p-blog__contents -->
           <a class="p-blog__viewMore c-viga" href="/blog/"><span class="c-button--arrowW"></span>view more</a>
-        </div><!-- .l-inner--1024 -->
+        </div><!-- .l-inner1024 -->
       </section><!-- .p-blog -->
 
       <section class="p-recruitment" id="topRecruitment">
