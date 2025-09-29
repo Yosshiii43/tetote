@@ -59,7 +59,11 @@
           <p><?php echo esc_html($job_type_name); ?></p>
           <p><?php echo esc_html($join_year); ?><span>年入社</span></p>
         </div>
-        <h2><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h2>
+        <?php if(is_front_page() || is_home()): ?>
+          <h3><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h3>
+        <?php else: ?>
+          <h2><span><?php echo esc_html($last_name); ?></span><span><?php echo esc_html($first_name); ?></span></h2>
+        <?php endif; ?>
       </div>
     </a>
   </article>
