@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<main class="l-main" id="main" role="main">
   <div class="p-archiveStaff">
     <div class="p-archiveStaff__inner l-inner--1024">
       <div class="p-archiveStaff__content">
