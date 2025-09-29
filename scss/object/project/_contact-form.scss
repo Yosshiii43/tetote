@@ -129,9 +129,12 @@
               }
 
               select {
-                font-size: rem(12);
+                font-size: rem(13);
                 width: rem(168);
                 padding-block: rem(21);
+                @include mq(tab) {
+                  font-size: rem(12);
+                }
               }
             }
           }

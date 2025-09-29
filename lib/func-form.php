@@ -16,9 +16,31 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 
 // メールアドレス一致チェック
-add_filter( 'wpcf7_validate_email', 'wpcf7_validate_email_filter_confrim', 11, 2 );
-add_filter( 'wpcf7_validate_email*', 'wpcf7_validate_email_filter_confrim', 11, 2 );
+//add_filter( 'wpcf7_validate_email', 'wpcf7_validate_email_filter_confirm', 11, 2 );
+//add_filter( 'wpcf7_validate_email*', 'wpcf7_validate_email_filter_confirm', 11, 2 );
 
+/**
+ * Contact Form 7のメールアドレスフィールドで一致チェックを行う関数
+ *
+ * @param WPCF7_Validation $result バリデーション結果オブジェクト
+ * @param WPCF7_FormTag    $tag    フォームタグオブジェクト
+ * @return WPCF7_Validation 修正後のバリデーション結果オブジェクト
+ */
+function wpcf7_validate_email_filter_confirm( $result, $tag ) {
+  $type = $tag['type'];
+  $name = $tag['name'];
+  if ( 'email' == $type || 'email*' == $type ) {
+    if (preg_match('/(.*)_confirm$/', $name, $matches)){
+      $target_name = $matches[1];
+      $posted_value = trim( (string) $_POST[$name] ); 
+      $posted_target_value = trim( (string) $_POST[$target_name] );
+      if ($posted_value != $posted_target_value) {
+        $result->invalidate( $tag, "メールアドレスが一致していません" );
+      }
+    }
+  }
+  return $result;
+}
 
 // バリデーション
 function debug_wpcf7_validate( $result, $tag ) {
