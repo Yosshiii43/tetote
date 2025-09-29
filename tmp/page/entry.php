@@ -19,4 +19,3 @@
         </div><!-- p-entry__inner -->
       </div><!-- p-entry -->
     </div><!-- l-main__body -->
-  </main>

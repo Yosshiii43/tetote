@@ -8,4 +8,3 @@
         </div><!-- l-inner--entryThanks p-entryThanks__inner -->
       </div><!-- p-entryThanks -->
     </div><!-- l-main__body -->
-  </main>
