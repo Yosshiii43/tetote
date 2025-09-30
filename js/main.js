@@ -202,3 +202,22 @@ window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(updateLineHeight, 200);
 });
+
+
+/*************************************************************************
+ * フェードイン
+ *************************************************************************/
+document.addEventListener('DOMContentLoaded', () => {
+  const els = document.querySelectorAll('.js-fade');
+  // 該当の要素が存在しなければ処理を終了
+  if (!els) return
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  });
+  els.forEach(el => observer.observe(el));
+});

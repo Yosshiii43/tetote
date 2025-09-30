@@ -20,9 +20,12 @@
           </div>
         </div><!-- .swiper -->
 
-        <p class="p-hero__catchcopy p-heroCatchcopy c-viga">BECOME A <br>CHALLENGER.</p>
+        <div class="p-hero__catchcopy p-heroCatchcopy c-viga">
+        <p class="js-fade c-fade c-delay0">BECOME A </p>
+        <p class="js-fade c-fade c-delay1">CHALLENGER.</p>
+        </div>
 
-        <div class="p-hero__text p-heroText">
+        <div class="p-hero__text p-heroText js-fade c-fade c-delay3">
           <p>君の挑戦が、意思が、未来を変える</p>
           <div class="trapezoid_reverse"></div>
         </div>
@@ -69,38 +72,38 @@
             </div>
           </div>
           <div class="p-mission__text">
-            <p>後悔しないキャリアを作る、</p>
-            <p>それこそが、我々の使命だ</p>
+            <p class="js-fade c-fade--scroll c-delay0">後悔しないキャリアを作る、</p>
+            <p class="js-fade c-fade--scroll c-delay1">それこそが、我々の使命だ</p>
           </div>
         </div><!-- .p-mission__head-->
         <div class="p-mission__body">
           <div>
-            <p>「人手不足」<br>
+            <p class="js-fade c-fade--scroll">「人手不足」<br>
               <span><span>今の日本が抱える</span><span>この社会課題に挑み、</span></span>
               <span><span>企業と個人の可能性を</span><span>最大限に引き出す。</span></span>
               それが私達の役目。
             </p>
-            <p>単につなぐだけじゃない。
+            <p class="js-fade c-fade--scroll">単につなぐだけじゃない。
               <span><span>「手と手」を取り合って</span><span>いけるような、</span></span>
               <span><span>持続可能な社会を、</span><span>一緒に作りませんか？</span></span>
             </p>
           </div>
-          <a class="c-button--wb c-viga" href="/about-us/">view more</a>
+          <a class="c-button--wb c-viga js-fade c-fade--scroll" href="/about-us/">view more</a>
         </div>
       </div><!-- .p-mission -->
 
       <section class="p-member" id="topMember">
         <div class="l-inner--1024">
-          <h2 class="c-topSectionTitle p-member__title">
+          <h2 class="c-topSectionTitle p-member__title js-fade c-fade--scroll">
             <span class="c-topSectionTitle__lower c-poppins">member
               <span class="c-topSectionTitle__upper c-notoSans"><span>人</span>を知る</span>
             </span>
           </h2>
-          <div class="p-member__description">
+          <div class="p-member__description js-fade c-fade--scroll">
             <p>TETOTEの社員がどういった信念を持って働いているのか、<br>
                 一日のスケジュールや仕事内容などを紹介します。</p>
           </div>
-          <div class="p-member__swiper">
+          <div class="p-member__swiper js-fade c-fade--scroll">
             <div class="p-member__swiperInner">
               <div class="swiper">
                 <div class="swiper-wrapper">
@@ -127,7 +130,7 @@
               </div><!-- .swiper -->
             </div>
           </div><!-- .p-member__swiper -->
-          <a class="c-button--wb c-viga" href="/staff/">view more</a>
+          <a class="c-button--wb c-viga js-fade c-fade--scroll" href="/staff/">view more</a>
           <div class="swiper-controller">
             <button class="swiper-button-prev c-button--arrowW" aria-label="pre"></button>
             <button class="swiper-button-next c-button--arrowW" aria-label="next"></button>
@@ -137,16 +140,16 @@
 
       <section class="p-topBenefits" id="toptopBenefits">
         <div class="l-inner--1024">
-          <h2 class="c-topSectionTitle p-topBenefits__title">
+          <h2 class="c-topSectionTitle p-topBenefits__title js-fade c-fade--scroll">
             <span class="c-topSectionTitle__lower c-poppins">benefits
               <span class="c-topSectionTitle__upper c-notoSans"><span>制度・環境</span>を知る</span>
             </span>
           </h2>
-          <div class="p-topBenefits__description">
+          <div class="p-topBenefits__description js-fade c-fade--scroll">
             <p>当社では働く従業員とそのご家族が健やかに過ごせるよう、多様な研修、福利厚生を提供しています。</p>
           </div>
           <div class="p-topBenefits__contents">
-            <div class="p-topBenefits__content">
+            <div class="p-topBenefits__content js-fade c-fade--scroll">
               <a href="/career/">
                 <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_career1.png" alt="Training And Career">
                 <div class="c-button--arrowB"></div>
@@ -154,7 +157,7 @@
                 <p>個々の目標に合わせたキャリアパスを支える、豊富な研修メニューで、あなた自身の成長を強力にサポートします。</p>
               </a>
             </div>
-            <div class="p-topBenefits__content">
+            <div class="p-topBenefits__content js-fade c-fade--scroll2">
               <a href="/benefits/">
                 <img src="<?php echo esc_url(get_theme_file_uri()); ?>/img/img_benefits1.png" alt="employee topBenefits">
                 <div class="c-button--arrowB"></div>
@@ -168,16 +171,16 @@
 
       <section class="p-blog" id="topBlog">
         <div class="l-inner--1024">
-          <h2 class="c-topSectionTitle p-blog__title">
+          <h2 class="c-topSectionTitle p-blog__title js-fade c-fade--scroll">
             <span class="c-topSectionTitle__lower c-poppins">blog
               <span class="c-topSectionTitle__upper c-notoSans">採用ブログ</span>
             </span>
           </h2>
-          <div class="p-blog__description">
+          <div class="p-blog__description js-fade c-fade--scroll">
             <p>採用情報やイベント情報、社員の紹介など、<br>
               日々の現場の様子をご紹介します。</p>
           </div>
-          <div class="p-blog__contents">
+          <div class="p-blog__contents js-fade c-fade--scroll">
             <?php $blog_query = new WP_Query(
               array(
                 'post_type' => 'post',
@@ -200,18 +203,18 @@
 
       <section class="p-recruitment" id="topRecruitment">
          <div class="l-inner--1024">
-          <h2 class="c-topSectionTitle p-recruitment__title">
+          <h2 class="c-topSectionTitle p-recruitment__title js-fade c-fade--scroll">
             <span class="c-topSectionTitle__lower c-poppins">recruitment
               <span class="c-topSectionTitle__upper c-notoSans">採用情報</span>
             </span>
           </h2>
-          <div class="p-recruitment__description">
+          <div class="p-recruitment__description js-fade c-fade--scroll">
             <p>募集要項（職種、業務内容、応募条件、選考フロー）とよくある質問・会社概要などをまとめています。</p>
           </div>
           <div class="p-recruitment__contents">
-            <a class="p-recruitment__link c-button--wb" href="/details/">募集要項</a>
-            <a class="p-recruitment__link c-button--wb" href="/faq/">よくある質問</a>
-            <a class="p-recruitment__link c-button--wb" href="/about-us/#overview">会社概要</a>
+            <a class="p-recruitment__link c-button--wb js-fade c-fade--scroll" href="/details/">募集要項</a>
+            <a class="p-recruitment__link c-button--wb js-fade c-fade--scroll2" href="/faq/">よくある質問</a>
+            <a class="p-recruitment__link c-button--wb js-fade c-fade--scroll2" href="/about-us/#overview">会社概要</a>
           </div>
         </div>
       </section>
