@@ -51,6 +51,7 @@ top topBenefits
     .p-topBenefits__content{
       position: relative;
       width: rem(341);
+      max-width: 100%;
       @include mq(tab) {
         width: rclamp(334, 430, 768, 1440);
       }
