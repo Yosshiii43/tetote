@@ -61,7 +61,6 @@
       color: $color-placeholder;
     }
 
-
     //生年月日・希望職種・きっかけ
     .p-contactForm__fieldsetWrap {
       display: flex;
@@ -80,292 +79,302 @@
       }
     }
 
-      //生年月日
-      .p-contactForm__birthday{
+    //生年月日
+    .p-contactForm__birthday{
 
-        legend {
-          margin-top: rem(16);
+      legend {
+        margin-top: rem(16);
+      }
+
+      .p-contactForm__items {
+        display: flex;
+        flex-direction: column;
+        gap: rem(15);
+
+        .wpcf7-form-control-wrap {
+          width: auto;
         }
 
-        .p-contactForm__items {
+        .p-contactForm__md > p {
           display: flex;
           flex-direction: column;
-          gap: rem(15);
-
-          .wpcf7-form-control-wrap {
-            width: auto;
+          gap: rem(27);
+          @include mq(tab){
+            flex-direction: row;
+            align-items: flex-start;
+            gap: rem(25);
           }
 
-          .p-contactForm__md > p {
-            display: flex;
-            flex-direction: column;
-            gap: rem(27);
-            @include mq(tab){
-              flex-direction: row;
-              align-items: flex-start;
-              gap: rem(25);
-            }
-
-            > span{
-              display: flex;
-              flex-direction: row-reverse;
-              justify-content: flex-end;
-              align-items: center;
-              gap: rem(10);
-
-              //下向き矢印
-              span::after {
-                content: "";
-                position: absolute;
-                display: inline-block;
-                border-top: 1px solid $color-black;
-                border-right: 1px solid $color-black;
-                height: rem(8.5);
-                width: rem(8.5);
-                top: rem(22);
-                right:rem(16);
-                transform: rotate(135deg) ;
-                pointer-events: none;
-              }
-
-              select {
-                font-size: rem(13);
-                width: rem(168);
-                padding-block: rem(21);
-                @include mq(tab) {
-                  font-size: rem(12);
-                }
-              }
-            }
-          }
-
-          > p {
+          > span{
             display: flex;
             flex-direction: row-reverse;
             justify-content: flex-end;
             align-items: center;
             gap: rem(10);
-          }
 
-          label {
+            //下向き矢印
+            span::after {
+              content: "";
+              position: absolute;
+              display: inline-block;
+              border-top: 1px solid $color-black;
+              border-right: 1px solid $color-black;
+              height: rem(8.5);
+              width: rem(8.5);
+              top: rem(22);
+              right:rem(16);
+              transform: rotate(135deg) ;
+              pointer-events: none;
+            }
+
+            select {
+              font-size: rem(13);
+              width: rem(168);
+              padding-block: rem(21);
+              @include mq(tab) {
+                font-size: rem(12);
+              }
+            }
+          }
+        }
+
+        > p {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          align-items: center;
+          gap: rem(10);
+        }
+
+        label {
+          width: auto;
+          padding-top: 0;
+        }
+
+        input#birth-year,
+        input#birth-month,
+        input#birth-day {
+          width: rem(168);
+          padding-left: 18px;
+        }
+      }
+    }
+
+    //希望職種
+    .p-contactForm__jobType {
+      margin-top: rem(16);
+
+      .wpcf7-radio {
+        display: flex;
+        flex-direction: column;
+        gap: rem(15);
+
+        .wpcf7-list-item {
+          margin-left: 0;
+
+          label{
             width: auto;
-            padding-top: 0;
-          }
-
-          input#birth-year,
-          input#birth-month,
-          input#birth-day {
-            width: rem(168);
-            padding-left: 18px;
-          }
-        }
-      }
-
-      //希望職種
-      .p-contactForm__jobType {
-        margin-top: rem(16);
-
-        .wpcf7-radio {
-          display: flex;
-          flex-direction: column;
-          gap: rem(15);
-
-          .wpcf7-list-item {
-            margin-left: 0;
-
-            label{
-              width: auto;
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
-              gap: rem(12);
-
-              input[type="radio"] {
-                line-height: normal;
-                position: relative;
-                width: rem(24);
-                height: rem(24);
-                border: 1px solid $color-secondary;
-                border-radius: 50%;
-                background-color: $color-beige;
-                -webkit-appearance: none;
-                  -moz-appearance: none;
-                        appearance: none;
-              }
-
-              input[type="radio"]:checked:before {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: rem(10);
-                height: rem(10);
-                border-radius: 50%;
-                background: $color-text;
-                content: '';
-              }
-            }
-          }
-        }
-      }
-
-      //きっかけ
-      .p-contactForm__trigger {
-        margin-top: rem(16);
-        align-items: flex-start;
-
-        legend {
-          width: 100%;
-          @include mq(tab) {
-            width: rem(128);
-          }
-        }
-
-        .wpcf7-checkbox {
-          display: flex;
-          flex-direction: column;
-          gap: rem(21);
-
-          .wpcf7-list-item {
             display: flex;
-            margin-left: 0;
+            align-items: center;
+            justify-content: flex-start;
+            gap: rem(12);
 
-            label{
-              width: auto;
-              gap: rem(13);
+            input[type="radio"] {
+              line-height: normal;
+              position: relative;
+              width: rem(24);
+              height: rem(24);
+              border: 1px solid $color-secondary;
+              border-radius: 50%;
+              background-color: $color-beige;
+              -webkit-appearance: none;
+                -moz-appearance: none;
+                      appearance: none;
+            }
 
-              input[type="checkbox"] {
-                line-height: normal;
-                position: relative;
-                width: rem(24);
-                height: rem(24);
-                border: 1px solid $color-secondary;
-                background-color: $color-beige;
-                -webkit-appearance: none;
-                  -moz-appearance: none;
-                        appearance: none;
-              }
-
-              input[type="checkbox"]:checked:before {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: rem(10);
-                height: rem(10);
-                background: $color-text;
-                content: '';
-              }
+            input[type="radio"]:checked:before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: rem(10);
+              height: rem(10);
+              border-radius: 50%;
+              background: $color-text;
+              content: '';
             }
           }
         }
       }
+    }
 
-      //自己PR
-      .p-contactForm__pr {
-        margin-top: rem(1);
-        p {
-          display: flex;
-          flex-direction: column;
-          gap: rem(8);
-          @include mq(tab) {
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: rem(35);
-          }
+    //きっかけ
+    .p-contactForm__trigger {
+      margin-top: rem(16);
+      align-items: flex-start;
 
-          label {
-            margin-top: rem(14);
-          }
-          textarea {
-            min-height: rem(240);
-            margin-top: calc(-1 * rem(1));
-            padding: rem(18) rem(19);
-            resize: vertical;
-          }
+      legend {
+        width: 100%;
+        @include mq(tab) {
+          width: rem(128);
         }
       }
 
-      //個人情報保護方針
-      .p-contactForm__policy {
-        margin-top: rem(40);
+      .wpcf7-checkbox {
+        display: flex;
+        flex-direction: column;
+        gap: rem(21);
+
+        .wpcf7-list-item {
+          display: flex;
+          margin-left: 0;
+
+          label{
+            width: auto;
+            gap: rem(13);
+
+            input[type="checkbox"] {
+              line-height: normal;
+              position: relative;
+              width: rem(24);
+              height: rem(24);
+              border: 1px solid $color-secondary;
+              background-color: $color-beige;
+              -webkit-appearance: none;
+                -moz-appearance: none;
+                      appearance: none;
+            }
+
+            input[type="checkbox"]:checked:before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: rem(10);
+              height: rem(10);
+              background: $color-text;
+              content: '';
+            }
+          }
+        }
+      }
+    }
+
+    //自己PR
+    .p-contactForm__pr {
+      margin-top: rem(1);
+      p {
+        display: flex;
+        flex-direction: column;
+        gap: rem(8);
         @include mq(tab) {
-          margin-top: rem(71);
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: rem(35);
         }
 
-        p {
-          font-size: rem(14);
-          line-height: normal;
+        label {
+          margin-top: rem(14);
+        }
+        textarea {
+          min-height: rem(240);
+          margin-top: calc(-1 * rem(1));
+          padding: rem(18) rem(19);
+          resize: vertical;
+        }
+      }
+    }
+
+    //個人情報保護方針
+    .p-contactForm__policy {
+      margin-top: rem(40);
+      @include mq(tab) {
+        margin-top: rem(71);
+      }
+
+      p {
+        font-size: rem(14);
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(6);
+
+        .wpcf7-form-control-wrap{
+          width: auto;
+
+          .wpcf7-list-item{
+            margin-left: 0;
+
+            input[type="checkbox"] {
+              line-height: normal;
+              position: relative;
+              width: rem(16);
+              height: rem(16);
+              margin-bottom: rem(3);
+              border: 1px solid $color-secondary;
+              background-color: $color-beige;
+              -webkit-appearance: none;
+                -moz-appearance: none;
+                      appearance: none;
+            }
+
+            input[type="checkbox"]:checked:before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: rem(6);
+              height: rem(6);
+              background: $color-text;
+              content: '';
+            }
+          }
+        }
+      }
+    }
+
+    //送信
+    .p-contactForm__submit {
+      margin-top: 30px;
+
+      p {
+        line-height: 1;
+        width: fit-content;
+        margin-inline: auto;
+        margin-bottom: 0;
+
+        input[type="submit"] {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: rem(6);
+          padding: rem(19.5) rem(95.5);
+          border: 1px solid $color-text;
+          background-color: $color-white;
+        }
 
-          .wpcf7-form-control-wrap{
-            width: auto;
-
-            .wpcf7-list-item{
-              margin-left: 0;
-
-              input[type="checkbox"] {
-                line-height: normal;
-                position: relative;
-                width: rem(16);
-                height: rem(16);
-                margin-bottom: rem(3);
-                border: 1px solid $color-secondary;
-                background-color: $color-beige;
-                -webkit-appearance: none;
-                  -moz-appearance: none;
-                        appearance: none;
-              }
-
-              input[type="checkbox"]:checked:before {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: rem(6);
-                height: rem(6);
-                background: $color-text;
-                content: '';
-              }
-            }
-          }
+        .wpcf7-spinner {
+          display: none;
         }
       }
+    }
+    .wpcf7-response-output {
+      display: none;
+    }
 
-      //送信
-      .p-contactForm__submit {
-        margin-top: 30px;
+    //フォーカス
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="radio"]:focus,
+    input[type="checkbox"]:focus,
+    input[type="submit"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: $focus-width solid $focus-color;
+      outline-offset: 0;
+    }
 
-        p {
-          line-height: 1;
-          width: fit-content;
-          margin-inline: auto;
-          margin-bottom: 0;
-
-          input[type="submit"] {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: rem(19.5) rem(95.5);
-            border: 1px solid $color-text;
-            background-color: $color-white;
-          }
-
-          .wpcf7-spinner {
-            display: none;
-          }
-        }
-      }
-      .wpcf7-response-output {
-        display: none;
-      }
-
-    //.c-formControl {
-    //  flex: 1 1 auto;
-    //}
   }
 }
