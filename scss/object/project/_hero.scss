@@ -4,11 +4,16 @@
 @use "../../foundation/forwards" as *;
 @use "sass:math";
 
+.p-hero__placeholder {
+  height: var(--header-h);
+}
 //-------------------------------------
 // Hero (Swiper + CSS Fade + Ken Burns)
 //-------------------------------------
 
 .p-hero {
+  position: relative;
+  top: calc(-1 * var(--header-h)); // hero を上にずらしてヘッダー下に潜らせる
   width: 100%;
   height: rem(667);   // SP: 高さ固定
   overflow: hidden;

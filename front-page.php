@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
     <div class="l-main__head p-main__head">
+      <div class="p-hero__placeholder"></div>
       <div class="p-hero">
         <!-- Slider main container -->
         <div class="swiper">
